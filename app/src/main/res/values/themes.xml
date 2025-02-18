@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.MyDiary" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.MyDiary" parent="android:Theme.Material.Light.DarkActionBar"/>
+    
+    <style name="BigLabel">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">48sp</item>
+        <item name="android:fontFamily">@font/gwen_trial_bold</item>
+       <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginTop">24dp</item>
+    </style>
+    
+    
+    <style name="ButtonCommon" parent="@style/UnderButtonLayout">
+        <item name="textAllCaps">false</item>
+        <!--<item name="fontFamily"></item>-->
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/white_rectangle</item>
+    </style>
+    <style name="UnderButtonLayout">
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+    </style>
+    <style name="PaddingButton">
+        <item name="android:paddingBottom">28dp</item>
+        <item name="android:paddingTop">28dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+    </style>
 </resources>

@@ -1,4 +1,4 @@
 package com.example.mydiary
 
-class MainActivity {
+class EmotionActivity {
 }

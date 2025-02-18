@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My diary</string>
+    <string name="welcome">Добро пожаловать</string>
+    <string name="login_with_google">Войти через Google</string>
 </resources>
