@@ -7,7 +7,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black" />
+        android:background="@color/black"
+        android:contentDescription="@null" />
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -28,9 +29,6 @@
         style="@style/BottomNavigationBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:backgroundTintMode="src_in"
-        app:itemActiveIndicatorStyle="@color/white"
         app:itemIconTint="@color/bottom_nav_text_color"
         app:itemTextAppearanceActiveBoldEnabled="false"
         app:itemTextColor="@color/white"
