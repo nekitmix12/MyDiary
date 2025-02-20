@@ -12,4 +12,6 @@
     <color name="entrance_red">#ff8c66</color>
     <color name="entrance_orange">#fff266</color>
     <color name="entrance_blue">#66d9ff</color>
+    <color name="grey">#333333</color>
+
 </resources>
