@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDiary"
         tools:targetApi="31">
+        <activity android:name=".EmotionActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity
             android:name=".EntranceActivity"
             android:exported="true"

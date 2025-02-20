@@ -1,4 +1,6 @@
 package com.example.mydiary
 
-class EmotionActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class EmotionActivity: AppCompatActivity() {
 }

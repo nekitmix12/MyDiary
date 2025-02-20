@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FourPointGradientView">
+        <attr name="colorTopLeft" format="color" />
+        <attr name="colorTopRight" format="color" />
+        <attr name="colorBottomLeft" format="color" />
+        <attr name="colorBottomRight" format="color" />
+    </declare-styleable>
+</resources>

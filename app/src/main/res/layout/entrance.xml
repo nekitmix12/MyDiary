@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    android:layout_height="match_parent">
+
+    <com.example.mydiary.FourPointGradientView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:colorTopLeft="@color/entrance_green"
+        app:colorTopRight="@color/entrance_blue"
+        app:colorBottomLeft="@color/entrance_orange"
+        app:colorBottomRight="@color/entrance_red"/>
 
     <TextView
         android:id="@+id/textView"
+        style="@style/BigLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/welcome"
-        app:layout_constraintVertical_bias="0"
-        style="@style/BigLabel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
     <Button
         android:id="@+id/button"
+        style="@style/GoogleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/entrance_logo_google"
         android:text="@string/login_with_google"
-        style="@style/ButtonCommon"
-        app:layout_constraintVertical_bias="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:drawableStart="@drawable/entrance_logo_google"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

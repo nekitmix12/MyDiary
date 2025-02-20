@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.mydiary"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.mydiary"
@@ -36,7 +36,12 @@ android {
     }
     buildFeatures {
         compose = true
+
     }
+    viewBinding{
+        enable = true
+    }
+
 }
 
 dependencies {
@@ -49,6 +54,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

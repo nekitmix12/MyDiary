@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.MyDiary" parent="android:Theme.Material.Light.DarkActionBar"/>
+    <style name="Theme.MyDiary" parent="android:Theme.Material.Light.NoActionBar.Fullscreen">
+        <item name="colorPrimaryDark">@color/transparent</item>
+    </style>
     
     <style name="BigLabel">
         <item name="android:textColor">@color/black</item>
@@ -11,7 +13,10 @@
         <item name="android:layout_marginTop">24dp</item>
     </style>
     
-    
+    <style name="GoogleButton" parent="ButtonCommon">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:drawablePadding">16dp</item>
+    </style>
     <style name="ButtonCommon" parent="@style/UnderButtonLayout">
         <item name="textAllCaps">false</item>
         <!--<item name="fontFamily"></item>-->
@@ -19,14 +24,14 @@
         <item name="android:textAlignment">center</item>
         <item name="android:background">@drawable/white_rectangle</item>
     </style>
-    <style name="UnderButtonLayout">
+    <style name="UnderButtonLayout" parent="PaddingButton">
         <item name="android:layout_marginStart">24dp</item>
         <item name="android:layout_marginEnd">24dp</item>
         <item name="android:layout_marginBottom">24dp</item>
     </style>
     <style name="PaddingButton">
-        <item name="android:paddingBottom">28dp</item>
-        <item name="android:paddingTop">28dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingTop">16dp</item>
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">24dp</item>
     </style>
