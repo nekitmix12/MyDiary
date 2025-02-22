@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    app:cardCornerRadius="28dp">
+
+    <LinearLayout
+        style="@style/LogbookTopCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            style="@style/LogbookTopText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="в день: " />
+
+        <TextView
+            style="@style/LogbookTopTextBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="2 записи" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

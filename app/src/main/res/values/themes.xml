@@ -17,6 +17,7 @@
     
     <style name="GoogleButton" parent="ButtonCommon">
         <item name="android:textAlignment">viewStart</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:drawablePadding">16dp</item>
     </style>
     <style name="ButtonCommon" parent="@style/UnderButtonLayout">
@@ -40,5 +41,38 @@
     
     <style name="BottomNavigationBar">
         <item name="android:background">@color/grey</item>
+    </style>
+    <style name="CardText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="CardTextFiling" parent="CardText">
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="CardTextConst" parent="CardText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_margin">0dp</item>
+    </style>
+    <style name="CardImage">
+        <item name="android:layout_margin">16dp</item>
+    </style>
+    <style name="LogbookTopCard">
+        <item name="android:background">@color/logbook_top_color</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+    <style name="LogbookTopText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="LogbookTopTextBold" parent="LogbookTopText">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="LogbookLabel">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="lineHeight">44dp</item>
     </style>
 </resources>

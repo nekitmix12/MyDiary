@@ -1,14 +1,9 @@
-package com.example.mydiary
+package com.example.mydiary.presentation
 
-import android.animation.ValueAnimator
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import com.example.mydiary.databinding.EntranceBinding
 
 class EntranceActivity : ComponentActivity() {
@@ -20,7 +15,7 @@ class EntranceActivity : ComponentActivity() {
         binding = EntranceBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.button.setOnClickListener{
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }

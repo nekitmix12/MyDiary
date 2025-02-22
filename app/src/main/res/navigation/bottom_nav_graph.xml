@@ -6,14 +6,14 @@
 
     <fragment
         android:id="@+id/logbookFragment"
-        android:name="com.example.mydiary.LogbookFragment"
+        android:name="com.example.mydiary.presentation.fragments.LogbookFragment"
         android:label="LogbookFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.mydiary.SettingsFragment"
+        android:name="com.example.mydiary.presentation.fragments.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.example.mydiary.StatisticsFragment"
+        android:name="com.example.mydiary.presentation.fragments.StatisticsFragment"
         android:label="StatisticsFragment" />
 </navigation>

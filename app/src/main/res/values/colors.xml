@@ -12,6 +12,20 @@
     <color name="entrance_red">#ff8c66</color>
     <color name="entrance_orange">#fff266</color>
     <color name="entrance_blue">#66d9ff</color>
+    <color name="card_blue">#33BBFF</color>
+    <color name="card_background_blue">#3300AAFF</color>
+    <color name="card_background_blue_transparent">#0000AAFF</color>
     <color name="grey">#333333</color>
+    <color name="logbook_top_color">#2C2C2E</color>
+    <color name="logbook_loading_grey">#666666</color>
+    <color name="logbook_loading_dark">#1A1A1A</color>
+    <color name="logbook_gradient_yellow_1">#FFFF33</color>
+    <color name="logbook_gradient_yellow_2">#FFAA00</color>
+    <color name="logbook_gradient_blue_1">#33DDFF</color>
+    <color name="logbook_gradient_blue_2">#00AAFF</color>
+    <color name="logbook_gradient_red_1">#FF5533</color>
+    <color name="logbook_gradient_red_2">#FF0000</color>
+    <color name="logbook_gradient_green_1">#33FFBB</color>
+    <color name="logbook_gradient_green_2">#00FF55</color>
 
 </resources>

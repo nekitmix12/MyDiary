@@ -1,4 +1,4 @@
-package com.example.mydiary
+package com.example.mydiary.presentation.fragments
 
 import androidx.fragment.app.Fragment
 

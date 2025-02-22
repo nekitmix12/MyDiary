@@ -6,4 +6,20 @@
         <attr name="colorBottomLeft" format="color" />
         <attr name="colorBottomRight" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="ProgressBarView">
+        <attr name="ringBackground" format="color|reference" />
+        <attr name="autoCalculate" format="boolean"/>
+        <attr name="rotate" format="boolean"/>
+        <attr name="ringStroke" format="reference" />
+        <attr name="foregroundStrokeCap" format="enum">
+            <enum name="butt" value="0" />
+            <enum name="triangular" value="1" />
+            <enum name="square" value="2" />
+        </attr>
+        <attr name="ringThickness" format="dimension|fraction" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="progress" format="integer|reference" />
+        <attr name="startAngle" format="float" />
+    </declare-styleable>
 </resources>

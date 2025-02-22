@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDiary"
         tools:targetApi="31">
-        <activity android:name=".EmotionActivity"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".presentation.EmotionActivity"/>
+        <activity android:name=".presentation.MainActivity"/>
         <activity
-            android:name=".EntranceActivity"
+            android:name=".presentation.EntranceActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyDiary">

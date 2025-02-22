@@ -1,4 +1,4 @@
-package com.example.mydiary
+package com.example.mydiary.presentation.custom_elements
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -12,7 +12,7 @@ import android.graphics.Shader
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
-import androidx.core.graphics.ColorUtils
+import com.example.mydiary.R
 
 class FourPointGradientView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
@@ -101,11 +101,8 @@ fun createBilinearGradientBitmap(
         val v = y.toFloat() / (height - 1)
         for (x in 0 until width) {
             val u = x.toFloat() / (width - 1)
-
-            // Интерполируем сверху и снизу по горизонтали
             val topColor = blendColors(topLeft, topRight, u)
             val bottomColor = blendColors(bottomLeft, bottomRight, u)
-            // Интерполируем итоговый цвет по вертикали
             val color = blendColors(topColor, bottomColor, v)
             bitmap.setPixel(x, y, color)
         }
@@ -121,65 +118,3 @@ fun blendColors(color1: Int, color2: Int, ratio: Float): Int {
     val b = (Color.blue(color1) * inverseRatio + Color.blue(color2) * ratio).toInt()
     return Color.argb(a, r, g, b)
 }
-
-/*
-    private val paint = Paint()
-    private var fraction = 0f // Анимируемая переменная
-
-    private val animator = ValueAnimator.ofFloat(0f, 1f).apply {
-        duration = 4000L // Время анимации
-        repeatMode = ValueAnimator.REVERSE
-        repeatCount = ValueAnimator.INFINITE
-        addUpdateListener {
-            fraction = it.animatedValue as Float
-            invalidate() // Перерисовываем View
-        }
-    }
-
-    init {
-        animator.start()
-    }
-
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-
-        val width = width.toFloat()
-        val height = height.toFloat()
-
-        // Меняем местами цвета по кругу
-        val color1 = blendColors(Color.RED, Color.BLUE, fraction)
-        val color2 = blendColors(Color.BLUE, Color.GREEN, fraction)
-        val color3 = blendColors(Color.GREEN, Color.YELLOW, fraction)
-        val color4 = blendColors(Color.YELLOW, Color.RED, fraction)
-
-        val gradient = LinearGradient(
-            0f, 0f, width, height,
-            intArrayOf(color1, color2, color3, color4),
-            null,
-            Shader.TileMode.CLAMP
-        )
-
-        paint.shader = gradient
-        canvas.drawRect(0f, 0f, width, height, paint)
-    }
-
-
-
-    private fun blendColors(from: Int, to: Int, fraction: Float): Int {
-        val startA = Color.alpha(from)
-        val startR = Color.red(from)
-        val startG = Color.green(from)
-        val startB = Color.blue(from)
-
-        val endA = Color.alpha(to)
-        val endR = Color.red(to)
-        val endG = Color.green(to)
-        val endB = Color.blue(to)
-
-        val blendedA = (startA + fraction * (endA - startA)).toInt()
-        val blendedR = (startR + fraction * (endR - startR)).toInt()
-        val blendedG = (startG + fraction * (endG - startG)).toInt()
-        val blendedB = (startB + fraction * (endB - startB)).toInt()
-
-        return Color.argb(blendedA, blendedR, blendedG, blendedB)
-    }*/

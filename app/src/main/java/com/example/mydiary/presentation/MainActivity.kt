@@ -1,9 +1,10 @@
-package com.example.mydiary
+package com.example.mydiary.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.mydiary.R
 
 import com.example.mydiary.databinding.MainScreenBinding
 

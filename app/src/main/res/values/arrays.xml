@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="gradientStroke">
+        <item>@drawable/logbook_gradient_yellow</item>
+        <item>@drawable/logbook_gradient_red</item>
+        <item>@drawable/logbook_gradient_green</item>
+        <item>@drawable/logbook_gradient_blue</item>
+    </array>
+
+    <array name="gradientParts">
+        <item>0.5f</item>
+        <item>0.3f</item>
+        <item>0.3f</item>
+        <item>0.4f</item>
+    </array>
+</resources>

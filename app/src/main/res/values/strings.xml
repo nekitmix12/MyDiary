@@ -5,4 +5,9 @@
     <string name="logbook">Журнал</string>
     <string name="settings">Настройки</string>
     <string name="statistics">Статистика</string>
+    <string name="i_feel">Я чувствую</string>
+    <string name="record1">%1$d запись</string>
+    <string name="record2">%1$d записи</string>
+    <string name="record5">%1$d записей</string>
+    <string name="what_are_you_listening_now">Что вы сейчас чувствуете?</string>
 </resources>
