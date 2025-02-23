@@ -10,4 +10,6 @@
     <string name="record2">%1$d записи</string>
     <string name="record5">%1$d записей</string>
     <string name="what_are_you_listening_now">Что вы сейчас чувствуете?</string>
+    <string name="note">Запись</string>
+    <string name="save">Сохранить</string>
 </resources>

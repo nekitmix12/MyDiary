@@ -12,10 +12,14 @@
         android:layout_height="300dp"
         app:ringBackground="@color/logbook_loading_dark"
         app:ringStroke="@array/gradientStroke"
+        app:foregroundStrokeCap="round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:progress="@array/gradientParts"
+        app:startAngle="90"
+        app:autoCalculate="false"
         app:ringThickness="20%" />
 
     <ImageButton

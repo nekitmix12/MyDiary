@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <include layout="@layout/notes_exit" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="24dp" />
+
+        <include layout="@layout/logbook_emotion_card" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="24dp" />
+
+        <include layout="@layout/notes_questions_block" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="24dp" />
+
+        <include layout="@layout/notes_questions_block" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="24dp" />
+
+        <include layout="@layout/notes_questions_block" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/GoogleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="add"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

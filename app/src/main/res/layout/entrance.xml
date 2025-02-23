@@ -30,6 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/entrance_logo_google"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="add"
         android:text="@string/login_with_google"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

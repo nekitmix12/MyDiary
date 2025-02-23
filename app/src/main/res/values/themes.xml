@@ -2,7 +2,9 @@
 <resources>
     <style name="Theme.MyDiary" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorPrimary">@color/transparent</item>
         <item name="iconTint">@color/white</item>
+        <item name="itemIconTint">@color/white</item>
         <item name="iconTintMode">src_atop</item>
     </style>
 
@@ -74,5 +76,21 @@
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="lineHeight">44dp</item>
+    </style>
+    
+    <style name="NotesLabelText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="NotesQuestionsBlockText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="NotesAnswerOptionText" parent="LogbookTopCard">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/nodes_selector_answer</item>
     </style>
 </resources>

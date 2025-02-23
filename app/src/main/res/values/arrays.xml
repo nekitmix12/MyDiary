@@ -5,12 +5,16 @@
         <item>@drawable/logbook_gradient_red</item>
         <item>@drawable/logbook_gradient_green</item>
         <item>@drawable/logbook_gradient_blue</item>
+        <item>@color/logbook_gradient_yellow_1</item>
+        <item>@color/white</item>
+        <!--<item>@color/grey</item>
+        <item>@color/logbook_gradient_red_1</item>-->
     </array>
 
     <array name="gradientParts">
-        <item>0.5f</item>
-        <item>0.3f</item>
-        <item>0.3f</item>
-        <item>0.4f</item>
+        <item>0.5</item>
+        <item>0.165</item>
+        <item>0.165</item>
+        <item>0.17</item>
     </array>
 </resources>
