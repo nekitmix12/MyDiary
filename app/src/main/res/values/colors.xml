@@ -28,5 +28,7 @@
     <color name="logbook_gradient_green_1">#33FFBB</color>
     <color name="logbook_gradient_green_2">#00FF55</color>
     <color name="nodes_selected_grey">#666666</color>
+    <color name="track_green">#00AC47</color>
+    <color name="track_grey">#666666</color>
 
 </resources>
