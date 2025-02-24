@@ -13,4 +13,8 @@
     <string name="note">Запись</string>
     <string name="save">Сохранить</string>
     <string name="add_remind">Добавить напоминание</string>
+    <string name="remind">Напоминание</string>
+    <string name="colon">:</string>
+    <string name="hours">Часы</string>
+    <string name="minutes">Минуты</string>
 </resources>

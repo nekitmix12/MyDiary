@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Theme.MyDiary" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimaryDark">@color/transparent</item>
         <item name="colorPrimary">@color/transparent</item>
@@ -17,19 +18,22 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">48sp</item>
         <item name="android:fontFamily">@font/gwen_trial_bold</item>
-       <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginStart">24dp</item>
         <item name="android:layout_marginEnd">24dp</item>
         <item name="android:layout_marginTop">24dp</item>
     </style>
+
     <style name="circleImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
     <style name="GoogleButton" parent="ButtonCommon">
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:drawablePadding">16dp</item>
     </style>
+
     <style name="ButtonCommon" parent="@style/UnderButtonLayout">
         <item name="textAllCaps">false</item>
         <!--<item name="fontFamily"></item>-->
@@ -37,36 +41,43 @@
         <item name="android:textAlignment">center</item>
         <item name="android:background">@drawable/white_rectangle</item>
     </style>
+
     <style name="UnderButtonLayout" parent="PaddingButton">
         <item name="android:layout_marginStart">24dp</item>
         <item name="android:layout_marginEnd">24dp</item>
         <item name="android:layout_marginBottom">24dp</item>
     </style>
+
     <style name="PaddingButton">
         <item name="android:paddingBottom">16dp</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">24dp</item>
     </style>
-    
+
     <style name="BottomNavigationBar">
         <item name="android:background">@color/grey</item>
     </style>
+
     <style name="CardText">
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_margin">16dp</item>
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="CardTextFiling" parent="CardText">
         <item name="android:textSize">28sp</item>
     </style>
+
     <style name="CardTextConst" parent="CardText">
         <item name="android:textSize">20sp</item>
         <item name="android:layout_margin">0dp</item>
     </style>
+
     <style name="CardImage">
         <item name="android:layout_margin">16dp</item>
     </style>
+
     <style name="LogbookTopCard">
         <item name="android:background">@color/logbook_top_color</item>
         <item name="android:paddingStart">16dp</item>
@@ -74,23 +85,27 @@
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
     </style>
+
     <style name="LogbookTopText">
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="LogbookTopTextBold" parent="LogbookTopText">
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="LogbookLabel">
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="lineHeight">44dp</item>
     </style>
-    
+
     <style name="NotesLabelText">
         <item name="android:textSize">24sp</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="NotesQuestionsBlockText">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
@@ -101,18 +116,18 @@
         <item name="android:textSize">14sp</item>
         <item name="android:background">@drawable/nodes_selector_answer</item>
     </style>
-    
+
     <style name="SettingsName">
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
-    
+
     <style name="SettingsParams">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
     </style>
-    
+
     <style name="SettingsRemindText">
         <item name="android:paddingStart">16dp</item>
         <item name="android:layout_weight">1</item>
@@ -121,5 +136,65 @@
         <item name="android:textSize">20sp</item>
 
     </style>
-    
+
+    <style name="BottomSheetText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+    </style>
+
+    <style name="BottomSheetTime">
+        <item name="android:textSize">52sp</item>
+        <item name="android:textColor">@color/black</item>
+
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:background">@drawable/bottom_sheet_time_background</item>
+    </style>
+
+    <style name="BottomSheetColon">
+        <item name="android:textSize">62sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="BottomSheetTextTime">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginTop">7dp</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_background</item>
+    </style>
+    <style name="CustomTimePicker" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorPrimary">@color/grey</item>
+        <item name="colorAccent">@color/black</item>
+        <!--Пометка для себя на будущее,чтоб помнить какой стиль к чему относится-->
+       <!-- Основной цвет диалога
+        <item name="colorSurface">@color/custom_background</item>
+        <item name="colorOnSurface">@color/black</item>
+
+        Цвет фона кнопок OK и CANCEL
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        Цвета заголовка (циферблата)
+        <item name="colorPrimaryVariant">@color/dark_purple</item>
+
+        Фон под циферблатом
+        <item name="android:windowBackground">@color/custom_background</item>
+
+        Закругление углов диалога
+        <item name="android:dialogCornerRadius">16dp</item>-->
+        <item name="android:dialogCornerRadius" tools:ignore="NewApi">16dp</item>
+
+    </style>
+
 </resources>

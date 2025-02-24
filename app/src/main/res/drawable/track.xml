@@ -4,7 +4,7 @@
         <shape android:shape="rectangle">
             <corners android:radius="100dp" />
             <solid android:color="@color/track_green" />
-            <size  android:width="50dp" android:height="24dp"/>
+            <size  android:width="50dp" android:height="26dp"/>
         </shape>
     </item>
     <item android:state_checked="false">
@@ -13,7 +13,7 @@
             <corners android:radius="100dp" />
             <stroke android:width="2dp"
                 android:color="@color/track_grey" />
-            <size  android:width="50dp" android:height="24dp"/>
+            <size  android:width="50dp" android:height="26dp"/>
         </shape>
     </item>
 </selector>
