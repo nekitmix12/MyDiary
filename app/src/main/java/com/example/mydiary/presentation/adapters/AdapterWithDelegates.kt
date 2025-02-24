@@ -28,7 +28,7 @@ class AdapterWithDelegates(
     override fun onBindViewHolder(
         holder: BaseViewHolder<ViewBinding, Item>,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Any>,
     ) {
         if (payloads.isEmpty()) {
             super.onBindViewHolder(holder, position, payloads)

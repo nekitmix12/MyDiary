@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="28dp"
-    >
+    app:cardCornerRadius="28dp">
 
     <TextView
+        android:id="@+id/include_text"
         android:paddingBottom="8dp"
         style="@style/NotesAnswerOptionText"
         android:layout_width="wrap_content"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/nodes_selected_grey" android:state_selected="true" />
-    <item android:drawable="@color/logbook_top_color" />
+    <item android:drawable="@color/logbook_top_color" android:state_selected="false" />
 </selector>

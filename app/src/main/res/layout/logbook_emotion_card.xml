@@ -10,10 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#2C2C2E">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/tools_card_background_blue"/>
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/tools_card_background_blue"
+            android:contentDescription="@null" />
+
         <TextView
             android:id="@+id/text_data_time"
             style="@style/CardText"
@@ -56,6 +60,8 @@
             tools:textColor="@color/card_blue" />
 
         <ImageView
+            style="@style/CardImage"
+            android:id="@+id/emotion_src"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +70,6 @@
             app:layout_constraintStart_toEndOf="@+id/card_filling"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            style="@style/CardImage"
             tools:src="@drawable/summertime_sadness" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
