@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/black">
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/LogbookLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/your_mood_during_the_day"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/statistics_green_rectangle"
+            tools:layout_weight="0.86"
+            tools:text="100%" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_yellow_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_red_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_blue_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_grey_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.14"
+            android:text="Раннее утро" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="@+id/guideline12"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_green_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/statistics_yellow_rectangle"
+            tools:layout_weight="0.43"
+            android:layout_marginBottom="2dp"
+            tools:text="50%" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/statistics_red_rectangle"
+            tools:layout_weight="0.43"
+            android:layout_marginBottom="2dp"
+            tools:text="50%" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_blue_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_grey_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.14"
+            android:text="TextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_green_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.86"
+            android:background="@drawable/statistics_yellow_rectangle"
+            tools:text="100%" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_red_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_blue_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_grey_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.14"
+            android:text="TextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_green_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_yellow_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_red_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.86"
+            android:background="@drawable/statistics_blue_rectangle"
+            android:text="100%" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_grey_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.14"
+            android:text="TextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_green_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_yellow_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_red_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:background="@drawable/statistics_blue_rectangle"
+            android:text="TextView"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/MoodDuringDayPartText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.86"
+            android:background="@drawable/statistics_grey_rectangle"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.14"
+            android:text="TextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:text="TextView" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ appcompat = "1.7.0"
 constraintlayout = "2.2.0"
 material = "1.12.0"
 androidxNavigationCompose = "2.8.2"
+gridlayout = "1.0.0"
 
 [libraries]
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "androidxNavigationCompose" }
@@ -34,6 +35,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-gridlayout = { group = "androidx.gridlayout", name = "gridlayout", version.ref = "gridlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

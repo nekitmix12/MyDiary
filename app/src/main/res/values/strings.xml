@@ -18,4 +18,6 @@
     <string name="hours">Часы</string>
     <string name="minutes">Минуты</string>
     <string name="emotions_by_category">Эмоции\nпо категориям</string>
+    <string name="most_frequent_emotions">Самые частые \nэмоции</string>
+    <string name="your_mood_during_the_day">Ваше настроение в\nтечение дня</string>
 </resources>

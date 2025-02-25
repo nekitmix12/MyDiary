@@ -222,5 +222,20 @@
         <item name="android:textSize">16sp</item>
         <item name="tabTextColor">@color/white</item>
     </style>
+    <style name="EmotionIndicatorText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="EmotionIndicatorProgressText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="MoodDuringDayPartText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
 
+    </style>
 </resources>
