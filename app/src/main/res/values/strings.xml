@@ -17,4 +17,5 @@
     <string name="colon">:</string>
     <string name="hours">Часы</string>
     <string name="minutes">Минуты</string>
+    <string name="emotions_by_category">Эмоции\nпо категориям</string>
 </resources>
