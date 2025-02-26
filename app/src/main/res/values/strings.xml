@@ -20,4 +20,9 @@
     <string name="emotions_by_category">Эмоции\nпо категориям</string>
     <string name="most_frequent_emotions">Самые частые \nэмоции</string>
     <string name="your_mood_during_the_day">Ваше настроение в\nтечение дня</string>
+    <string name="earn_morning">Раннее утро</string>
+    <string name="morning">Утро</string>
+    <string name="day">День</string>
+    <string name="evening">Вечер</string>
+    <string name="late_evening">Поздний вечер</string>
 </resources>

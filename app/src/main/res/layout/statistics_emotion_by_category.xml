@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,25 +19,28 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:id="@+id/green_circle"
             style="@style/Circles"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/green_circle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            tools:elevation="1dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintWidth_percent="0.75"
-            tools:background="@drawable/green_circle"
+            tools:elevation="1dp"
+            tools:layout_constraintWidth_percent="0.75"
             tools:text="60%" />
 
         <TextView
+            android:id="@+id/red_circle"
             style="@style/Circles"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/red_circle"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
@@ -46,13 +49,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintWidth_percent="0.5"
-            tools:background="@drawable/red_circle" />
+            app:layout_constraintWidth_percent="0.5" />
 
         <TextView
+            android:id="@+id/blue_circle"
             style="@style/Circles"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/blue_circle"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
@@ -61,13 +65,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintWidth_percent="0.5"
-            tools:background="@drawable/blue_circle" />
+            app:layout_constraintWidth_percent="0.5" />
 
         <TextView
+            android:id="@+id/yellow_circle"
             style="@style/Circles"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/yellow_circle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +81,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             app:layout_constraintWidth_percent="0.55"
-            tools:background="@drawable/yellow_circle"
             tools:text="40%" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -108,8 +112,6 @@
         app:layout_constraintTop_toBottomOf="@+id/emotion_label"
         app:layout_constraintVertical_bias="0.0"
         tools:text="5 записей" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

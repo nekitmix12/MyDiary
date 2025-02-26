@@ -236,6 +236,16 @@
         <item name="android:textSize">12sp</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
+    </style>
+    <style name="MoodDuringDayTimeText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+    </style>
 
+    <style name="UnderMoodDuringDayTimeText">
+        <item name="android:textColor">@color/statistics_grey</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>

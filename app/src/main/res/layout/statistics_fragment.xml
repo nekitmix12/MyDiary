@@ -17,7 +17,7 @@
         style="@style/TabLayout"
         app:layout_constraintVertical_bias="0.0">
 
-        <com.google.android.material.tabs.TabItem
+<!--        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="17–23 фев" />
@@ -38,11 +38,12 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="27 янв – 2 фев" />
+            tools:text="27 янв – 2 фев" />-->
 
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statistics_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
