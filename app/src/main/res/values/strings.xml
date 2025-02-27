@@ -25,4 +25,5 @@
     <string name="day">День</string>
     <string name="evening">Вечер</string>
     <string name="late_evening">Поздний вечер</string>
+    <string name="emotions_by_day_of_the_week">Эмоции \nпо дням недели</string>
 </resources>

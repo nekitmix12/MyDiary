@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@color/black"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/emotion_data"
+        style="@style/EmotionData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        tools:text="Понедельник\n17 фев" />
+
+    <TextView
+        android:id="@+id/emotion_type"
+        style="@style/EmotionType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.37"
+        tools:text="Спокойствие\nПродуктивность\nСчастье" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/emotion_flex_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.38"
+        app:dividerDrawableHorizontal="@drawable/logbook_horizontal_divider"
+        app:dividerDrawableVertical="@drawable/statistics_vertical_divider"
+        app:flexWrap="wrap"
+        app:justifyContent="flex_end"
+
+        app:showDivider="middle">
+
+
+
+    </com.google.android.flexbox.FlexboxLayout>
+</LinearLayout>

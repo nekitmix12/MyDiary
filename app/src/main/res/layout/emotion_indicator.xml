@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:weightSum="1"
     tools:background="@color/black">
 
     <ImageView
@@ -17,10 +18,10 @@
         android:layout_weight="0.022" />
 
     <TextView
+        style="@style/EmotionIndicatorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.376"
-        style="@style/EmotionIndicatorText"
         tools:text="Спокойствие" />
 
     <Space
@@ -29,16 +30,19 @@
         android:layout_weight="0.044" />
 
     <TextView
+        android:id="@+id/emotion_percent"
+        style="@style/EmotionIndicatorProgressText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.423"
-        android:paddingStart="16dp"
+        android:layout_weight="0.468"
         android:gravity="center|start"
-        style="@style/EmotionIndicatorProgressText"
-        tools:text="2"
-        tools:background="@drawable/rectangle_green" />
+        android:paddingStart="16dp"
+        android:paddingEnd="0dp"
+        tools:background="@drawable/rectangle_green"
+        tools:text="2" />
 
     <Space
+        android:id="@+id/space_emotion_percent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="0.0" />

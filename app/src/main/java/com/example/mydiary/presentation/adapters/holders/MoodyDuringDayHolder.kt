@@ -26,8 +26,8 @@ class MoodyDuringDayHolder(
                         }
                     continue
                 }
-                for (i in 0 until child .childCount - 1) {
-                    val childText = child .getChildAt(i)
+                for (i in 0 until child.childCount - 1) {
+                    val childText = child.getChildAt(i)
                     if (childText is TextView) {
                         if (item.timePercent[linear][i] == 0f) {
                             childText.visibility = View.GONE
@@ -43,5 +43,12 @@ class MoodyDuringDayHolder(
                 }
             }
         }
+        earnMorning.text = item.time[0].toString()
+        morning.text = item.time[1].toString()
+        day.text = item.time[2].toString()
+        evening.text = item.time[3].toString()
+        lateEvening.text = item.time[4].toString()
+
+
     }
 }

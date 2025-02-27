@@ -1,5 +1,6 @@
 package com.example.mydiary.presentation.adapters.holders
 
+import android.annotation.SuppressLint
 import androidx.constraintlayout.widget.ConstraintSet
 import com.example.mydiary.databinding.StatisticsEmotionByCategoryBinding
 import com.example.mydiary.presentation.adapters.BaseViewHolder
@@ -8,6 +9,7 @@ import com.example.mydiary.presentation.models.EmotionCategoryModel
 class EmotionCategoryHolder(
     binding: StatisticsEmotionByCategoryBinding,
 ) : BaseViewHolder<StatisticsEmotionByCategoryBinding, EmotionCategoryModel>(binding) {
+    @SuppressLint("SetTextI18n")
     override fun onBinding(item: EmotionCategoryModel) = with(binding) {
         val constraintSet = ConstraintSet()
         constraintSet.clone(constraintLayout)
@@ -21,5 +23,12 @@ class EmotionCategoryHolder(
         yellowCircle.elevation = item.emotionsPercent[1].first
         blueCircle.elevation = item.emotionsPercent[2].first
         greenCircle.elevation = item.emotionsPercent[3].first
+
+        redCircle.text = (item.emotionsPercent[0].second * 100).toString()
+        yellowCircle.text = (item.emotionsPercent[1].second * 100).toString()
+        blueCircle.text = (item.emotionsPercent[2].second * 100).toString()
+        greenCircle.text = (item.emotionsPercent[3].second * 100).toString()
+
+        emotionLogs.text = item.logs
     }
 }
