@@ -1,8 +1,10 @@
 package com.example.mydiary.presentation.adapters.delegates
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mydiary.R
 import com.example.mydiary.databinding.StatisticsEmotionsBinding
 import com.example.mydiary.presentation.adapters.BaseViewHolder
@@ -13,7 +15,8 @@ import com.example.mydiary.presentation.models.VerticalItemWithLabelModel
 
 class VerticalItemWithLabelDelegate(
     private val delegatesList: List<Delegate<*, *>>,
-) : Delegate<StatisticsEmotionsBinding, VerticalItemWithLabelModel> {
+    private val decorators: List<RecyclerView.ItemDecoration>,
+    ) : Delegate<StatisticsEmotionsBinding, VerticalItemWithLabelModel> {
 
     override fun isRelativeItem(item: Item): Boolean = item is VerticalItemWithLabelModel
 
@@ -24,7 +27,7 @@ class VerticalItemWithLabelDelegate(
         parent: ViewGroup,
     ): BaseViewHolder<StatisticsEmotionsBinding, VerticalItemWithLabelModel> {
         val binding = StatisticsEmotionsBinding.inflate(layoutInflater, parent, false)
-        return VerticalItemWithLabelHolder(binding, delegatesList)
+        return VerticalItemWithLabelHolder(binding, delegatesList,decorators)
     }
 
     override fun getDiffUtil() = diffUtil

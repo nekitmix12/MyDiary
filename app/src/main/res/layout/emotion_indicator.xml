@@ -7,34 +7,36 @@
     tools:background="@color/black">
 
     <ImageView
+        android:id="@+id/indicator_icon"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_height="32dp"
         android:layout_weight="0.088"
+        android:contentDescription="@null"
         tools:background="@drawable/test_emotion_icon" />
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="0.022" />
+
 
     <TextView
+        android:id="@+id/emotion_indicator_name"
         style="@style/EmotionIndicatorText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.376"
+        android:layout_gravity="center"
+        android:layout_weight="0.4"
+        android:layout_marginEnd="16dp"
         tools:text="Спокойствие" />
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="0.044" />
+
 
     <TextView
         android:id="@+id/emotion_percent"
         style="@style/EmotionIndicatorProgressText"
         android:layout_width="0dp"
+        android:paddingBottom="7dp"
+        android:paddingTop="7dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.468"
+        android:layout_weight="0.512"
         android:gravity="center|start"
         android:paddingStart="16dp"
         android:paddingEnd="0dp"

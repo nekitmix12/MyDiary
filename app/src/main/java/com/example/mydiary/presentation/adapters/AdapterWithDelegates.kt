@@ -22,6 +22,7 @@ class AdapterWithDelegates(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding, Item>, position: Int) {
+
         holder.onBinding(currentList[position])
     }
 

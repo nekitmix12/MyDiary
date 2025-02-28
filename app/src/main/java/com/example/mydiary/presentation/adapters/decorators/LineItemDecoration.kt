@@ -31,19 +31,21 @@ class LineItemDecoration(
         val position = parent.getChildAdapterPosition(view)
         val itemCount = state.itemCount
 
-        if (position != 0)
-            outRect.top = gap.onDivider
+        if (position != 0) outRect.top = gap.onDivider
 
 
-        if (position != itemCount - 1)
-            outRect.bottom = gap.underDivider
+        if (position != itemCount - 1) outRect.bottom = gap.underDivider
 
 
     }
 
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+
         for (i in 0 until parent.childCount) {
             val view = parent.getChildAt(i)
+            val viewHolder = parent.getChildViewHolder(view)
+
+            if (!viewTypes.contains(viewHolder.itemViewType)) continue
 
             val startX = parent.paddingLeft + gap.paddingStart
             val startY = view.bottom + view.translationY + gap.onDivider

@@ -70,7 +70,7 @@
             app:layout_constraintStart_toEndOf="@+id/card_filling"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            tools:src="@drawable/summertime_sadness" />
+            tools:src="@drawable/test_summertime_sadness" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

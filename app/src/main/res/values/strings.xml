@@ -26,4 +26,5 @@
     <string name="evening">Вечер</string>
     <string name="late_evening">Поздний вечер</string>
     <string name="emotions_by_day_of_the_week">Эмоции \nпо дням недели</string>
+    <string name="choose_emotion">Выберите эмоцию, лучше всего описывающую, что вы сейчас чувствуете</string>
 </resources>
