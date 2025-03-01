@@ -11,9 +11,11 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import androidx.appcompat.content.res.AppCompatResources
 import com.example.mydiary.R
 import com.example.mydiary.presentation.models.EmotionElementModel
+import kotlin.math.abs
 
 class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
     private val paint = Paint().apply {
@@ -31,6 +33,8 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
     private var smallShape = Pair(112.dpToPx(context), 112.dpToPx(context))
     private var bigShape = Pair(152.dpToPx(context), 152.dpToPx(context))
     private var divider = Pair(4.dpToPx(context), 4.dpToPx(context))
+    private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
+    private var isScrolling = false
 
     private val emotions: List<List<EmotionElementModel>> = listOf(
         listOf(
@@ -187,16 +191,29 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
         textAlign = Paint.Align.CENTER
         typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
     }
+    private val totalWidth = emotions.size * (smallShape.first + divider.first)
+    private val totalHeight = emotions[0].size * (smallShape.second + divider.second)
 
     init {
         setLayerType(LAYER_TYPE_SOFTWARE, null)
+        val displayMetrics = Resources.getSystem().displayMetrics
+        selected = displayMetrics.widthPixels / 2f to displayMetrics.heightPixels / 2f
+
+
+        val centerGrid = totalWidth / 2f to totalHeight / 2f
+
+        canvasOffsetX = -selected.first + centerGrid.first
+        canvasOffsetY = -selected.second + centerGrid.second
+
+
     }
 
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val displayMetrics = Resources.getSystem().displayMetrics
-        selected = displayMetrics.widthPixels / 2f to displayMetrics.heightPixels / 2f
+
+        Log.d("indexes", "canvasOffsetX: $canvasOffsetX")
+        Log.d("indexes", "canvasOffsetY: $canvasOffsetY")
         val div =
             Pair((smallShape.first - bigShape.first) / 2, (smallShape.second - bigShape.second) / 2)
 
@@ -205,6 +222,10 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
 
 
         Log.d("indexes", "fistIndex: $fistIndex")
+        Log.d("indexes", "fistIndex: $selected")
+        Log.d("indexes", "fistIndex: $canvasOffsetX")
+        Log.d("indexes", "fistIndex: $smallShape")
+        Log.d("indexes", "fistIndex: $canvasOffsetY")
         for (x in emotions.indices) {
             for (y in emotions[x].indices) {
                 if ((selected.first == -1f && selected.second == -1f)) {
@@ -247,24 +268,43 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
             MotionEvent.ACTION_DOWN -> {
                 startX = event.x
                 startY = event.y
+                isScrolling = false
             }
 
             MotionEvent.ACTION_MOVE -> {
                 val deltaX = event.x - startX
                 val deltaY = event.y - startY
 
-                canvasOffsetX -= deltaX
-                canvasOffsetY -= deltaY
+                if (abs(deltaX) > touchSlop || abs(deltaY) > touchSlop) {
+                    isScrolling = true
+                    canvasOffsetX -= deltaX
+                    canvasOffsetY -= deltaY
+                    startX = event.x
+                    startY = event.y
+                    invalidate()
+                }
+            }
 
-                startX = event.x
-                startY = event.y
-
-                invalidate()
+            MotionEvent.ACTION_UP -> {
+                if (!isScrolling) {
+                    handleTap(event.x, event.y)
+                }
             }
         }
+        Log.d(
+            "indexes1",
+            "MotionEvent: ${Math.round((canvasOffsetX - selected.first) / (smallShape.first + divider.first))}, $canvasOffsetY"
+        )
+
         return true
     }
 
+    private fun handleTap(x: Float, y: Float) {
+        Log.d(
+            "TouchEvent",
+            "Tap detected at: (${(x - selected.first) / (smallShape.first + divider.first)}, ${selected.first - x}----${selected.second - y})"
+        )
+    }
 
     private fun Int.dpToPx(context: Context): Int {
         return (this * context.resources.displayMetrics.density).toInt()

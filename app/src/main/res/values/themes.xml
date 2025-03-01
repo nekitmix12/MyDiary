@@ -55,7 +55,7 @@
         <item name="android:paddingEnd">24dp</item>
     </style>
 
-    <style name="BottomNavigationBar">
+    <style name="BottomNavigationBar" >
         <item name="android:background">@color/grey</item>
     </style>
 
