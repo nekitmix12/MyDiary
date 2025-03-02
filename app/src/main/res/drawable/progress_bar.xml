@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape
+            android:shape="ring"
+            android:thicknessRatio="20"
+            android:useLevel="false">
+            <size android:height="364dp" android:width="364dp"/>
+            <solid android:color="@color/logbook_loading_dark" />
+        </shape>
+    </item>
+
+    <item>
+        <shape
+            android:shape="ring"
+            android:thicknessRatio="20"
+            android:useLevel="false">
+            <size android:height="364dp" android:width="364dp"/>
+            <solid android:color="@color/logbook_loading_dark" />
+        </shape>
+    </item>
+</layer-list>

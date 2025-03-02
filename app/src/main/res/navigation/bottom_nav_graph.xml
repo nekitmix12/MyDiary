@@ -16,4 +16,8 @@
         android:id="@+id/statisticsFragment"
         android:name="com.example.mydiary.presentation.fragments.StatisticsFragment"
         android:label="StatisticsFragment" />
+    <fragment
+        android:id="@+id/nodesFragment"
+        android:name="com.example.mydiary.presentation.fragments.NodesFragment"
+        android:label="NodesFragment" />
 </navigation>

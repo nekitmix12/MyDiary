@@ -62,7 +62,6 @@ class ProgressBarView @JvmOverloads constructor(
             setStrokeWidth(typedArray)
             typedArray.recycle()
             startAnimation()
-
         }
     }
 

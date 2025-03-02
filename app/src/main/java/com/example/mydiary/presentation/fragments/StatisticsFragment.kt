@@ -3,6 +3,7 @@ package com.example.mydiary.presentation.fragments
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mydiary.R
 import com.example.mydiary.databinding.StatisticsFragmentBinding
 import com.example.mydiary.presentation.adapters.AdapterWithDelegates
-import com.example.mydiary.presentation.adapters.decorators.DynamicSpaceItemDecoration
 import com.example.mydiary.presentation.adapters.decorators.LineItemDecoration
 import com.example.mydiary.presentation.adapters.decorators.PaddingItemDecoration
 import com.example.mydiary.presentation.adapters.delegates.EmotionByDayDelegate
@@ -88,6 +89,20 @@ class StatisticsFragment : Fragment() {
             tabLayout.addTab(tabLayout.newTab().setText("3–9 фев"))
             tabLayout.addTab(tabLayout.newTab().setText("27 янв – 2 фев"))
         }
+        binding.statisticsRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+
+                for (i in 0 until binding.statisticsCarousel.childCount) {
+                    binding.statisticsCarousel.getChildAt(i)?.isActivated = false
+                }
+
+                if (firstVisibleItemPosition in 0 until binding.statisticsCarousel.childCount) {
+                    binding.statisticsCarousel.getChildAt(firstVisibleItemPosition)?.isActivated = true
+                }
+            }
+        })
 
         with(binding.statisticsRecycler) {
             addItemDecoration(
@@ -106,13 +121,6 @@ class StatisticsFragment : Fragment() {
                     12, 12, 0, 0, R.layout.emotion_logs
                 )
             )
-            /*addItemDecoration(
-                DynamicSpaceItemDecoration(
-                    R.layout.statistics_emotion_by_category,
-                    R.layout.statistics_mood_during_day,
-                    R.layout.statistics_emotions,
-                )
-            )*/
         }
 
         adapters.submitList(

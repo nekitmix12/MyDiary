@@ -6,10 +6,13 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-    <com.example.mydiary.presentation.custom_elements.AddLogsView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
+    <com.example.mydiary.presentation.custom_elements.AddLogsView
+        android:id="@+id/add_logs_field"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="32dp" />
 
     <ImageButton
         android:id="@+id/exit_button"
@@ -29,7 +32,7 @@
 
 
     <Button
-        android:id="@+id/imageView"
+        android:id="@+id/add_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -37,9 +40,12 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/add_log_grey_rectangle"
         android:drawableEnd="@drawable/add_emotion_button_selector"
+        android:clickable="false"
+        android:focusable="false"
         android:drawablePadding="8dp"
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
+        android:paddingStart="0dp"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,13 +63,13 @@
         android:elevation="2dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView">
+        app:layout_constraintBottom_toBottomOf="@+id/add_button"
+        app:layout_constraintEnd_toEndOf="@+id/add_button"
+        app:layout_constraintStart_toStartOf="@+id/add_button"
+        app:layout_constraintTop_toTopOf="@+id/add_button">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/emotion_to_adding"
             style="@style/AddButtonEmotionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,12 +78,11 @@
             tools:text="Усталость" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/description_emotion"
             style="@style/AddButtonDescriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
-            android:visibility="visible"
             tools:text="ощущение, что необходимо отдохнуть" />
 
 
