@@ -16,6 +16,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.example.mydiary.R
 import com.example.mydiary.presentation.models.EmotionElementModel
 import kotlin.math.abs
+import kotlin.math.floor
 
 class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
     private val paint = Paint().apply {
@@ -35,6 +36,10 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
     private var divider = Pair(4.dpToPx(context), 4.dpToPx(context))
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private var isScrolling = false
+
+    private var alpha = smallShape.first + divider.first to smallShape.second + divider.second
+    private var delta = selected.first / alpha.first to selected.second / alpha.second
+
 
     private val emotions: List<List<EmotionElementModel>> = listOf(
         listOf(
@@ -191,8 +196,10 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
         textAlign = Paint.Align.CENTER
         typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
     }
-    private val totalWidth = emotions.size * (smallShape.first + divider.first)
-    private val totalHeight = emotions[0].size * (smallShape.second + divider.second)
+    private val totalWidth = emotions.size * (alpha.first)
+    private val totalHeight = emotions[0].size * (alpha.second)
+    private val div =
+        Pair((smallShape.first - bigShape.first) / 2, (smallShape.second - bigShape.second) / 2)
 
     init {
         setLayerType(LAYER_TYPE_SOFTWARE, null)
@@ -205,38 +212,62 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
         canvasOffsetX = -selected.first + centerGrid.first
         canvasOffsetY = -selected.second + centerGrid.second
 
-
+        alpha = smallShape.first + divider.first to smallShape.second + divider.second
+        delta = selected.first / alpha.first to selected.second / alpha.second
     }
 
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        Log.d("indexes", "canvasOffsetX: $canvasOffsetX")
-        Log.d("indexes", "canvasOffsetY: $canvasOffsetY")
-        val div =
-            Pair((smallShape.first - bigShape.first) / 2, (smallShape.second - bigShape.second) / 2)
-
         val fistIndex =
-            (selected.first + canvasOffsetX / (smallShape.first + divider.first)).toInt() to (selected.second + canvasOffsetY / (smallShape.second + divider.second)).toInt()
+            floor(canvasOffsetX / alpha.first + delta.first).toInt() to floor(canvasOffsetY / alpha.second + delta.second).toInt()
+        Log.d("indexes", "canvasOffsetX: $fistIndex")
 
-
-        Log.d("indexes", "fistIndex: $fistIndex")
-        Log.d("indexes", "fistIndex: $selected")
-        Log.d("indexes", "fistIndex: $canvasOffsetX")
-        Log.d("indexes", "fistIndex: $smallShape")
-        Log.d("indexes", "fistIndex: $canvasOffsetY")
         for (x in emotions.indices) {
             for (y in emotions[x].indices) {
-                if ((selected.first == -1f && selected.second == -1f)) {
+                val drawable = emotions[x][y].form
+                var leftBounds = x * (smallShape.first + divider.first) - canvasOffsetX
+                var rightBounds = leftBounds + smallShape.first
+                var topBounds = y * (smallShape.second + divider.second) - canvasOffsetY
+                var bottomBounds = topBounds + smallShape.second
+                var selectedPaint = smallTextPaint
 
+                if (fistIndex.first == x && fistIndex.second == y) {
+                    topBounds += div.first
+                    bottomBounds -= div.first
+                    leftBounds += div.first
+                    rightBounds -= div.first
+                    selectedPaint = bigTextPaint
+                } else {
+                    if (fistIndex.first == x) {
+                        if (fistIndex.second < y) {
+                            topBounds -= div.second
+                            bottomBounds -= div.second
+                        }
+                        if (fistIndex.second > y) {
+                            topBounds += div.second
+                            bottomBounds += div.second
+                        }
+                    }
+                    if (fistIndex.second == y) {
+                        if (fistIndex.first < x) {
+                            leftBounds -= div.first
+                            rightBounds -= div.first
+                        }
+                        if (fistIndex.first > x) {
+                            leftBounds += div.first
+                            rightBounds += div.first
+                        }
+                    }
                 }
 
-                val drawable = emotions[x][y].form
-                val leftBounds = x * (smallShape.first + divider.first) - canvasOffsetX
-                val rightBounds = leftBounds + smallShape.first
-                val topBounds = y * (smallShape.second + divider.second) - canvasOffsetY
-                val bottomBounds = topBounds + smallShape.second
+                /*canvas.drawRect(leftBounds + 5,
+                    topBounds - 5,
+                    rightBounds - 5,
+                    bottomBounds + 5,
+                    Paint().apply { color = Color.GRAY })
+*/
                 drawable.apply {
                     setBounds(
                         leftBounds.toInt(),
@@ -251,13 +282,13 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
                     emotions[x][y].emotion,
                     ((leftBounds.toInt() + rightBounds.toInt()) / 2).toFloat(),
                     ((topBounds.toInt() + bottomBounds.toInt()) / 2).toFloat(),
-                    smallTextPaint
+                    selectedPaint
                 )
 
             }
         }
         paint.color = Color.GREEN
-        canvas.drawCircle(selected.first, selected.second, 20f, paint)
+        canvas.drawCircle(selected.first, selected.second, 10f, paint)
 
     }
 
@@ -274,7 +305,7 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
             MotionEvent.ACTION_MOVE -> {
                 val deltaX = event.x - startX
                 val deltaY = event.y - startY
-
+                if (canvasOffsetX - deltaX < -selected.first || canvasOffsetY - deltaY < -selected.second) return true
                 if (abs(deltaX) > touchSlop || abs(deltaY) > touchSlop) {
                     isScrolling = true
                     canvasOffsetX -= deltaX
@@ -283,6 +314,7 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
                     startY = event.y
                     invalidate()
                 }
+
             }
 
             MotionEvent.ACTION_UP -> {
@@ -291,19 +323,11 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
                 }
             }
         }
-        Log.d(
-            "indexes1",
-            "MotionEvent: ${Math.round((canvasOffsetX - selected.first) / (smallShape.first + divider.first))}, $canvasOffsetY"
-        )
-
         return true
     }
 
     private fun handleTap(x: Float, y: Float) {
-        Log.d(
-            "TouchEvent",
-            "Tap detected at: (${(x - selected.first) / (smallShape.first + divider.first)}, ${selected.first - x}----${selected.second - y})"
-        )
+
     }
 
     private fun Int.dpToPx(context: Context): Int {
