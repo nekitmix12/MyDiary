@@ -3,7 +3,6 @@ package com.example.mydiary.presentation.fragments
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -145,7 +144,7 @@ class StatisticsFragment : Fragment() {
                                 )
                                     ?: throw IllegalArgumentException("statistics fragment: can't load image"),
                                 AppCompatResources.getDrawable(
-                                    requireContext(), R.drawable.test_ellipse
+                                    requireContext(), R.drawable.test_ellipse221
                                 )
                                     ?: throw IllegalArgumentException("statistics fragment: can't load image"),
                             ), 40.dpToPx(requireContext())
@@ -259,7 +258,7 @@ class StatisticsFragment : Fragment() {
                         ),
                         EmotionIndicatorModel(
                             AppCompatResources.getDrawable(
-                                requireContext(), R.drawable.test_ellipse
+                                requireContext(), R.drawable.test_ellipse221
                             )
                                 ?: throw IllegalArgumentException("statistics fragment: can't load image"),
                             "Счастье",

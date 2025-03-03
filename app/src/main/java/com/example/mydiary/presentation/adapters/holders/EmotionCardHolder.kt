@@ -5,15 +5,18 @@ import com.example.mydiary.databinding.LogbookEmotionCardBinding
 import com.example.mydiary.presentation.adapters.BaseViewHolder
 import com.example.mydiary.presentation.models.EmotionCardModel
 
-class EmotionCardHolder(binding: LogbookEmotionCardBinding,
-    private val onCardClick:(EmotionCardModel)->Unit) :
+class EmotionCardHolder(
+    binding: LogbookEmotionCardBinding,
+    private val onCardClick: (EmotionCardModel) -> Unit,
+) :
     BaseViewHolder<LogbookEmotionCardBinding, EmotionCardModel>(binding) {
     @SuppressLint("SetTextI18n")
     override fun onBinding(item: EmotionCardModel) = with(binding) {
-        root.setOnClickListener{onCardClick(item)}
+        root.setOnClickListener { onCardClick(item) }
         background.background = item.background
         textDataTime.text = "${item.date}, ${item.time}"
         cardFilling.text = item.emotion
+        cardFilling.setTextColor(item.emotionColor)
         emotionSrc.setImageDrawable(item.icon)
     }
 }

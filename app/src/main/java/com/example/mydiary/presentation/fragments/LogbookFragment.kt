@@ -1,10 +1,13 @@
 package com.example.mydiary.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mydiary.R
 import com.example.mydiary.databinding.LogbookFragmentBinding
@@ -21,6 +24,7 @@ import com.example.mydiary.presentation.models.LogbookTopBarModel
 
 class LogbookFragment : Fragment(R.layout.logbook_fragment) {
     private lateinit var binding: LogbookFragmentBinding
+    private lateinit var navController: NavController
 
     private var adapters = AdapterWithDelegates(
         listOf(
@@ -35,6 +39,8 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = LogbookFragmentBinding.bind(view)
+        navController = findNavController()
+
         with(binding.logbookRecycleView) {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapters
@@ -62,7 +68,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
         adapters.submitList(
             listOf(
                 LogbookTopBarModel(
-                    "4 записи", "в день:" to "2 записи", "серия" to "0 дней"
+                    "4 записи", "в день: " to "2 записи", "серия: " to "0 дней"
                 ),
                 LabelModel(
                     requireContext().getString(R.string.what_are_you_listening_now)
@@ -88,6 +94,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                     "сегодня",
                     "14:36",
                     "усталость",
+                    requireContext().getColor(R.color.card_blue),
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.test_emotion_shell
                     ) ?: throw IllegalArgumentException("Not found Drawable")
@@ -99,6 +106,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                     "вчера",
                     "14:08",
                     "спокойствие",
+                    requireContext().getColor(R.color.card_green),
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.test_emotion_icon
                     ) ?: throw IllegalArgumentException("Not found Drawable")
@@ -110,6 +118,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                     "воскресенье",
                     "16:12",
                     "продуктивность",
+                    requireContext().getColor(R.color.card_yellow),
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.test_light
                     ) ?: throw IllegalArgumentException("Not found Drawable")
@@ -121,6 +130,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                     "воскресенье",
                     "03:59",
                     "беспокойство",
+                    requireContext().getColor(R.color.card_red),
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.test_soft_flower
                     ) ?: throw IllegalArgumentException("Not found Drawable")
@@ -131,11 +141,12 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
     }
 
     private fun onAddClick() {
-
+        navController.navigate(R.id.addEmotionFragment)
     }
 
     private fun onEmotionCardClick(emotionCardModel: EmotionCardModel) {
-
+        Log.d("emotionCardModel", "emotionCardModel: $emotionCardModel")
+        navController.navigate(R.id.nodesFragment)
     }
 
 }

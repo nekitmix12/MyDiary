@@ -1,9 +1,12 @@
 package com.example.mydiary.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mydiary.R
 import com.example.mydiary.databinding.NotesFragmentBinding
@@ -22,6 +25,7 @@ import java.util.UUID
 class NodesFragment : Fragment(R.layout.notes_fragment) {
     private lateinit var binding: NotesFragmentBinding
     private lateinit var viewModel: SettingsViewModel
+    private lateinit var navController: NavController
 
     private var adapters = AdapterWithDelegates(
         listOf(
@@ -34,6 +38,7 @@ class NodesFragment : Fragment(R.layout.notes_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = NotesFragmentBinding.bind(view)
+        navController = findNavController()
 
         with(binding.nodesRecycler) {
             layoutManager = LinearLayoutManager(requireContext())
@@ -60,6 +65,7 @@ class NodesFragment : Fragment(R.layout.notes_fragment) {
                     "сегодня",
                     "14:36",
                     "усталость",
+                    requireContext().getColor(R.color.card_blue),
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.test_emotion_shell
                     ) ?: throw IllegalArgumentException("Not found Drawable")
@@ -95,23 +101,28 @@ class NodesFragment : Fragment(R.layout.notes_fragment) {
                 ),
             )
         )
+        binding.button111.setOnClickListener {
+            onSave()
+        }
 
 
     }
 
+    private fun onSave() {
+        navController.navigate(R.id.logbookFragment)
 
-    private fun onEmotionCardClick(emotionCardModel: EmotionCardModel) {
     }
+
+    private fun onEmotionCardClick(emotionCardModel: EmotionCardModel) {}
 
     private fun onExitClick() {
-
+        navController.popBackStack()
     }
 
     private fun onAnswerClick(answer: AnswerModel) {
-
+        Log.d("answer", "answer: $answer")
     }
 
     private fun onAddAnswerButtonClick() {
-
     }
 }

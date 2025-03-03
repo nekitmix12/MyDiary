@@ -10,6 +10,6 @@ class ExitHolder(
 ) :
     BaseViewHolder<NotesExitBinding, ExitModel>(binding) {
     override fun onBinding(item: ExitModel) = with(binding) {
-        exitButton.setOnClickListener { onClick }
+        exitButton.setOnClickListener { onClick() }
     }
 }

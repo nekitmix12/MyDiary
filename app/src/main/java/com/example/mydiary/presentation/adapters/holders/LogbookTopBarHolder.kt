@@ -28,7 +28,7 @@ class LogbookTopBarHolder(
         textView.text = item.logsInTime.first
 
         textView = view1.findViewById(R.id.count_logs)
-        textView.text = item.logsInTime.first
+        textView.text = item.logsInTime.second
         topLogbookBarFlexbox.addView(view1)
 
         val view2 = LayoutInflater.from(binding.root.context)
@@ -38,7 +38,7 @@ class LogbookTopBarHolder(
         textView.text = item.streak.first
 
         textView = view2.findViewById(R.id.count_logs)
-        textView.text = item.streak.first
+        textView.text = item.streak.second
         topLogbookBarFlexbox.addView(view2)
 
 

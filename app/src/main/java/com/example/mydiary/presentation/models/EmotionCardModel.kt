@@ -10,5 +10,6 @@ data class EmotionCardModel(
     val date: String,
     val time:String,
     val emotion:String,
+    val emotionColor:Int,
     val icon:Drawable,
 ):Item

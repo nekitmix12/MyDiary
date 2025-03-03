@@ -7,7 +7,14 @@
     <fragment
         android:id="@+id/logbookFragment"
         android:name="com.example.mydiary.presentation.fragments.LogbookFragment"
-        android:label="LogbookFragment" />
+        android:label="LogbookFragment" >
+        <action
+            android:id="@+id/action_logbookFragment_to_addEmotionFragment"
+            app:destination="@id/addEmotionFragment" />
+        <action
+            android:id="@+id/action_logbookFragment_to_nodesFragment"
+            app:destination="@id/nodesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.mydiary.presentation.fragments.SettingsFragment"
@@ -19,5 +26,17 @@
     <fragment
         android:id="@+id/nodesFragment"
         android:name="com.example.mydiary.presentation.fragments.NodesFragment"
-        android:label="NodesFragment" />
+        android:label="NodesFragment" >
+        <action
+            android:id="@+id/action_nodesFragment_to_logbookFragment"
+            app:destination="@id/logbookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEmotionFragment"
+        android:name="com.example.mydiary.presentation.fragments.AddEmotionFragment"
+        android:label="AddEmotionFragment" >
+        <action
+            android:id="@+id/action_addEmotionFragment_to_nodesFragment"
+            app:destination="@id/nodesFragment" />
+    </fragment>
 </navigation>

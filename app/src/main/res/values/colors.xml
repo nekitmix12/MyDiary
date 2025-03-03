@@ -13,6 +13,9 @@
     <color name="entrance_orange">#fff266</color>
     <color name="entrance_blue">#66d9ff</color>
     <color name="card_blue">#33BBFF</color>
+    <color name="card_green">#33FF77</color>
+    <color name="card_yellow">#FFBB33</color>
+    <color name="card_red">#FF3333</color>
     <color name="card_background_blue">#3300AAFF</color>
     <color name="card_background_blue_transparent">#0000AAFF</color>
     <color name="grey">#333333</color>
