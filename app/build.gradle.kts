@@ -45,6 +45,8 @@ android {
 }
 
 dependencies {
+    androidTestImplementation (libs.kaspresso)
+
     implementation (libs.flexbox)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -61,9 +63,15 @@ dependencies {
     testImplementation(libs.junit)
     implementation (libs.androidx.navigation.fragment)
     androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.fragment.testing)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.fragment.testing.manifest)
     debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation (libs.mockito.core)
+    androidTestImplementation (libs.mockito.android)
+    testImplementation (libs.mockito.kotlin)
+
 }
