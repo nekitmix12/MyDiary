@@ -21,12 +21,15 @@
     <color name="logbook_loading_dark">#1A1A1A</color>
     <color name="logbook_gradient_yellow_1">#FFFF33</color>
     <color name="logbook_gradient_yellow_2">#FFAA00</color>
+    <color name="card_background_yellow">#33FFAA00</color>
     <color name="logbook_gradient_blue_1">#33DDFF</color>
     <color name="logbook_gradient_blue_2">#00AAFF</color>
     <color name="logbook_gradient_red_1">#FF5533</color>
     <color name="logbook_gradient_red_2">#FF0000</color>
+    <color name="card_background_red">#33FF0000</color>
     <color name="logbook_gradient_green_1">#33FFBB</color>
     <color name="logbook_gradient_green_2">#00FF55</color>
+    <color name="card_background_green">#3300FF55</color>
     <color name="nodes_selected_grey">#666666</color>
     <color name="track_green">#00AC47</color>
     <color name="track_grey">#666666</color>

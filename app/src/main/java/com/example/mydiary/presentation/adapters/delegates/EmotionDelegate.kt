@@ -11,7 +11,7 @@ import com.example.mydiary.presentation.adapters.Item
 import com.example.mydiary.presentation.adapters.holders.EmotionCardHolder
 import com.example.mydiary.presentation.models.EmotionCardModel
 
-class EmotionDelegate(private val onCardClick: () -> Unit) :
+class EmotionDelegate(private val onCardClick: (EmotionCardModel) -> Unit) :
     Delegate<LogbookEmotionCardBinding, EmotionCardModel> {
 
     override fun isRelativeItem(item: Item): Boolean = item is EmotionCardModel

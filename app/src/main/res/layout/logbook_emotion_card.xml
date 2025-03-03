@@ -60,16 +60,15 @@
             tools:textColor="@color/card_blue" />
 
         <ImageView
-            style="@style/CardImage"
             android:id="@+id/emotion_src"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/CardImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="@+id/card_filling"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/card_filling"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintTop_toTopOf="@+id/card_const_text"
             tools:src="@drawable/test_summertime_sadness" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

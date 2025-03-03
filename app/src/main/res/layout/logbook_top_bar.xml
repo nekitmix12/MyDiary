@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top_logbook_bar_flexbox"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,9 +9,9 @@
     app:dividerDrawableVertical="@drawable/logbook_vertical_divider"
     app:dividerDrawableHorizontal="@drawable/logbook_horizontal_divider"
     >
-    <include layout="@layout/top_bar_item_one" />
+<!--    <include layout="@layout/top_bar_item_one" />
     <include layout="@layout/top_bar_item_two" />
-    <include layout="@layout/top_bar_item_two" />
+    <include layout="@layout/top_bar_item_two" />-->
 
 
 

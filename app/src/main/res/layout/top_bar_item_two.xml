@@ -14,12 +14,14 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/data_time"
             style="@style/LogbookTopText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="в день: " />
 
         <TextView
+            android:id="@+id/count_logs"
             style="@style/LogbookTopTextBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

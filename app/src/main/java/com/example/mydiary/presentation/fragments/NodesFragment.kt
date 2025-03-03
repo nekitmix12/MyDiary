@@ -100,7 +100,7 @@ class NodesFragment : Fragment(R.layout.notes_fragment) {
     }
 
 
-    private fun onEmotionCardClick() {
+    private fun onEmotionCardClick(emotionCardModel: EmotionCardModel) {
     }
 
     private fun onExitClick() {

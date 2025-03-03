@@ -8,6 +8,7 @@
     app:cardCornerRadius="28dp">
 
     <TextView
+        android:id="@+id/logs"
         style="@style/LogbookTopTextBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
