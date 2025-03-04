@@ -3,6 +3,7 @@ package com.example.mydiary.presentation.fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -22,7 +23,7 @@ import com.example.mydiary.presentation.models.QuestionBlockModel
 import com.example.mydiary.presentation.view_models.SettingsViewModel
 import java.util.UUID
 
-class NodesFragment : Fragment(R.layout.notes_fragment) {
+class NodesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragment.OnInputListener {
     private lateinit var binding: NotesFragmentBinding
     private lateinit var viewModel: SettingsViewModel
     private lateinit var navController: NavController
@@ -123,6 +124,12 @@ class NodesFragment : Fragment(R.layout.notes_fragment) {
         Log.d("answer", "answer: $answer")
     }
 
-    private fun onAddAnswerButtonClick() {
+    private fun onAddAnswerButtonClick(questionBlockModel:QuestionBlockModel) {
+        AddVariantDialogFragment().show(childFragmentManager, "AddVariant")
     }
+
+    override fun onInputReceived(input: String) {
+        Toast.makeText(requireContext(), "Введено: $input", Toast.LENGTH_SHORT).show()
+    }
+
 }

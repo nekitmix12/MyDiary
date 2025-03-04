@@ -10,7 +10,7 @@ import com.example.mydiary.presentation.models.QuestionBlockModel
 class QuestionsBlockHolder(
     binding: NotesQuestionsBlockBinding,
     private val onAnswerClick: (AnswerModel) -> Unit,
-    private val onAddAnswerButtonClick: () -> Unit,
+    private val onAddAnswerButtonClick: (QuestionBlockModel) -> Unit,
 ) :
     BaseViewHolder<NotesQuestionsBlockBinding, QuestionBlockModel>(binding) {
     override fun onBinding(item: QuestionBlockModel) = with(binding) {
@@ -27,6 +27,6 @@ class QuestionsBlockHolder(
         }
 
         val addButton = flexbox.getChildAt(flexbox.childCount - 1)
-        addButton.setOnClickListener { onAddAnswerButtonClick }
+        addButton.setOnClickListener { onAddAnswerButtonClick(item) }
     }
 }

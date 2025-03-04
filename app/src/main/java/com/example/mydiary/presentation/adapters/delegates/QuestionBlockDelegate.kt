@@ -14,7 +14,7 @@ import com.example.mydiary.presentation.models.QuestionBlockModel
 
 class QuestionBlockDelegate(
     private val onAnswerClick: (AnswerModel) -> Unit,
-    private val onAddAnswerButtonClick: () -> Unit,
+    private val onAddAnswerButtonClick: (QuestionBlockModel) -> Unit,
 ) : Delegate<NotesQuestionsBlockBinding, QuestionBlockModel> {
 
     override fun isRelativeItem(item: Item): Boolean = item is QuestionBlockModel
