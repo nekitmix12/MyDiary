@@ -7,6 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
 import com.example.mydiary.presentation.fragments.SettingsFragment
+import com.example.mydiary.screens.BottomSheetScreen
 import com.example.mydiary.screens.SettingsScreen
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -39,28 +40,38 @@ internal class SettingsFragmentTest {
                         button.isDisplayed()
                     }
 
-                    /*childAt<SettingsParamItem>(position = 0) {
+                    childAt<SettingsParamItem>(position = 2) {
                         icon.isDisplayed()
                         text.isDisplayed()
                         switch.isDisplayed()
                         switch.isClickable()
                     }
-                    childAt<SettingsParamItem>(position = 1) {
+                    childAt<SettingsParamItem>(position = 5) {
                         icon.isDisplayed()
                         text.isDisplayed()
                         switch.isDisplayed()
                         switch.isClickable()
-                    }*/
+                    }
+
+                    childAt<ButtonItem>(position = 5) {
+                        button.isDisplayed()
+                        button.isClickable()
+                        button.click()
+                    }
                 }
             }
+            BottomSheetScreen {
+                textRemind.isDisplayed()
+                hourText.isDisplayed()
+                button.isDisplayed()
+                minuteText.isDisplayed()
+                //hourText.click()
+                button.click()
+            }
+
         }
     }
 
-
-    @Test
-    fun swipeTest() {
-        launchFragment {}
-    }
 
     private fun launchFragment(testBlock: () -> Unit) {
 

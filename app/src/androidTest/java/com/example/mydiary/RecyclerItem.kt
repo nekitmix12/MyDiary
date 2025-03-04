@@ -48,7 +48,8 @@ internal class EmotionsIndicatorItem(parent: Matcher<View>) :
 }
 
 internal class ExitItem(parent: Matcher<View>) : KRecyclerItem<ExitItem>(parent) {
-
+    val button = KView { withId(R.id.exit_button) }
+    val text = KTextView { withId(R.id.text) }
 }
 
 internal class MoodyDuringDayItem(parent: Matcher<View>) :
@@ -63,16 +64,17 @@ internal class ProfileItem(parent: Matcher<View>) : KRecyclerItem<ProfileItem>(p
 
 internal class QuestionsBlockItem(parent: Matcher<View>) :
     KRecyclerItem<QuestionsBlockItem>(parent) {
-
+    val label = KTextView(parent) { withId(R.id.label_answer) }
+    val flexBox = KView(parent) { withId(R.id.flexbox) }
 }
 
 internal class SettingsParamItem(parent: Matcher<View>) : KRecyclerItem<SettingsParamItem>(parent) {
-    val icon = KImageView { withId(R.id.param_icon_z) }
-    val text = KTextView { withId(R.id.param_text) }
-    val switch = KView { withId(R.id.param_switch) }
+    val icon = KImageView(parent) { withId(R.id.param_icon_z) }
+    val text = KTextView(parent) { withId(R.id.param_text) }
+    val switch = KView(parent) { withId(R.id.param_switch) }
 }
 
 internal class RemindItem(parent: Matcher<View>) : KRecyclerItem<RemindItem>(parent) {
-    val text = KTextView {withId( R.id.remind_data) }
-    val image = KView {withId (R.id.delete_remind )}
+    val text = KTextView { withId(R.id.remind_data) }
+    val image = KView { withId(R.id.delete_remind) }
 }

@@ -22,7 +22,6 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
     private val paint = Paint().apply {
         isAntiAlias = true
         color = Color.BLUE
-        typeface = Typeface.createFromAsset(context.assets, "fonts/gwen_trial_bold.ttf")
     }
     private var canvasOffsetX = 0f
     private var canvasOffsetY = 0f

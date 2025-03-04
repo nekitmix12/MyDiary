@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-03-03T11:52:40.046113900Z">
+        <DropdownSelection timestamp="2025-03-04T16:26:47.155125900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=bc6bb063" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\nekit\.android\avd\Pixel_6_API_26.avd" />
             </handle>
           </Target>
         </DropdownSelection>
@@ -16,16 +16,16 @@
       <SelectionState runConfigName="displayedTest()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="switchingTest()">
+      <SelectionState runConfigName="goBack()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="displayedTest() (1)">
+      <SelectionState runConfigName="LogbookFragmentTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="swipeTest() (1)">
+      <SelectionState runConfigName="navigationTest()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="displayedTest() (2)">
+      <SelectionState runConfigName="AllScreenTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

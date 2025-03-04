@@ -25,7 +25,7 @@
         android:label="StatisticsFragment" />
     <fragment
         android:id="@+id/nodesFragment"
-        android:name="com.example.mydiary.presentation.fragments.NodesFragment"
+        android:name="com.example.mydiary.presentation.fragments.NotesFragment"
         android:label="NodesFragment" >
         <action
             android:id="@+id/action_nodesFragment_to_logbookFragment"

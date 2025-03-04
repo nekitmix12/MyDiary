@@ -23,7 +23,7 @@ import com.example.mydiary.presentation.models.QuestionBlockModel
 import com.example.mydiary.presentation.view_models.SettingsViewModel
 import java.util.UUID
 
-class NodesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragment.OnInputListener {
+class NotesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragment.OnInputListener {
     private lateinit var binding: NotesFragmentBinding
     private lateinit var viewModel: SettingsViewModel
     private lateinit var navController: NavController
