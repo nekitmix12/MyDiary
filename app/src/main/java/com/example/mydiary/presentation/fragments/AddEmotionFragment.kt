@@ -9,17 +9,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.mydiary.R
-import com.example.mydiary.databinding.AddRemindFragmentBinding
+import com.example.mydiary.databinding.AddEmotionFragmentBinding
 import com.example.mydiary.presentation.models.EmotionElementModel
 import kotlinx.coroutines.launch
 
-class AddEmotionFragment : Fragment(R.layout.add_remind_fragment) {
-    private lateinit var binding: AddRemindFragmentBinding
+class AddEmotionFragment : Fragment(R.layout.add_emotion_fragment) {
+    private lateinit var binding: AddEmotionFragmentBinding
     private lateinit var navController: NavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = AddRemindFragmentBinding.bind(view)
+        binding = AddEmotionFragmentBinding.bind(view)
         navController = findNavController()
 
         lifecycleScope.launch {

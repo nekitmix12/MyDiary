@@ -5,12 +5,13 @@
     android:layout_height="match_parent">
 
     <com.example.mydiary.presentation.custom_elements.FourPointGradientView
+        android:id="@+id/entrance_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:colorTopLeft="@color/entrance_green"
-        app:colorTopRight="@color/entrance_blue"
         app:colorBottomLeft="@color/entrance_orange"
-        app:colorBottomRight="@color/entrance_red"/>
+        app:colorBottomRight="@color/entrance_red"
+        app:colorTopLeft="@color/entrance_green"
+        app:colorTopRight="@color/entrance_blue" />
 
     <TextView
         android:id="@+id/textView"
@@ -29,9 +30,9 @@
         style="@style/GoogleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/entrance_logo_google"
         android:backgroundTint="@color/white"
         android:backgroundTintMode="add"
+        android:drawableStart="@drawable/entrance_logo_google"
         android:text="@string/login_with_google"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

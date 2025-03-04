@@ -18,6 +18,7 @@
     </style>
 
     <style name="BigLabel">
+        <item name="fontFamily">@font/gwen_trial_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">48sp</item>
         <item name="android:fontFamily">@font/gwen_trial_bold</item>
@@ -32,6 +33,7 @@
     </style>
 
     <style name="GoogleButton" parent="ButtonCommon">
+        <item name="fontFamily">@font/vela_sans_bold</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:drawablePadding">16dp</item>
@@ -63,16 +65,19 @@
     </style>
 
     <style name="CardText">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_margin">16dp</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="CardTextFiling" parent="CardText">
+        <item name="fontFamily">@font/gwen_trial_bold</item>
         <item name="android:textSize">28sp</item>
     </style>
 
     <style name="CardTextConst" parent="CardText">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textSize">20sp</item>
         <item name="android:layout_margin">0dp</item>
     </style>
@@ -82,6 +87,7 @@
     </style>
 
     <style name="LogbookTopCard">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:background">@color/logbook_top_color</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
@@ -94,44 +100,56 @@
     </style>
 
     <style name="LogbookTopTextBold" parent="LogbookTopText">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="LogbookLabel">
+        <item name="fontFamily">@font/gwen_trial_regular</item>
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="lineHeight">44dp</item>
     </style>
 
     <style name="NotesLabelText">
+        <item name="fontFamily">@font/gwen_trial_regular</item>
         <item name="android:textSize">24sp</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
-
+    <style name="AddLogsButton">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/vela_sans_regular</item>
+    </style>
     <style name="NotesQuestionsBlockText">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="NotesAnswerOptionText" parent="LogbookTopCard">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
         <item name="android:background">@drawable/nodes_selector_answer</item>
     </style>
 
     <style name="SettingsName">
+        <item name="fontFamily">@font/vela_sans_bold</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="SettingsParams">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <style name="SettingsRemindText">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_gravity">center</item>
@@ -141,6 +159,7 @@
     </style>
 
     <style name="BottomSheetText">
+        <item name="fontFamily">@font/gwen_trial_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">32sp</item>
         <item name="android:layout_marginBottom">24dp</item>
@@ -150,6 +169,7 @@
     </style>
 
     <style name="BottomSheetTime">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textSize">52sp</item>
         <item name="android:textColor">@color/black</item>
 
@@ -164,6 +184,7 @@
     </style>
 
     <style name="BottomSheetTextTime">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">12sp</item>
         <item name="android:layout_marginTop">7dp</item>
@@ -203,12 +224,14 @@
 
     <style name="Circles">
         <item name="android:gravity">center</item>
+        <item name="fontFamily">@font/vela_sans_extra_bold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="CountLogs">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
@@ -228,6 +251,7 @@
     </style>
 
     <style name="EmotionIndicatorText">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -239,6 +263,7 @@
     </style>
 
     <style name="MoodDuringDayPartText">
+        <item name="fontFamily">@font/vela_sans_extra_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">12sp</item>
         <item name="android:gravity">center</item>
@@ -246,6 +271,7 @@
     </style>
 
     <style name="MoodDuringDayTimeText">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">center</item>
@@ -253,26 +279,31 @@
 
     <style name="UnderMoodDuringDayTimeText">
         <item name="android:textColor">@color/statistics_grey</item>
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textSize">12sp</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="EmotionData">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="EmotionType">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/statistics_grey</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="AddButtonDescriptionText">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">12sp</item>
     </style>
 
     <style name="AddButtonEmotionText">
+        <item name="fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/card_blue</item>
         <item name="android:textSize">12sp</item>
     </style>

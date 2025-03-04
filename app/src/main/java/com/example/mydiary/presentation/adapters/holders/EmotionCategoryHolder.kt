@@ -24,10 +24,10 @@ class EmotionCategoryHolder(
         blueCircle.elevation = item.emotionsPercent[2].first
         greenCircle.elevation = item.emotionsPercent[3].first
 
-        redCircle.text = (item.emotionsPercent[0].second * 100).toString()
-        yellowCircle.text = (item.emotionsPercent[1].second * 100).toString()
-        blueCircle.text = (item.emotionsPercent[2].second * 100).toString()
-        greenCircle.text = (item.emotionsPercent[3].second * 100).toString()
+        redCircle.text = (item.emotionsPercent[0].second * 100).toInt().toString() + "%"
+        yellowCircle.text = (item.emotionsPercent[1].second * 100).toInt().toString() + "%"
+        blueCircle.text = (item.emotionsPercent[2].second * 100).toInt().toString() + "%"
+        greenCircle.text = (item.emotionsPercent[3].second * 100).toInt().toString() + "%"
 
         emotionLogs.text = item.logs
     }

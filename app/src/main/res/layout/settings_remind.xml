@@ -15,8 +15,8 @@
 
     <ImageView
         android:id="@+id/delete_remind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:contentDescription="@null"
         android:padding="8dp"
         android:src="@drawable/settings_remind_delete" />

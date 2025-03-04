@@ -9,7 +9,7 @@ class ProfileHolder(
 ) :
     BaseViewHolder<SettingsProfileBinding, ProfileModel>(binding) {
     override fun onBinding(item: ProfileModel) = with(binding) {
-        ShapeableImageView.setImageDrawable(item.profileImg)
+        shapeableImageView.setImageDrawable(item.profileImg)
         profileName.text = item.name
     }
 }

@@ -9,7 +9,7 @@ class SettingParamHolder(
     private val onSwitchClick: () -> Unit,
 ) : BaseViewHolder<SettingsParamBinding, SettingParamModel>(binding) {
     override fun onBinding(item: SettingParamModel) = with(binding) {
-        paramIcon.setImageDrawable(item.icon)
+        paramIconZ.setImageDrawable(item.icon)
         paramText.text = item.test
         paramSwitch.isChecked = item.state
         paramSwitch.setOnClickListener { onSwitchClick }

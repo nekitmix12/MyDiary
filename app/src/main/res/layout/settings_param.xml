@@ -8,11 +8,12 @@
     android:background="@color/black">
 
     <ImageView
-        android:id="@+id/param_icon"
-        android:layout_width="wrap_content"
+        android:id="@+id/param_icon_z"
+        android:layout_width="24dp"
         android:layout_marginEnd="8.25dp"
         android:layout_gravity="center"
-        android:layout_height="wrap_content"
+        android:tag="unique_fingerprint"
+        android:layout_height="24dp"
         tools:src="@drawable/settings_fingerprint"
         android:contentDescription="@null" />
 
@@ -27,7 +28,7 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/param_switch"
-        android:layout_width="52dp"
+        android:layout_width="48dp"
         android:layout_height="32dp"
         android:checked="true"
         android:thumb="@drawable/thumb"

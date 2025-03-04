@@ -38,7 +38,7 @@ class MoodyDuringDayHolder(
                             (childText.layoutParams as LinearLayout.LayoutParams).apply {
                                 weight = item.timePercent[linear][i]
                             }
-                        childText.text = item.timePercent[linear][i].toString() + "%"
+                        childText.text = (item.timePercent[linear][i]* 100).toInt().toString() + "%"
                     }
                 }
             }

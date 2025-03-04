@@ -30,4 +30,5 @@
     <string name="edit_text">Введите текст</string>
     <string name="ok">ок</string>
     <string name="cansel">Отмена</string>
+    <string name="add_log">Добавить запись</string>
 </resources>
