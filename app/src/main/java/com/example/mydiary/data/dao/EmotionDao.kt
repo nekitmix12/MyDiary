@@ -1,11 +1,12 @@
 package com.example.mydiary.data.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Update
 import com.example.mydiary.data.dbo.AnswerWithActive
 import com.example.mydiary.data.entity.EmotionEntity
-import retrofit2.http.GET
 
 @Dao
 interface EmotionDao {
@@ -34,8 +35,12 @@ interface EmotionDao {
     )
     suspend fun getEmotionById(emotionId: String): EmotionEntity
 
-    @Query("""
-        SELECT * FROM EMOTIONENTITY
-    """)
+    @Query("""SELECT * FROM EMOTIONENTITY""")
     suspend fun getAllEmotions(): List<EmotionEntity>
+
+    @Delete
+    suspend fun deleteEmotion(emotion: EmotionEntity)
+
+    @Update
+    suspend fun editEmotion(emotion: EmotionEntity)
 }
