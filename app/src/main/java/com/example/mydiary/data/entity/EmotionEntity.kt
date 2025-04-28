@@ -11,5 +11,5 @@ data class EmotionEntity(
     @ColumnInfo(name = "type") val type: String,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "create_data_type") val createDataType: String,
-    @ColumnInfo(name = "image") val image: Blob,
+    @ColumnInfo(name = "image") val imageRes: String,
 )
