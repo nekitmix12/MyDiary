@@ -65,8 +65,11 @@ internal class SettingsFragmentTest {
                 hourText.isDisplayed()
                 button.isDisplayed()
                 minuteText.isDisplayed()
-                //hourText.click()
-                button.click()
+                Thread.sleep(3000)
+                hourText.click()
+                Thread.sleep(30000)
+
+                //button.click()
             }
 
         }

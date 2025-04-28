@@ -65,7 +65,7 @@ internal class NotesTest {
                     }
                 }
             }
-
+            Thread.sleep(30000)
             LogbookScreen {
                 recycler {
                     childAt<EmotionItem>(position = 0) {
