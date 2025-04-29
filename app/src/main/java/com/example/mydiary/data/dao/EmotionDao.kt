@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-import com.example.mydiary.data.dbo.AnswerWithActive
+import com.example.mydiary.data.dbo.AnswerWithActiveDbo
 import com.example.mydiary.data.entity.EmotionEntity
 
 @Dao
@@ -24,7 +24,7 @@ interface EmotionDao {
         WHERE AnswerQuestionCrossRef.emotionId = :emotionId
     """
     )
-    suspend fun getAnswersWithActive(emotionId: String): List<AnswerWithActive>
+    suspend fun getAnswersWithActive(emotionId: String): List<AnswerWithActiveDbo>
 
     @Query(
         """SELECT * 
@@ -43,4 +43,6 @@ interface EmotionDao {
 
     @Update
     suspend fun editEmotion(emotion: EmotionEntity)
+
+    suspend fun eddEmotion()
 }

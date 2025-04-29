@@ -1,11 +1,12 @@
 package com.example.mydiary.data.data_source.local
 
-import com.example.mydiary.data.dbo.AnswerWithActive
+import com.example.mydiary.data.dbo.AnswerWithActiveDbo
 import com.example.mydiary.data.entity.EmotionEntity
+import com.example.mydiary.data.entity.RemindEntity
 
 interface EmotionDataSource {
 
-    suspend fun getAnswersWithActive(emotionId: String): List<AnswerWithActive>
+    suspend fun getAnswersWithActive(emotionId: String): List<AnswerWithActiveDbo>
 
     suspend fun getEmotionById(emotionId: String): EmotionEntity
 
@@ -14,4 +15,10 @@ interface EmotionDataSource {
     suspend fun deleteEmotion(emotion: EmotionEntity)
 
     suspend fun editEmotion(emotion: EmotionEntity)
+
+    suspend fun getReminds(): List<RemindEntity>
+
+    suspend fun editRemind(remindEntity: RemindEntity)
+
+    suspend fun addRemind(remindEntity: RemindEntity)
 }

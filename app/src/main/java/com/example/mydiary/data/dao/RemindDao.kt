@@ -3,6 +3,7 @@ package com.example.mydiary.data.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
+import androidx.room.Update
 import com.example.mydiary.data.entity.RemindEntity
 
 @Dao
@@ -13,4 +14,7 @@ interface RemindDao {
 
     @Delete
     suspend fun deleteRemind(remindEntity: RemindEntity)
+
+    @Update
+    suspend fun updateRemind(remindEntity: RemindEntity)
 }

@@ -1,6 +1,6 @@
-package com.example.mydiary.data.local_model
+package com.example.mydiary.domain.model
 
-data class SettingLocalModel(
+data class SettingsModel(
     val imageUrl: String,
     val isSendRemindOn: Boolean,
     val isUseFingerprint: Boolean,
