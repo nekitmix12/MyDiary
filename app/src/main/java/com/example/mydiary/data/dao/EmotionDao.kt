@@ -43,4 +43,6 @@ interface EmotionDao {
 
     @Update
     suspend fun editEmotion(emotion: EmotionEntity)
+
+    suspend fun eddEmotion()
 }

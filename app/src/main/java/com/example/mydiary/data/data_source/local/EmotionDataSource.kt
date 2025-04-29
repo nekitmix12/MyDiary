@@ -2,6 +2,7 @@ package com.example.mydiary.data.data_source.local
 
 import com.example.mydiary.data.dbo.AnswerWithActiveDbo
 import com.example.mydiary.data.entity.EmotionEntity
+import com.example.mydiary.data.entity.RemindEntity
 
 interface EmotionDataSource {
 
@@ -14,4 +15,10 @@ interface EmotionDataSource {
     suspend fun deleteEmotion(emotion: EmotionEntity)
 
     suspend fun editEmotion(emotion: EmotionEntity)
+
+    suspend fun getReminds(): List<RemindEntity>
+
+    suspend fun editRemind(remindEntity: RemindEntity)
+
+    suspend fun addRemind(remindEntity: RemindEntity)
 }
