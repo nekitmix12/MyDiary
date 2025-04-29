@@ -20,7 +20,7 @@ import androidx.room.ForeignKey
         )
     ]
 )
-data class AnswerQuestionCrossRef(
+data class AnswerEmotionCrossRef(
     val emotionId: String,
     val answerId: String,
     val isActive: Boolean,
