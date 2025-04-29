@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
 import com.example.mydiary.Settings
+import com.example.mydiary.data.entity.RemindEntity
 import com.example.mydiary.data.local_model.SettingLocalModel
 import com.example.mydiary.data.serializer.SettingsSerializer
 import kotlinx.coroutines.flow.Flow
@@ -27,7 +28,6 @@ class DataStoreManager(private val context: Context) : SettingsDataSource {
                 .setIsUseFingerprint(settings.isUseFingerprint).build()
         }
     }
-
 
 
     override suspend fun deleteImagePath() {

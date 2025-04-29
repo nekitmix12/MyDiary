@@ -5,5 +5,6 @@ import com.example.mydiary.data.entity.AnswerEntity
 
 data class AnswerWithActiveDbo(
     @Embedded val answer: AnswerEntity,
-    val isActive: Boolean
+    val isActive: Boolean,
+    val questionId: String,
 )

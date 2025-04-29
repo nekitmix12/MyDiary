@@ -7,12 +7,10 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-
-import com.example.mydiary.data.dbo.AnswerWithActive
+import com.example.mydiary.data.dbo.AnswerWithActiveDbo
 import com.example.mydiary.data.dbo.EmotionWithDetailsDbo
 import com.example.mydiary.data.entity.AnswerEmotionCrossRef
 import com.example.mydiary.data.entity.AnswerEntity
-import com.example.mydiary.data.dbo.AnswerWithActiveDbo
 import com.example.mydiary.data.entity.EmotionEntity
 
 @Dao
@@ -22,7 +20,8 @@ interface EmotionDao {
         """
         SELECT 
             AnswerEntity.*, 
-            AnswerEmotionCrossRef.isActive 
+            AnswerEmotionCrossRef.isActive, 
+            QuestionEntity.id
         FROM AnswerEntity
         JOIN AnswerEmotionCrossRef 
             ON AnswerEntity.id = AnswerEmotionCrossRef.answerId
@@ -31,7 +30,7 @@ interface EmotionDao {
         WHERE AnswerEmotionCrossRef.emotionId = :emotionId
     """
     )
-    suspend fun getAnswersWithActive(emotionId: String): List<AnswerWithActive>
+    suspend fun getAnswersWithActive(emotionId: String): List<AnswerWithActiveDbo>
 
     @Query(
         """SELECT * 
