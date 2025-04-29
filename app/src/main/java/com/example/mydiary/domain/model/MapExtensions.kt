@@ -24,9 +24,13 @@ fun Settings.toSettingsModel() = SettingsModel(url, isSendRemindOn, isUseFingerp
 fun SettingsModel.toSettingsLocalModel() =
     SettingLocalModel(imageUrl, isSendRemindOn, isUseFingerprint, name)
 
-fun EmotionModel.toEmotionEntity() = EmotionEntity(id, type, name, createDataTime, imageRes)
+fun EmotionModel.toEmotionEntity() = EmotionEntity(
+    id,
+    type.toString(), name, createDataTime, imageRes
+)
 
-fun EmotionEntity.toEmotionModel() = EmotionModel(id, type, name, createDataTime, imageRes)
+fun EmotionEntity.toEmotionModel() =
+    EmotionModel(id, EmotionType.valueOf(type), name, createDataTime, imageRes)
 
 fun AnswerEmotionCrossRef.toAnswerEmotionCrossRefModel() =
     AnswerEmotionCrossRefModel(emotionId, answerId, isActive)
@@ -37,3 +41,4 @@ fun AnswerEmotionCrossRefModel.toAnswerEmotionCrossRef() =
 fun RemindEntity.toRemindModel() = RemindModel(id, time)
 
 fun RemindModel.toRemindEntity() = RemindEntity(uuid, data)
+
