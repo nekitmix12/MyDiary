@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
 import com.example.mydiary.Settings
+import com.example.mydiary.data.local_model.SettingLocalModel
 import com.example.mydiary.data.serializer.SettingsSerializer
 import kotlinx.coroutines.flow.Flow
 
@@ -19,9 +20,9 @@ class DataStoreManager(private val context: Context) : SettingsDataSource {
         return context.settingStore.data
     }
 
-    override suspend fun changeSettings(settings: Settings) {
+    override suspend fun changeSettings(settings: SettingLocalModel) {
         context.settingStore.updateData { preferences ->
-            preferences.toBuilder().setUrl(settings.url).setName(settings.name)
+            preferences.toBuilder().setUrl(settings.imageUrl).setName(settings.name)
                 .setIsSendRemindOn(settings.isSendRemindOn)
                 .setIsUseFingerprint(settings.isUseFingerprint).build()
         }
