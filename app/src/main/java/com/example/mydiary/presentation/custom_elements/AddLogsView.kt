@@ -115,11 +115,6 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
             if (isChange) {
                 for (x in emotions.value!!.indices) {
                     for (y in emotions.value!![x].indices) {
-                        Log.d("logs_d", "onDraw")
-                        Log.d("logs_d", "${fistIndex}")
-                        Log.d("logs_d", "${emotions.value!!.indices}")
-                        Log.d("logs_d", "${emotions.value!![x].indices}")
-                        Log.d("logs_d", "--------")
                         val drawable = emotions.value!![x][y].form
                         var leftBounds =
                             x * (smallShape.value.first + divider.value.first) - canvasOffsetX

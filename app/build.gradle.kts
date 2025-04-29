@@ -1,7 +1,11 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.plugin.serialization")
+    id("com.google.protobuf")
 }
 
 android {
@@ -27,6 +31,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -36,18 +41,42 @@ android {
     }
     buildFeatures {
         compose = true
-
     }
-    viewBinding{
+    viewBinding {
         enable = true
     }
-
 }
 
-dependencies {
-    androidTestImplementation (libs.kaspresso)
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.21.12"
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
+}
 
-    implementation (libs.flexbox)
+
+dependencies {
+    implementation(libs.protobuf.javalite)
+    implementation(libs.androidx.datastore)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.okhttp)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit)
+    implementation(libs.flexbox)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -61,7 +90,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.gridlayout)
     testImplementation(libs.junit)
-    implementation (libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.fragment)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.fragment.testing)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,8 +99,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.fragment.testing.manifest)
     debugImplementation(libs.androidx.ui.test.manifest)
-    testImplementation (libs.mockito.core)
-    androidTestImplementation (libs.mockito.android)
-    testImplementation (libs.mockito.kotlin)
-
+    testImplementation(libs.mockito.core)
+    androidTestImplementation(libs.mockito.android)
+    testImplementation(libs.mockito.kotlin)
 }

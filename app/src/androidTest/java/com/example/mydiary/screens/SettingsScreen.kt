@@ -25,5 +25,4 @@ internal object SettingsScreen : KScreen<SettingsScreen>() {
             itemType(::ButtonItem)
         }
     )
-
 }

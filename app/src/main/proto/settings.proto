@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "com.example.mydiary";
+option java_multiple_files = true;
+
+message Settings{
+    string url = 1;
+    bool isSendRemindOn = 2;
+    bool isUseFingerprint = 3;
+    string name = 4;
+
+}

@@ -195,6 +195,30 @@ class StatisticsFragment : Fragment() {
                             ), 40.dpToPx(requireContext())
                         ),
                         EmotionByDayModel(
+                            "Суббота\n22 фев", "", listOf(
+                                AppCompatResources.getDrawable(
+                                    requireContext(), R.drawable.nothing_emotion
+                                )
+                                    ?: throw IllegalArgumentException("statistics fragment: can't load image"),
+                            ), 40.dpToPx(requireContext())
+                        ),
+                        EmotionByDayModel(
+                            "Суббота\n22 фев", "", listOf(
+                                AppCompatResources.getDrawable(
+                                    requireContext(), R.drawable.nothing_emotion
+                                )
+                                    ?: throw IllegalArgumentException("statistics fragment: can't load image"),
+                            ), 40.dpToPx(requireContext())
+                        ),
+                        EmotionByDayModel(
+                            "Суббота\n22 фев", "", listOf(
+                                AppCompatResources.getDrawable(
+                                    requireContext(), R.drawable.nothing_emotion
+                                )
+                                    ?: throw IllegalArgumentException("statistics fragment: can't load image"),
+                            ), 40.dpToPx(requireContext())
+                        ),
+                        EmotionByDayModel(
                             "Воскресенье\n23 фев", "", listOf(
                                 AppCompatResources.getDrawable(
                                     requireContext(), R.drawable.nothing_emotion
@@ -202,7 +226,30 @@ class StatisticsFragment : Fragment() {
                                     ?: throw IllegalArgumentException("statistics fragment: can't load image"),
                             ), 40.dpToPx(requireContext())
                         ),
-
+                        EmotionByDayModel(
+                            "Воскресенье\n23 фев", "", listOf(
+                                AppCompatResources.getDrawable(
+                                    requireContext(), R.drawable.nothing_emotion
+                                )
+                                    ?: throw IllegalArgumentException("statistics fragment: can't load image"),
+                            ), 40.dpToPx(requireContext())
+                        ),
+                        EmotionByDayModel(
+                            "Воскресенье\n23 фев", "", listOf(
+                                AppCompatResources.getDrawable(
+                                    requireContext(), R.drawable.nothing_emotion
+                                )
+                                    ?: throw IllegalArgumentException("statistics fragment: can't load image"),
+                            ), 40.dpToPx(requireContext())
+                        ),
+                        EmotionByDayModel(
+                            "Воскресенье\n23 фев", "", listOf(
+                                AppCompatResources.getDrawable(
+                                    requireContext(), R.drawable.nothing_emotion
+                                )
+                                    ?: throw IllegalArgumentException("statistics fragment: can't load image"),
+                            ), 40.dpToPx(requireContext())
+                        ),
                         ), requireContext().getString(R.string.emotions_by_day_of_the_week)
                 ), VerticalItemWithLabelModel(
                     listOf(

@@ -32,7 +32,6 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
             LabelDelegate(),
             LogbookCircleButtonDelegate(::onAddClick),
             EmotionDelegate(::onEmotionCardClick),
-
             )
     )
 
@@ -78,13 +77,33 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                         Pair(
                             Pair(
                                 ContextCompat.getColor(
+                                    requireContext(), R.color.logbook_gradient_green_2
+
+                                ), ContextCompat.getColor(
+                                    requireContext(), R.color.logbook_gradient_green_1
+                                )
+                            ), 0.25f
+                        ),
+                        Pair(
+                            Pair(
+                                ContextCompat.getColor(
                                     requireContext(), R.color.transparent
 
                                 ), ContextCompat.getColor(
                                     requireContext(), R.color.nodes_selected_grey
                                 )
-                            ), 0.35f
-                        )
+                            ), 0.50f
+                        ),
+                        Pair(
+                            Pair(
+                                ContextCompat.getColor(
+                                    requireContext(), R.color.logbook_gradient_yellow_1
+
+                                ), ContextCompat.getColor(
+                                    requireContext(), R.color.logbook_gradient_yellow_2
+                                )
+                            ), 0.50f
+                        ),
                     ), true
                 ),
                 EmotionCardModel(

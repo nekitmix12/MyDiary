@@ -15,5 +15,4 @@ object AddEmotionScreen : KScreen<AddEmotionScreen>() {
     val emotionText = KView{withId(R.id.emotion_to_adding)}
     val descriptionText = KView{withId(R.id.description_emotion)}
     val buttonContinue = KButton{withId(R.id.add_button)}
-
 }
