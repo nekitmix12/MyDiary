@@ -1,6 +1,8 @@
 package com.example.mydiary.data.data_source.local
 
 import com.example.mydiary.data.dao.EmotionDao
+import com.example.mydiary.data.entity.AnswerEmotionCrossRef
+import com.example.mydiary.data.entity.AnswerEntity
 import com.example.mydiary.data.entity.EmotionEntity
 
 class EmotionDataSourceImpl(private val emotionDao: EmotionDao) : EmotionDataSource {
@@ -13,5 +15,11 @@ class EmotionDataSourceImpl(private val emotionDao: EmotionDao) : EmotionDataSou
 
     override suspend fun deleteEmotion(emotion: EmotionEntity) = emotionDao.deleteEmotion(emotion)
 
-    override suspend fun editEmotion(emotion: EmotionEntity) = emotionDao.editEmotion(emotion)
+
+    override suspend fun addAnswer(answerEntity: AnswerEntity) = emotionDao.addAnswer(answerEntity)
+
+    override suspend fun eddEmotion(
+        emotion: EmotionEntity,
+        answerEmotionCrossRef: List<AnswerEmotionCrossRef>,
+    ) = emotionDao.addEmotion(emotion, answerEmotionCrossRef)
 }
