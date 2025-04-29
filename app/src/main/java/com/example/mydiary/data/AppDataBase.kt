@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.mydiary.data.dao.EmotionDao
 import com.example.mydiary.data.dao.RemindDao
 import com.example.mydiary.data.entity.AnswerEntity
-import com.example.mydiary.data.entity.AnswerQuestionCrossRef
+import com.example.mydiary.data.entity.AnswerEmotionCrossRef
 import com.example.mydiary.data.entity.EmotionEntity
 import com.example.mydiary.data.entity.QuestionEntity
 import com.example.mydiary.data.entity.RemindEntity
@@ -13,7 +13,7 @@ import com.example.mydiary.data.entity.RemindEntity
 @Database(
     entities = [
         AnswerEntity::class,
-        AnswerQuestionCrossRef::class,
+        AnswerEmotionCrossRef::class,
         EmotionEntity::class,
         QuestionEntity::class,
         RemindEntity::class
