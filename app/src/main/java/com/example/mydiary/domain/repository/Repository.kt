@@ -1,6 +1,5 @@
 package com.example.mydiary.domain.repository
 
-import com.example.mydiary.data.local_model.SettingLocalModel
 import com.example.mydiary.domain.model.AnswerWithStateModel
 import com.example.mydiary.domain.model.EmotionModel
 import com.example.mydiary.domain.model.SettingsModel
@@ -21,5 +20,5 @@ interface Repository {
 
     suspend fun deleteImagePath()
 
-    suspend fun changeSettings(settings: SettingLocalModel)
+    suspend fun changeSettings(settings: SettingsModel)
 }
