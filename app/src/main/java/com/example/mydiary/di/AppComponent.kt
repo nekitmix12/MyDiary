@@ -3,6 +3,7 @@ package com.example.mydiary.di
 import dagger.Component
 import javax.inject.Scope
 
+/*
 @AppScope
 @Component(modules = [], dependencies = [])
 interface AppComponent {
@@ -12,4 +13,4 @@ interface AppComponent {
 }
 
 @Scope
-annotation class AppScope
+annotation class AppScope*/
