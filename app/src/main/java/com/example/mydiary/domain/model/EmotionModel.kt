@@ -4,6 +4,6 @@ data class EmotionModel(
     val id: String,
     val type: String,
     val name: String,
-    val createDataType: String,
+    val createDataTime: String,
     val imageRes: String,
 )
