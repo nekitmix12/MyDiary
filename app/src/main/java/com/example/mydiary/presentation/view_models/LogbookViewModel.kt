@@ -30,8 +30,8 @@ class LogbookViewModel(
     fun loadScreen() {
         viewModelScope.launch {
             launch {
-                emotions.collect {
-                    if (it.isNotEmpty())
+                emotions.collect { emotionsList ->
+                    if (emotionsList.isNotEmpty())
                         getLogbookStatisticsUseCase.execute(
                             GetLogbookStatisticsUseCase.Request(
                                 emotions.value

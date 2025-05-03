@@ -1,27 +1,42 @@
 package com.example.mydiary.presentation.models
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
-import com.example.mydiary.R
 import com.example.mydiary.domain.model.EmotionModel
-import com.example.mydiary.domain.model.EmotionType
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
-fun EmotionModel.toEmotionCardModel(context: Context) = EmotionCardModel(
-    id = id,
-    background = when(type){
-        EmotionType.ExcitedWell->{
-            AppCompatResources.getDrawable(
-                context, R.drawable.tools_card_background_blue
-        ) ?: throw IllegalArgumentException("Not found Drawable")}
-        EmotionType.ExitedBadly->{AppCompatResources.getDrawable(
-            context, R.drawable.tools_card_background_blue
-        ) ?: throw IllegalArgumentException("Not found Drawable")}
-        EmotionType.CalmWell->{AppCompatResources.getDrawable(
-            context, R.drawable.tools_card_background_blue
-        ) ?: throw IllegalArgumentException("Not found Drawable")}
-        EmotionType.CalmBadly->{AppCompatResources.getDrawable(
-            context, R.drawable.tools_card_background_blue
-        ) ?: throw IllegalArgumentException("Not found Drawable")}
+@RequiresApi(Build.VERSION_CODES.O)
+fun EmotionModel.toEmotionCardModel(context: Context): EmotionCardModel {
+    val zoneId = ZoneId.systemDefault()
+    val date = createDataTime.atZone(zoneId).toLocalDate()
+    val today = LocalDate.now(zoneId)
 
-    }, date = createDataTime
-)
+    val startOfWeek = today.with(java.time.DayOfWeek.MONDAY)
+    val endOfWeek = today.with(java.time.DayOfWeek.SUNDAY)
+
+    val emotionDate = if (date in startOfWeek..endOfWeek) {
+        val formatter = DateTimeFormatter.ofPattern("EEEE", Locale.getDefault())
+        date.format(formatter)
+    } else {
+        val formatter = DateTimeFormatter.ofPattern("dd:MM:yyyy", Locale.getDefault())
+        date.format(formatter)
+    }
+    return EmotionCardModel(
+        id = id,
+        background = AppCompatResources.getDrawable(
+            context, emotion.type.background
+        ) ?: throw IllegalArgumentException("Not found Drawable"),
+        date = emotionDate,
+        time = date.format(DateTimeFormatter.ofPattern("HH:mm")),
+        emotion = context.getString(emotion.emotion),
+        emotionColor = emotion.type.color,
+        icon = AppCompatResources.getDrawable(
+            context, emotion.iconRes
+        ) ?: throw IllegalArgumentException("Not found Drawable")
+    )
+}

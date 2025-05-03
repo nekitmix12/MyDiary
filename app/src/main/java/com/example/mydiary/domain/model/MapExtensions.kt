@@ -1,5 +1,7 @@
 package com.example.mydiary.domain.model
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.mydiary.Settings
 import com.example.mydiary.data.dbo.AnswerWithActiveDbo
 import com.example.mydiary.data.entity.AnswerEmotionCrossRef
@@ -7,7 +9,9 @@ import com.example.mydiary.data.entity.AnswerEntity
 import com.example.mydiary.data.entity.EmotionEntity
 import com.example.mydiary.data.entity.RemindEntity
 import com.example.mydiary.data.local_model.SettingLocalModel
+import com.example.mydiary.presentation.models.Emotion
 import com.example.mydiary.presentation.models.RemindModel
+import java.time.Instant
 
 fun AnswerModel.toAnswerEntity() = AnswerEntity(id, text, questionId)
 
@@ -26,11 +30,12 @@ fun SettingsModel.toSettingsLocalModel() =
 
 fun EmotionModel.toEmotionEntity() = EmotionEntity(
     id,
-    type.toString(), name, createDataTime, imageRes
+    emotion.toString(), name, createDataTime.toString(), imageRes
 )
 
+@RequiresApi(Build.VERSION_CODES.O)
 fun EmotionEntity.toEmotionModel() =
-    EmotionModel(id, EmotionType.valueOf(type), name, createDataTime, imageRes)
+    EmotionModel(id, Emotion.valueOf(emotion), name, Instant.parse(createDataTime), imageRes)
 
 fun AnswerEmotionCrossRef.toAnswerEmotionCrossRefModel() =
     AnswerEmotionCrossRefModel(emotionId, answerId, isActive)
