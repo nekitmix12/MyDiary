@@ -8,13 +8,24 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.mydiary.R
 
 import com.example.mydiary.databinding.MainScreenBinding
+import com.example.mydiary.di.App
+import com.example.mydiary.presentation.di.subcomponents.MainActivityComponent
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: MainScreenBinding
     private lateinit var navController: NavController
 
+    lateinit var mainActivityComponent: MainActivityComponent
+        private set
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainActivityComponent = (this.applicationContext as App)
+            .appComponent
+            .mainActivityComponent()
+            .create()
+
+
         binding = MainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navHostFragment =
@@ -47,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.logbookFragment, R.id.statisticsFragment, R.id.settingsFragment -> {
                     binding.bottomNavigationView.visibility = View.VISIBLE
                 }
+
                 else -> {
                     binding.bottomNavigationView.visibility = View.GONE
                 }

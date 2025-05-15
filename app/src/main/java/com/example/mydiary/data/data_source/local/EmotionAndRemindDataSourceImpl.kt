@@ -6,8 +6,9 @@ import com.example.mydiary.data.entity.AnswerEmotionCrossRef
 import com.example.mydiary.data.entity.AnswerEntity
 import com.example.mydiary.data.entity.EmotionEntity
 import com.example.mydiary.data.entity.RemindEntity
+import javax.inject.Inject
 
-class EmotionAndRemindDataSourceImpl(
+class EmotionAndRemindDataSourceImpl @Inject constructor(
     private val emotionDao: EmotionDao,
     private val remindDao: RemindDao,
 ) : EmotionAndRemindDataSource {

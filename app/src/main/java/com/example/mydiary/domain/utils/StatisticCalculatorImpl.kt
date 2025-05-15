@@ -6,9 +6,10 @@ import com.example.mydiary.domain.model.EmotionModel
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
+import javax.inject.Inject
 import kotlin.math.abs
 
-class StatisticCalculatorImpl : StatisticCalculator {
+class StatisticCalculatorImpl @Inject constructor() : StatisticCalculator {
 
     override fun getCountOfRemind(emotions: List<EmotionModel>) = emotions.size
 
@@ -18,7 +19,7 @@ class StatisticCalculatorImpl : StatisticCalculator {
         var counter = 0
         var tempDate = ZonedDateTime.now()
         for (emotion in emotions.sortedBy { it.createDataTime }) {
-            val emotionTime = ZonedDateTime.parse(emotion.createDataTime, formatter)
+            val emotionTime = ZonedDateTime.parse(emotion.createDataTime.toString(), formatter)
             val diff = ChronoUnit.DAYS.between(
                 tempDate,
                 emotionTime
@@ -30,5 +31,22 @@ class StatisticCalculatorImpl : StatisticCalculator {
                 break
         }
         return counter
+    }
+
+    override fun getCircleParam(
+        emotions: List<EmotionModel>,
+    ): Pair<List<Pair<Pair<Int, Int>, Float>>,
+            Boolean> {
+        val groupedEmotions = emotions.groupBy { it.emotion.type }
+        val totalCount = emotions.size.toFloat()
+
+        val strikes = groupedEmotions.map { (_, list) ->
+            val type = list.first().emotion.type
+            val count = list.size.toFloat()
+            val ratio = count / totalCount
+
+            (type.gradientStart to type.gradientEnd) to ratio
+        }.toList()
+        return strikes to emotions.isNotEmpty()
     }
 }

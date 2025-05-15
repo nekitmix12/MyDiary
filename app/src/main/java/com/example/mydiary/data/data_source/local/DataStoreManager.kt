@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
 import com.example.mydiary.Settings
-import com.example.mydiary.data.entity.RemindEntity
 import com.example.mydiary.data.local_model.SettingLocalModel
 import com.example.mydiary.data.serializer.SettingsSerializer
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class DataStoreManager(private val context: Context) : SettingsDataSource {
+class DataStoreManager @Inject constructor(private val context: Context) : SettingsDataSource {
 
 
     private val Context.settingStore: DataStore<Settings> by dataStore(

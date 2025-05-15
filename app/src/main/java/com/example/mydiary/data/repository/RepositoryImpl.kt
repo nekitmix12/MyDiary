@@ -1,7 +1,10 @@
 package com.example.mydiary.data.repository
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.mydiary.data.data_source.local.EmotionAndRemindDataSource
 import com.example.mydiary.data.data_source.local.SettingsDataSource
+import com.example.mydiary.di.AppScope
 import com.example.mydiary.domain.model.AnswerEmotionCrossRefModel
 import com.example.mydiary.domain.model.AnswerModel
 import com.example.mydiary.domain.model.AnswerWithStateModel
@@ -20,8 +23,10 @@ import com.example.mydiary.domain.repository.Repository
 import com.example.mydiary.presentation.models.RemindModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-class RepositoryImpl(
+@AppScope
+class RepositoryImpl @Inject constructor(
     private val emotionDataSource: EmotionAndRemindDataSource,
     private val settingsDataSource: SettingsDataSource,
 ) : Repository {
@@ -29,9 +34,11 @@ class RepositoryImpl(
         emotionDataSource.getAnswersWithActive(emotionId).map { it.toAnswerWithStateModel() }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun getEmotionById(emotionId: String): EmotionModel =
         emotionDataSource.getEmotionById(emotionId).toEmotionModel()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun getAllEmotions(): List<EmotionModel> =
         emotionDataSource.getAllEmotions().map { it.toEmotionModel() }
 

@@ -60,6 +60,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragmen
             listOf(
                 ExitModel,
                 EmotionCardModel(
+                    "",
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.tools_card_background_blue
                     ) ?: throw IllegalArgumentException("Not found Drawable"),

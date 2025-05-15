@@ -19,9 +19,11 @@ interface EmotionDao {
     @Query(
         """
         SELECT 
-            AnswerEntity.*, 
-            AnswerEmotionCrossRef.isActive, 
-            QuestionEntity.id
+             AnswerEntity.id          AS ans_id,
+             AnswerEntity.text        AS ans_text,
+             AnswerEntity.questionId  AS ans_questionId,
+             AnswerEmotionCrossRef.isActive AS isActive,
+             QuestionEntity.id        AS questionId
         FROM AnswerEntity
         JOIN AnswerEmotionCrossRef 
             ON AnswerEntity.id = AnswerEmotionCrossRef.answerId

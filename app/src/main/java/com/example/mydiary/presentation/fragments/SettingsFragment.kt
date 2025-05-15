@@ -87,7 +87,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
                     "Присылать напоминания",
                     true
                 ), RemindModel(
-                    UUID.randomUUID(), "20:00"
+                    UUID.randomUUID().toString(), "20:00"
                 ), ButtonModel(requireContext().getString(R.string.add_remind)), SettingParamModel(
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.settings_fingerprint

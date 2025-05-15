@@ -64,10 +64,15 @@ protobuf {
 
 
 dependencies {
+    implementation (libs.play.services.auth)
+    implementation (libs.androidx.credentials)
+    implementation (libs.androidx.credentials.play.services.auth)
+    implementation(libs.androidx.credentials.v160alpha01)
     implementation(libs.protobuf.javalite)
     implementation(libs.androidx.datastore)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.room.runtime)
+    implementation(libs.google.googleid)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.dagger)

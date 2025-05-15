@@ -11,20 +11,26 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mydiary.R
 import com.example.mydiary.databinding.LogbookFragmentBinding
+import com.example.mydiary.presentation.MainActivity
 import com.example.mydiary.presentation.adapters.AdapterWithDelegates
 import com.example.mydiary.presentation.adapters.decorators.PaddingItemDecoration
 import com.example.mydiary.presentation.adapters.delegates.EmotionDelegate
 import com.example.mydiary.presentation.adapters.delegates.LabelDelegate
 import com.example.mydiary.presentation.adapters.delegates.LogbookCircleButtonDelegate
 import com.example.mydiary.presentation.adapters.delegates.LogbookTopBarDelegate
-import com.example.mydiary.presentation.models.CircleButtonModel
+import com.example.mydiary.presentation.models.CircleButton
 import com.example.mydiary.presentation.models.EmotionCardModel
 import com.example.mydiary.presentation.models.LabelModel
 import com.example.mydiary.presentation.models.LogbookTopBarModel
+import com.example.mydiary.presentation.view_models.LogbookViewModel
+import javax.inject.Inject
 
 class LogbookFragment : Fragment(R.layout.logbook_fragment) {
     private lateinit var binding: LogbookFragmentBinding
     private lateinit var navController: NavController
+
+    @Inject
+    lateinit var viewModel: LogbookViewModel
 
     private var adapters = AdapterWithDelegates(
         listOf(
@@ -32,7 +38,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
             LabelDelegate(),
             LogbookCircleButtonDelegate(::onAddClick),
             EmotionDelegate(::onEmotionCardClick),
-            )
+        )
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,7 +78,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                 LabelModel(
                     requireContext().getString(R.string.what_are_you_listening_now)
                 ),
-                CircleButtonModel(
+                CircleButton(
                     listOf(
                         Pair(
                             Pair(
@@ -107,6 +113,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                     ), true
                 ),
                 EmotionCardModel(
+                    id = "1",
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.tools_card_background_blue
                     ) ?: throw IllegalArgumentException("Not found Drawable"),
@@ -119,6 +126,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                     ) ?: throw IllegalArgumentException("Not found Drawable")
                 ),
                 EmotionCardModel(
+                    id = "1",
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.tools_card_background_green
                     ) ?: throw IllegalArgumentException("Not found Drawable"),
@@ -131,6 +139,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                     ) ?: throw IllegalArgumentException("Not found Drawable")
                 ),
                 EmotionCardModel(
+                    id = "1",
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.tools_card_background_yellow
                     ) ?: throw IllegalArgumentException("Not found Drawable"),
@@ -143,6 +152,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                     ) ?: throw IllegalArgumentException("Not found Drawable")
                 ),
                 EmotionCardModel(
+                    id = "1",
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.tools_card_background_red
                     ) ?: throw IllegalArgumentException("Not found Drawable"),
@@ -157,6 +167,14 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
             )
         )
 
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireContext().applicationContext as MainActivity)
+            .mainActivityComponent
+            .logBookComponent()
+            .inject(this)
     }
 
     private fun onAddClick() {
