@@ -6,7 +6,7 @@ import com.example.mydiary.ProfileItem
 import com.example.mydiary.R
 import com.example.mydiary.RemindItem
 import com.example.mydiary.SettingsParamItem
-import com.example.mydiary.presentation.fragments.setting_feature.SettingsFragment
+import com.example.mydiary.presentation.features.settings.SettingsFragment
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 

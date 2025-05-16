@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.fragments
+package com.example.mydiary.presentation.features
 
 import android.app.AlertDialog
 import android.app.Dialog

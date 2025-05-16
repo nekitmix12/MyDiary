@@ -8,6 +8,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.protobuf")
+    id("androidx.navigation.safeargs.kotlin")
 }
 val envProps = Properties().apply {
     load(File(rootDir, ".env").inputStream())

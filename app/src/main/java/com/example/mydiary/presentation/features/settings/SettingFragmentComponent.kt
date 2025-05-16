@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.fragments.setting_feature
+package com.example.mydiary.presentation.features.settings
 
 import dagger.Subcomponent
 
@@ -9,6 +9,6 @@ interface SettingFragmentComponent {
 
     @Subcomponent.Factory
     interface Factory {
-        fun create()
+        fun create(): SettingFragmentComponent
     }
 }

@@ -6,26 +6,32 @@
 
     <fragment
         android:id="@+id/logbookFragment"
-        android:name="com.example.mydiary.presentation.fragments.LogbookFragment"
+        android:name="com.example.mydiary.presentation.features.logbook.LogbookFragment"
         android:label="LogbookFragment" >
         <action
             android:id="@+id/action_logbookFragment_to_addEmotionFragment"
             app:destination="@id/addEmotionFragment" />
         <action
             android:id="@+id/action_logbookFragment_to_nodesFragment"
-            app:destination="@id/nodesFragment" />
+            app:destination="@id/nodesFragment">
+            <argument
+                android:name="nodeId"
+                app:argType="string"/>
+        </action>
+
+
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.mydiary.presentation.fragments.setting_feature.SettingsFragment"
+        android:name="com.example.mydiary.presentation.features.settings.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.example.mydiary.presentation.fragments.StatisticsFragment"
+        android:name="com.example.mydiary.presentation.features.StatisticsFragment"
         android:label="StatisticsFragment" />
     <fragment
         android:id="@+id/nodesFragment"
-        android:name="com.example.mydiary.presentation.fragments.NotesFragment"
+        android:name="com.example.mydiary.presentation.features.NotesFragment"
         android:label="NodesFragment" >
         <action
             android:id="@+id/action_nodesFragment_to_logbookFragment"
@@ -33,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/addEmotionFragment"
-        android:name="com.example.mydiary.presentation.fragments.AddEmotionFragment"
+        android:name="com.example.mydiary.presentation.features.AddEmotionFragment"
         android:label="AddEmotionFragment" >
         <action
             android:id="@+id/action_addEmotionFragment_to_nodesFragment"

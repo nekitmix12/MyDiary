@@ -6,7 +6,7 @@ import androidx.navigation.Navigation
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
-import com.example.mydiary.presentation.fragments.setting_feature.SettingsFragment
+import com.example.mydiary.presentation.features.settings.SettingsFragment
 import com.example.mydiary.screens.BottomSheetScreen
 import com.example.mydiary.screens.SettingsScreen
 import org.junit.Test

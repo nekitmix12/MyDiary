@@ -1,6 +1,6 @@
-package com.example.mydiary.presentation.entrance_activity.di
+package com.example.mydiary.presentation.features.entrance.di
 
-import com.example.mydiary.presentation.entrance_activity.EntranceActivity
+import com.example.mydiary.presentation.features.entrance.EntranceActivity
 import dagger.Subcomponent
 
 @Subcomponent(modules = [GoogleApiModule::class])

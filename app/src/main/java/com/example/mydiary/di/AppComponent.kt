@@ -2,7 +2,7 @@ package com.example.mydiary.di
 
 import android.content.Context
 import com.example.mydiary.presentation.di.subcomponents.MainActivityComponent
-import com.example.mydiary.presentation.entrance_activity.di.EntranceActivityComponent
+import com.example.mydiary.presentation.features.entrance.di.EntranceActivityComponent
 import dagger.BindsInstance
 import dagger.Component
 

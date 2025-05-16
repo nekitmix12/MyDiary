@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.entrance_activity
+package com.example.mydiary.presentation.features.entrance
 
 
 import android.annotation.SuppressLint
@@ -11,11 +11,8 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
-import androidx.core.content.ContextCompat
 import androidx.credentials.CredentialManager
-import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
-import androidx.credentials.GetCredentialResponse
 import com.example.mydiary.R
 import com.example.mydiary.databinding.EntranceBinding
 import com.example.mydiary.di.App

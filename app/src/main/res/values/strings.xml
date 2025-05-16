@@ -35,4 +35,7 @@
     <string name="there_is_not_wifi">Нет интернет соединения</string>
     <string name="something_bad">Что-то пошло не так</string>
     <string name="hello">Здаравствуйте!</string>
+    <string name="streak">серия</string>
+    <string name="in_day">в день</string>
 </resources>
+

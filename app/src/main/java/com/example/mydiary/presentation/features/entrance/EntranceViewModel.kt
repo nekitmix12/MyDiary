@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.entrance_activity
+package com.example.mydiary.presentation.features.entrance
 
 import android.annotation.SuppressLint
 import android.content.Context

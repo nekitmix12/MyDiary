@@ -7,7 +7,7 @@ import dagger.Subcomponent
 @MainActivityScope
 @Subcomponent
 interface MainActivityComponent {
-    fun logBookComponent(): LogbookComponent
+    fun logBookComponent(): LogbookComponent.Factory
 
     @Subcomponent.Factory
     interface Factory {

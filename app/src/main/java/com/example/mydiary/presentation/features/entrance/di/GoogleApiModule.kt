@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.entrance_activity.di
+package com.example.mydiary.presentation.features.entrance.di
 
 import android.content.Context
 import androidx.credentials.CredentialManager

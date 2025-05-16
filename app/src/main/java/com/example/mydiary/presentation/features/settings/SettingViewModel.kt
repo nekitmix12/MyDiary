@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.fragments.setting_feature
+package com.example.mydiary.presentation.features.settings
 
 import androidx.lifecycle.ViewModel
 import com.example.mydiary.domain.usecase.GetSettingsUseCase

@@ -4,7 +4,7 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.mydiary.presentation.fragments.LogbookFragment
+import com.example.mydiary.presentation.features.logbook.LogbookFragment
 import com.example.mydiary.screens.LogbookScreen
 import org.junit.Test
 import org.junit.runner.RunWith

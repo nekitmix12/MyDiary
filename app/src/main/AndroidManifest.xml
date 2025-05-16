@@ -22,7 +22,7 @@
             android:name=".presentation.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.entrance_activity.EntranceActivity"
+            android:name=".presentation.features.entrance.EntranceActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"

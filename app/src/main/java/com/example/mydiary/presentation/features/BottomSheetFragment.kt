@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.fragments
+package com.example.mydiary.presentation.features
 
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
@@ -6,11 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import com.example.mydiary.R
 import com.example.mydiary.databinding.SettingBottomSheetBinding
-import com.google.android.material.R.id.design_bottom_sheet
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.Calendar
 

@@ -5,7 +5,7 @@ import com.example.mydiary.EmotionItem
 import com.example.mydiary.LabelItem
 import com.example.mydiary.R
 import com.example.mydiary.TopBarItem
-import com.example.mydiary.presentation.fragments.LogbookFragment
+import com.example.mydiary.presentation.features.logbook.LogbookFragment
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 

@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.fragments.setting_feature
+package com.example.mydiary.presentation.features.settings
 
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +15,7 @@ import com.example.mydiary.presentation.adapters.delegates.LabelDelegate
 import com.example.mydiary.presentation.adapters.delegates.ProfileDelegate
 import com.example.mydiary.presentation.adapters.delegates.RemindDelegate
 import com.example.mydiary.presentation.adapters.delegates.SettingParamDelegate
-import com.example.mydiary.presentation.fragments.BottomSheetFragment
+import com.example.mydiary.presentation.features.BottomSheetFragment
 import com.example.mydiary.presentation.models.ButtonModel
 import com.example.mydiary.presentation.models.LabelModel
 import com.example.mydiary.presentation.models.ProfileModel
