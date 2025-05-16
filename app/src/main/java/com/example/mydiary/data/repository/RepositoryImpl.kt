@@ -58,13 +58,15 @@ class RepositoryImpl @Inject constructor(
     override suspend fun deleteRemind(remindModel: RemindModel) =
         emotionDataSource.deleteRemind(remindModel.toRemindEntity())
 
+
+
     override suspend fun editRemind(remindModel: RemindModel) =
         emotionDataSource.editRemind(remindModel.toRemindEntity())
 
     override suspend fun addAnswer(answerModel: AnswerModel) =
         emotionDataSource.addAnswer(answerModel.toAnswerEntity())
 
-    override suspend fun getSettings(): Flow<SettingsModel> =
+    override fun getSettings(): Flow<SettingsModel> =
         settingsDataSource.getSettings().map { it.toSettingsModel() }
 
     override suspend fun deleteImagePath() =

@@ -1,10 +1,5 @@
 package com.example.mydiary.domain.repository
 
-import com.example.mydiary.data.dbo.AnswerWithActiveDbo
-import com.example.mydiary.data.entity.AnswerEmotionCrossRef
-import com.example.mydiary.data.entity.AnswerEntity
-import com.example.mydiary.data.entity.EmotionEntity
-import com.example.mydiary.data.entity.RemindEntity
 import com.example.mydiary.domain.model.AnswerEmotionCrossRefModel
 import com.example.mydiary.domain.model.AnswerModel
 import com.example.mydiary.domain.model.AnswerWithStateModel
@@ -37,7 +32,7 @@ interface Repository {
 
     suspend fun addAnswer(answerModel: AnswerModel)
 
-    suspend fun getSettings(): Flow<SettingsModel>
+    fun getSettings(): Flow<SettingsModel>
 
     suspend fun deleteImagePath()
 

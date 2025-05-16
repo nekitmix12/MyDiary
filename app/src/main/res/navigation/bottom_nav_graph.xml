@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.mydiary.presentation.fragments.SettingsFragment"
+        android:name="com.example.mydiary.presentation.fragments.setting_feature.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/statisticsFragment"

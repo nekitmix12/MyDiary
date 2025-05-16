@@ -17,7 +17,7 @@ class DataStoreManager @Inject constructor(private val context: Context) : Setti
     )
 
 
-    override suspend fun getSettings(): Flow<Settings> {
+    override fun getSettings(): Flow<Settings> {
         return context.settingStore.data
     }
 

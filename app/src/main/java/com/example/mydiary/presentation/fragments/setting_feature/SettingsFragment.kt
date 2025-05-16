@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.fragments
+package com.example.mydiary.presentation.fragments.setting_feature
 
 import android.os.Bundle
 import android.util.Log
@@ -15,17 +15,21 @@ import com.example.mydiary.presentation.adapters.delegates.LabelDelegate
 import com.example.mydiary.presentation.adapters.delegates.ProfileDelegate
 import com.example.mydiary.presentation.adapters.delegates.RemindDelegate
 import com.example.mydiary.presentation.adapters.delegates.SettingParamDelegate
+import com.example.mydiary.presentation.fragments.BottomSheetFragment
 import com.example.mydiary.presentation.models.ButtonModel
 import com.example.mydiary.presentation.models.LabelModel
 import com.example.mydiary.presentation.models.ProfileModel
 import com.example.mydiary.presentation.models.RemindModel
 import com.example.mydiary.presentation.models.SettingParamModel
-import com.example.mydiary.presentation.view_models.SettingsViewModel
 import java.util.UUID
+import javax.inject.Inject
 
 class SettingsFragment : Fragment(R.layout.settings_fragment) {
     private var binding: SettingsFragmentBinding? = null
-    private lateinit var viewModel: SettingsViewModel
+
+    @Inject
+    lateinit var viewModel: SettingViewModel
+
     private lateinit var bottomSheetFragment: BottomSheetFragment
 
     private var adapters = AdapterWithDelegates(

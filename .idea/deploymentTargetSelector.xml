@@ -19,12 +19,6 @@
       <SelectionState runConfigName="goBack()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AddEmotionFragmentTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="NotesTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="SettingsFragmentTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>

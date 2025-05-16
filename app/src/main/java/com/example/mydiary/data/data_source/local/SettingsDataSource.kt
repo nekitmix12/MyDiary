@@ -6,7 +6,7 @@ import com.example.mydiary.data.local_model.SettingLocalModel
 import kotlinx.coroutines.flow.Flow
 
 interface SettingsDataSource {
-    suspend fun getSettings(): Flow<Settings>
+   fun getSettings(): Flow<Settings>
 
     suspend fun deleteImagePath()
 

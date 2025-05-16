@@ -110,6 +110,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    testImplementation (libs.kotlin.logging.jvm)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.fragment.testing.manifest)
     debugImplementation(libs.androidx.ui.test.manifest)

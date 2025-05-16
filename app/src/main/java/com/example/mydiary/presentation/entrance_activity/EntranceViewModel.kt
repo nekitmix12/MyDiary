@@ -1,10 +1,17 @@
 package com.example.mydiary.presentation.entrance_activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.provider.Settings
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
@@ -12,9 +19,12 @@ import androidx.credentials.GetCredentialResponse
 import androidx.credentials.PublicKeyCredential
 import androidx.credentials.exceptions.GetCredentialException
 import androidx.credentials.exceptions.NoCredentialException
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mydiary.R
+import com.example.mydiary.domain.model.Result
+import com.example.mydiary.domain.usecase.GetSettingsUseCase
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -24,13 +34,107 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class EntranceViewModel @Inject constructor() : ViewModel() {
+class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetSettingsUseCase) :
+    ViewModel() {
     @StringRes
     private var _errorRef = MutableSharedFlow<Int>()
     val errorRef = _errorRef as SharedFlow<Int>
 
-    private var _entranceResult = MutableStateFlow<String?>(null)
-    val entranceResult: StateFlow<String?> = _entranceResult
+    @StringRes
+    private var _entranceResult = MutableStateFlow<Int?>(null)
+    val entranceResult: StateFlow<Int?> = _entranceResult
+
+    private var isNeedBlock = true
+
+    fun getSettings() {
+        viewModelScope.launch {
+            getSettingsUseCase.execute(GetSettingsUseCase.Request())
+                .collect {
+                    when (it) {
+                        is Result.Success -> {
+                            isNeedBlock = it.data.emotions.isUseFingerprint
+                            if (!isNeedBlock)
+                                _entranceResult.value = R.string.hello
+                        }
+
+                        is Result.Error -> {}
+                        is Result.Loading -> {}
+                    }
+                }
+        }
+    }
+
+    @SuppressLint("ObsoleteSdkInt")
+    fun checkForInternet(context: Context): Boolean {
+
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            val network = connectivityManager.activeNetwork ?: return false
+
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+
+                else -> false
+            }
+        } else {
+            @Suppress("DEPRECATION") val networkInfo =
+                connectivityManager.activeNetworkInfo ?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
+
+    }
+
+    fun a(context: Context) {
+        val executor = ContextCompat.getMainExecutor(context)
+        val biometricPrompt = BiometricPrompt(context as FragmentActivity, executor,
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationError(
+                    errorCode: Int,
+                    errString: CharSequence
+                ) {
+                    super.onAuthenticationError(errorCode, errString)
+                    Toast.makeText(
+                        context,
+                        "Authentication error: $errString", Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
+
+                override fun onAuthenticationSucceeded(
+                    result: BiometricPrompt.AuthenticationResult
+                ) {
+                    super.onAuthenticationSucceeded(result)
+                    Toast.makeText(
+                        context,
+                        "Authentication succeeded!", Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
+
+                override fun onAuthenticationFailed() {
+                    super.onAuthenticationFailed()
+                    Toast.makeText(
+                        context, "Authentication failed",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
+            })
+
+        val promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Biometric login for my app")
+            .setSubtitle("Log in using your biometric credential")
+            .setNegativeButtonText("Use account password")
+            .build()
+    }
 
     fun getLoginUser(
         context: Context,
