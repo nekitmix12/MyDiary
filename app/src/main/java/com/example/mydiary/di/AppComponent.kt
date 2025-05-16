@@ -2,6 +2,7 @@ package com.example.mydiary.di
 
 import android.content.Context
 import com.example.mydiary.presentation.di.subcomponents.MainActivityComponent
+import com.example.mydiary.presentation.entrance_activity.di.EntranceActivityComponent
 import dagger.BindsInstance
 import dagger.Component
 
@@ -13,6 +14,8 @@ import dagger.Component
 interface AppComponent {
 
     fun mainActivityComponent(): MainActivityComponent.Factory
+
+    fun entranceActivityComponent(): EntranceActivityComponent.Factory
 
     @Component.Factory
     interface Factory {

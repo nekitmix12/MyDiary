@@ -24,7 +24,7 @@ import com.example.mydiary.presentation.view_models.SettingsViewModel
 import java.util.UUID
 
 class SettingsFragment : Fragment(R.layout.settings_fragment) {
-    private lateinit var binding: SettingsFragmentBinding
+    private var binding: SettingsFragmentBinding? = null
     private lateinit var viewModel: SettingsViewModel
     private lateinit var bottomSheetFragment: BottomSheetFragment
 
@@ -38,40 +38,45 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         )
     )
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = SettingsFragmentBinding.bind(view)
         bottomSheetFragment = BottomSheetFragment()
-
-        with(binding.settingsRecycler) {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = adapters
-            addItemDecoration(
-                PaddingItemDecoration(
-                    24, 0, 24, 24, R.layout.logbook_label
+        if (binding != null)
+            with(binding!!.settingsRecycler) {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = adapters
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        24, 0, 24, 24, R.layout.logbook_label
+                    )
                 )
-            )
-            addItemDecoration(
-                PaddingItemDecoration(
-                    32, 32, 24, 24, R.layout.settings_profile
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        32, 32, 24, 24, R.layout.settings_profile
+                    )
                 )
-            )
-            addItemDecoration(
-                PaddingItemDecoration(
-                    0, 0, 24, 24, R.layout.settings_param
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        0, 0, 24, 24, R.layout.settings_param
+                    )
                 )
-            )
-            addItemDecoration(
-                PaddingItemDecoration(
-                    16, 16, 24, 24, R.layout.settings_remind
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        16, 16, 24, 24, R.layout.settings_remind
+                    )
                 )
-            )
-            addItemDecoration(
-                PaddingItemDecoration(
-                    0, 24, 24, 24, R.layout.settings_button
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        0, 24, 24, 24, R.layout.settings_button
+                    )
                 )
-            )
-        }
+            }
 
         adapters.submitList(
             listOf(
@@ -119,7 +124,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     }
 
     private fun onAddClick() {
-        Log.d("childFragmentManager","add")
+        Log.d("childFragmentManager", "add")
         bottomSheetFragment.show(childFragmentManager, "tag")
     }
 

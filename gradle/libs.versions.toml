@@ -1,8 +1,11 @@
 [versions]
 agp = "8.7.3"
+biometric = "1.4.0-alpha03"
 credentials = "1.6.0-alpha01"
 credentialsPlayServicesAuth = "1.5.0"
 datastorePreferences = "1.1.5"
+firebaseBomVersion = "33.13.0"
+firebaseAnalitics = "20.1.2"
 flexbox = "3.0.0"
 fragmentTestingManifest = "1.8.6"
 googleid = "1.5.0"
@@ -35,7 +38,7 @@ roomKtx = "2.7.1"
 googleidVersion = "1.1.1"
 
 [libraries]
-androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentialsPlayServicesAuth" }
+androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
 androidx-credentials-play-services-auth = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentialsPlayServicesAuth" }
 androidx-credentials-v160alpha01 = { module = "androidx.credentials:credentials", version.ref = "credentials" }
 androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastorePreferences" }
@@ -50,7 +53,6 @@ dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
-googleid = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "googleid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
