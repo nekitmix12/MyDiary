@@ -15,7 +15,7 @@ class GetSettingsUseCase @Inject constructor(
 ) :
     UseCase<GetSettingsUseCase.Request, GetSettingsUseCase.Response>(configuration) {
 
-    data class Response(val emotions: SettingsModel) : UseCase.Response
+    data class Response(val setting: SettingsModel) : UseCase.Response
     class Request : UseCase.Request
 
     override fun process(request: Request): Flow<Response> =

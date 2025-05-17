@@ -8,7 +8,6 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.provider.Settings
 import android.util.Log
-import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
@@ -21,12 +20,15 @@ import androidx.credentials.exceptions.GetCredentialException
 import androidx.credentials.exceptions.NoCredentialException
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.example.mydiary.R
 import com.example.mydiary.domain.model.Result
+import com.example.mydiary.domain.model.SettingsModel
 import com.example.mydiary.domain.usecase.GetSettingsUseCase
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -44,23 +46,37 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
     private var _entranceResult = MutableStateFlow<Int?>(null)
     val entranceResult: StateFlow<Int?> = _entranceResult
 
-    private var isNeedBlock = true
+    private var settings = MutableStateFlow<SettingsModel?>(null)
 
-    fun getSettings() {
+    private var _checkWithFingerprint = MutableStateFlow<Boolean?>(null)
+    val checkWithFingerprint: StateFlow<Boolean?> = _checkWithFingerprint
+
+    private var _canGo = MutableStateFlow<Boolean?>(null)
+    val canGo: StateFlow<Boolean?> = _canGo
+
+    private var _biometricsError = MutableSharedFlow<Int>()
+    val biometricsError: SharedFlow<Int> = _biometricsError
+
+    fun start() {
         viewModelScope.launch {
-            getSettingsUseCase.execute(GetSettingsUseCase.Request())
-                .collect {
-                    when (it) {
-                        is Result.Success -> {
-                            isNeedBlock = it.data.emotions.isUseFingerprint
-                            if (!isNeedBlock)
-                                _entranceResult.value = R.string.hello
-                        }
+            launch {
+                getSettings()
+            }
+            launch {
+                checkSettings()
+            }
+            launch {
 
-                        is Result.Error -> {}
-                        is Result.Loading -> {}
-                    }
-                }
+            }
+        }
+    }
+
+    private suspend fun checkSettings() {
+        settings.collect {
+            if (it != null && it.name.isNotBlank()) {
+                _checkWithFingerprint.emit(it.isUseFingerprint)
+            }
+            Log.d(TAG, "it: $it")
         }
     }
 
@@ -92,7 +108,8 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
 
     }
 
-    fun a(context: Context) {
+    fun getBiometric(context: Context) {
+        Log.d(TAG,"getBiometric")
         val executor = ContextCompat.getMainExecutor(context)
         val biometricPrompt = BiometricPrompt(context as FragmentActivity, executor,
             object : BiometricPrompt.AuthenticationCallback() {
@@ -101,39 +118,35 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
                     errString: CharSequence
                 ) {
                     super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(
-                        context,
-                        "Authentication error: $errString", Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    context.lifecycleScope.launch {
+                        delay(100)
+                        _biometricsError.emit(errorCode)
+                    }
+
                 }
 
                 override fun onAuthenticationSucceeded(
                     result: BiometricPrompt.AuthenticationResult
                 ) {
                     super.onAuthenticationSucceeded(result)
-                    Toast.makeText(
-                        context,
-                        "Authentication succeeded!", Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    context.lifecycleScope.launch {
+                        _canGo.emit(true)
+                    }
                 }
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
-                    Toast.makeText(
-                        context, "Authentication failed",
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    context.lifecycleScope.launch {
+                        _biometricsError.emit(-1)
+                    }
                 }
             })
 
         val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Biometric login for my app")
-            .setSubtitle("Log in using your biometric credential")
-            .setNegativeButtonText("Use account password")
+            .setTitle(context.getString(R.string.biometric_login))
+            .setNegativeButtonText(context.getString(R.string.go_to_settings))
             .build()
+        biometricPrompt.authenticate(promptInfo)
     }
 
     fun getLoginUser(
@@ -216,6 +229,21 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
         }
         return null
     }
+
+    private suspend fun getSettings() {
+        getSettingsUseCase.execute(GetSettingsUseCase.Request())
+            .collect {
+                when (it) {
+                    is Result.Success -> {
+                        settings.emit(it.data.setting)
+                    }
+
+                    is Result.Error -> {}
+                    is Result.Loading -> {}
+                }
+            }
+    }
+
 
     companion object {
         const val TAG = "EntranceViewModel"
