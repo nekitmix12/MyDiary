@@ -37,5 +37,11 @@
     <string name="hello">Здаравствуйте!</string>
     <string name="streak">серия</string>
     <string name="in_day">в день</string>
+    <string name="hepl_wifi">Попобуйте: \n· подключиться к другой сети - \n мобильной или WI-FI,\n· отключить VPN или выбрать в нем Россию.\nКод ошибки: 20-02</string>
+    <string name="truble_with_wifi">Неполадки с интернетом</string>
+    <string name="understand">Понятно</string>
+    <string name="biometric_login">Вход по биометрии</string>
+    <string name="go_to_settings">Перейти в настройки</string>
+
 </resources>
 

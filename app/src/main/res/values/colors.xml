@@ -19,6 +19,7 @@
     <color name="card_background_blue">#3300AAFF</color>
     <color name="card_background_blue_transparent">#0000AAFF</color>
     <color name="grey">#333333</color>
+    <color name="no_wifi_transparent_grey">#19333333</color>
     <color name="logbook_top_color">#2C2C2E</color>
     <color name="logbook_loading_grey">#666666</color>
     <color name="logbook_loading_dark">#1A1A1A</color>

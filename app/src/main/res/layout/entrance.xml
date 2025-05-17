@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:backgroundTintMode="add"
+        android:clickable="false"
         android:drawableStart="@drawable/entrance_logo_google"
         android:text="@string/login_with_google"
         app:layout_constraintBottom_toBottomOf="parent"
