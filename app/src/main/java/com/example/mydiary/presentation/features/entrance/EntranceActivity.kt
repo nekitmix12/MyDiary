@@ -3,6 +3,7 @@ package com.example.mydiary.presentation.features.entrance
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,6 +17,7 @@ import androidx.credentials.GetCredentialRequest
 import com.example.mydiary.R
 import com.example.mydiary.databinding.EntranceBinding
 import com.example.mydiary.di.App
+import com.example.mydiary.presentation.MainActivity
 import com.example.mydiary.presentation.di.SignInIpCredentialRequest
 import com.example.mydiary.presentation.di.SignUpIpCredentialRequest
 import java.util.concurrent.Executor
@@ -24,7 +26,7 @@ import javax.inject.Inject
 class EntranceActivity : AppCompatActivity() {
     private lateinit var binding: EntranceBinding
 
-    private val addAccountLauncher = registerForActivityResult(
+   /* private val addAccountLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -34,7 +36,7 @@ class EntranceActivity : AppCompatActivity() {
 
         }
     }
-
+*/
     @SignInIpCredentialRequest
     @Inject
     lateinit var credentialRequest: GetCredentialRequest
@@ -50,7 +52,7 @@ class EntranceActivity : AppCompatActivity() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
-    @SuppressLint("NewApi")
+    @SuppressLint("NewApi", "SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = EntranceBinding.inflate(layoutInflater)
@@ -60,11 +62,15 @@ class EntranceActivity : AppCompatActivity() {
 
 
 
-
+/*
         val credentialManager = CredentialManager.create(this@EntranceActivity)
-        val isConnect = entranceViewModel.checkForInternet(this)
+        val isConnect = entranceViewModel.checkForInternet(this)*/
         binding.button.setOnClickListener {
-            if (isConnect)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+
+            /* if (isConnect)
                 entranceViewModel.getLoginUser(
                     this@EntranceActivity,
                     credentialRequest,
@@ -74,11 +80,9 @@ class EntranceActivity : AppCompatActivity() {
             else {
                 Toast.makeText(this, this.getString(R.string.there_is_not_wifi), Toast.LENGTH_SHORT)
                     .show()
-                biometricPrompt.authenticate(promptInfo)
+                biometricPrompt.authenticate(promptInfo)*/
 
-            }/*val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()*/
+           // }
         }
     }
 

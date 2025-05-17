@@ -1,6 +1,7 @@
 package com.example.mydiary.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -24,7 +25,6 @@ class MainActivity : AppCompatActivity() {
             .appComponent
             .mainActivityComponent()
             .create()
-
 
         binding = MainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)

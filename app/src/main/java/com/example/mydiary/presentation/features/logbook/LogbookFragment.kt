@@ -45,7 +45,8 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
         super.onViewCreated(view, savedInstanceState)
         binding = LogbookFragmentBinding.bind(view)
         navController = findNavController()
-
+        Log.d(TAG, "onViewCreated")
+        viewModel.loadScreen(requireContext())
         with(binding.logbookRecycleView) {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapters
@@ -73,21 +74,24 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
         lifecycleScope.launch {
             viewModel.screenModel.collect {
                 when (it) {
-                    is Result.Loading -> {}
+                    is Result.Loading -> {
+                        Log.d(TAG, "Loading")
+                    }
 
                     is Result.Success -> {
+                        Log.d(TAG, it.data.toString())
                         val tempList = mutableListOf<Item>()
                         tempList.add(
                             LogbookTopBarModel(
-                                logs = "${it.data.logsCount}" + resources.getQuantityString(
+                                logs = "${it.data.logsCount} " + resources.getQuantityString(
                                     R.plurals.record,
                                     it.data.logsCount
                                 ),
-                                logsInTime = getString(R.string.in_day) to resources.getQuantityString(
+                                logsInTime = getString(R.string.in_day) + ": " to "${it.data.logInDay} " + resources.getQuantityString(
                                     R.plurals.record,
                                     it.data.logInDay
                                 ),
-                                streak = getString(R.string.streak) + ":" to "${it.data.logsStreak}  ${
+                                streak = getString(R.string.streak) + ": " to "${it.data.logsStreak}  ${
                                     resources.getQuantityString(
                                         R.plurals.days,
                                         it.data.logsStreak
@@ -107,7 +111,10 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                         adapters.submitList(tempList)
                     }
 
-                    is Result.Error -> {}
+                    is Result.Error -> {
+                        Log.d(TAG, it.exception)
+
+                    }
                 }
 
             }
@@ -118,7 +125,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (requireContext().applicationContext as MainActivity)
+        (requireActivity() as MainActivity)
             .mainActivityComponent
             .logBookComponent()
             .create()
@@ -136,6 +143,9 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
         navController.navigate(action)
     }
 
+    companion object {
+        const val TAG = "LogbookFragment"
+    }
 }
 
 /*

@@ -1,6 +1,7 @@
 package com.example.mydiary.presentation.features.logbook
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mydiary.domain.model.EmotionModel
@@ -53,6 +54,7 @@ class LogbookViewModel @Inject constructor(
         combine(emotions, logsCountAndLogsStreak, circleParam) { value1, value2, value3 ->
             Triple(value1, value2, value3)
         }.collect {
+            Log.d(TAG, "${it.first} <- first; ${it.second} <- second; ${it.third} <- third")
             if (it.first != null && it.second != null && it.third != null) _screenModel.value =
                 Result.Success(
                     LogbookScreenModel(
@@ -75,10 +77,13 @@ class LogbookViewModel @Inject constructor(
                 when (it) {
                     is Result.Success -> {
                         circleParam.value = it.data.data
+                        Log.d(TAG, it.data.data.toString())
                     }
 
                     is Result.Error -> {
                         _screenModel.value = Result.Error(it.exception)
+                        Log.d(TAG, it.exception)
+
                     }
 
                     is Result.Loading -> {}
@@ -92,10 +97,13 @@ class LogbookViewModel @Inject constructor(
             when (it) {
                 is Result.Success -> {
                     emotions.value = it.data.emotions
+                    Log.d(TAG, it.data.emotions.toString())
+
                 }
 
                 is Result.Error -> {
                     _screenModel.value = Result.Error(it.exception)
+                    Log.d(TAG, it.exception)
                 }
 
                 is Result.Loading -> {}
@@ -114,15 +122,21 @@ class LogbookViewModel @Inject constructor(
                     is Result.Success -> {
                         logsCountAndLogsStreak.value =
                             it.data.logbookStatisticModel.logsCount to it.data.logbookStatisticModel.logsStreak
+                        Log.d(TAG, it.data.logbookStatisticModel.toString())
                     }
 
                     is Result.Error -> {
                         _screenModel.value = Result.Error(it.exception)
+                        Log.d(TAG, it.exception)
                     }
 
                     is Result.Loading -> {}
                 }
             }
         }
+    }
+
+    companion object {
+        const val TAG = "LogbookViewModel"
     }
 }
