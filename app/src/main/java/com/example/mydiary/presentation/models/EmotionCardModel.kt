@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.LinearGradient
 import com.example.mydiary.presentation.adapters.Item
 
 data class EmotionCardModel(
+    val id:String,
     val background: Drawable,
     val date: String,
     val time:String,

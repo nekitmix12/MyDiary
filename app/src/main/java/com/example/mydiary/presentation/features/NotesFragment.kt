@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.fragments
+package com.example.mydiary.presentation.features
 
 import android.os.Bundle
 import android.util.Log
@@ -16,16 +16,19 @@ import com.example.mydiary.presentation.adapters.decorators.PaddingItemDecoratio
 import com.example.mydiary.presentation.adapters.delegates.EmotionDelegate
 import com.example.mydiary.presentation.adapters.delegates.ExitDelegate
 import com.example.mydiary.presentation.adapters.delegates.QuestionBlockDelegate
+import com.example.mydiary.presentation.features.settings.SettingViewModel
 import com.example.mydiary.presentation.models.AnswerModel
 import com.example.mydiary.presentation.models.EmotionCardModel
 import com.example.mydiary.presentation.models.ExitModel
 import com.example.mydiary.presentation.models.QuestionBlockModel
-import com.example.mydiary.presentation.view_models.SettingsViewModel
 import java.util.UUID
+import javax.inject.Inject
 
 class NotesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragment.OnInputListener {
     private lateinit var binding: NotesFragmentBinding
-    private lateinit var viewModel: SettingsViewModel
+
+    /*@Inject*/
+    lateinit var viewModel: SettingViewModel
     private lateinit var navController: NavController
 
     private var adapters = AdapterWithDelegates(
@@ -60,6 +63,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragmen
             listOf(
                 ExitModel,
                 EmotionCardModel(
+                    "",
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.tools_card_background_blue
                     ) ?: throw IllegalArgumentException("Not found Drawable"),

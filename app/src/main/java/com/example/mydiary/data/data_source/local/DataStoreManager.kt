@@ -7,8 +7,9 @@ import com.example.mydiary.Settings
 import com.example.mydiary.data.local_model.SettingLocalModel
 import com.example.mydiary.data.serializer.SettingsSerializer
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class DataStoreManager(private val context: Context) : SettingsDataSource {
+class DataStoreManager @Inject constructor(private val context: Context) : SettingsDataSource {
 
 
     private val Context.settingStore: DataStore<Settings> by dataStore(
@@ -16,7 +17,7 @@ class DataStoreManager(private val context: Context) : SettingsDataSource {
     )
 
 
-    override suspend fun getSettings(): Flow<Settings> {
+    override fun getSettings(): Flow<Settings> {
         return context.settingStore.data
     }
 
@@ -27,7 +28,6 @@ class DataStoreManager(private val context: Context) : SettingsDataSource {
                 .setIsUseFingerprint(settings.isUseFingerprint).build()
         }
     }
-
 
 
     override suspend fun deleteImagePath() {

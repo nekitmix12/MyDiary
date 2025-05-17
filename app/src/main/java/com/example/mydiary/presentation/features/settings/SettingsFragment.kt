@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.fragments
+package com.example.mydiary.presentation.features.settings
 
 import android.os.Bundle
 import android.util.Log
@@ -15,17 +15,21 @@ import com.example.mydiary.presentation.adapters.delegates.LabelDelegate
 import com.example.mydiary.presentation.adapters.delegates.ProfileDelegate
 import com.example.mydiary.presentation.adapters.delegates.RemindDelegate
 import com.example.mydiary.presentation.adapters.delegates.SettingParamDelegate
+import com.example.mydiary.presentation.features.BottomSheetFragment
 import com.example.mydiary.presentation.models.ButtonModel
 import com.example.mydiary.presentation.models.LabelModel
 import com.example.mydiary.presentation.models.ProfileModel
 import com.example.mydiary.presentation.models.RemindModel
 import com.example.mydiary.presentation.models.SettingParamModel
-import com.example.mydiary.presentation.view_models.SettingsViewModel
 import java.util.UUID
+import javax.inject.Inject
 
 class SettingsFragment : Fragment(R.layout.settings_fragment) {
-    private lateinit var binding: SettingsFragmentBinding
-    private lateinit var viewModel: SettingsViewModel
+    private var binding: SettingsFragmentBinding? = null
+
+    @Inject
+    lateinit var viewModel: SettingViewModel
+
     private lateinit var bottomSheetFragment: BottomSheetFragment
 
     private var adapters = AdapterWithDelegates(
@@ -38,40 +42,45 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         )
     )
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = SettingsFragmentBinding.bind(view)
         bottomSheetFragment = BottomSheetFragment()
-
-        with(binding.settingsRecycler) {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = adapters
-            addItemDecoration(
-                PaddingItemDecoration(
-                    24, 0, 24, 24, R.layout.logbook_label
+        if (binding != null)
+            with(binding!!.settingsRecycler) {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = adapters
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        24, 0, 24, 24, R.layout.logbook_label
+                    )
                 )
-            )
-            addItemDecoration(
-                PaddingItemDecoration(
-                    32, 32, 24, 24, R.layout.settings_profile
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        32, 32, 24, 24, R.layout.settings_profile
+                    )
                 )
-            )
-            addItemDecoration(
-                PaddingItemDecoration(
-                    0, 0, 24, 24, R.layout.settings_param
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        0, 0, 24, 24, R.layout.settings_param
+                    )
                 )
-            )
-            addItemDecoration(
-                PaddingItemDecoration(
-                    16, 16, 24, 24, R.layout.settings_remind
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        16, 16, 24, 24, R.layout.settings_remind
+                    )
                 )
-            )
-            addItemDecoration(
-                PaddingItemDecoration(
-                    0, 24, 24, 24, R.layout.settings_button
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        0, 24, 24, 24, R.layout.settings_button
+                    )
                 )
-            )
-        }
+            }
 
         adapters.submitList(
             listOf(
@@ -87,7 +96,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
                     "Присылать напоминания",
                     true
                 ), RemindModel(
-                    UUID.randomUUID(), "20:00"
+                    UUID.randomUUID().toString(), "20:00"
                 ), ButtonModel(requireContext().getString(R.string.add_remind)), SettingParamModel(
                     AppCompatResources.getDrawable(
                         requireContext(), R.drawable.settings_fingerprint
@@ -119,7 +128,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     }
 
     private fun onAddClick() {
-        Log.d("childFragmentManager","add")
+        Log.d("childFragmentManager", "add")
         bottomSheetFragment.show(childFragmentManager, "tag")
     }
 

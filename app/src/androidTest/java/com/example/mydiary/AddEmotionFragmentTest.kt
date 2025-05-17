@@ -7,7 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
 import com.example.mydiary.screens.AddEmotionScreen
-import com.example.mydiary.presentation.fragments.AddEmotionFragment
+import com.example.mydiary.presentation.features.AddEmotionFragment
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock

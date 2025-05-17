@@ -1,3 +1,5 @@
+import java.util.Properties
+
 
 plugins {
     alias(libs.plugins.android.application)
@@ -6,6 +8,10 @@ plugins {
     id("com.google.devtools.ksp")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.protobuf")
+    id("androidx.navigation.safeargs.kotlin")
+}
+val envProps = Properties().apply {
+    load(File(rootDir, ".env").inputStream())
 }
 
 android {
@@ -13,12 +19,14 @@ android {
     compileSdk = 35
 
     defaultConfig {
+        val serverClientID = envProps["SERVER_CLIENT_ID"] as? String
+            ?: throw GradleException("SERVER_CLIENT_ID not found")
         applicationId = "com.example.mydiary"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
+        buildConfigField("String", "SERVER_CLIENT_ID", "\"$serverClientID\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -40,6 +48,7 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     viewBinding {
@@ -64,6 +73,12 @@ protobuf {
 
 
 dependencies {
+    implementation(libs.kaspresso)
+    implementation(libs.androidx.biometric)
+    implementation(libs.play.services.auth)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.google.googleid)
+    implementation(libs.androidx.credentials.v160alpha01)
     implementation(libs.protobuf.javalite)
     implementation(libs.androidx.datastore)
     implementation(libs.androidx.datastore.preferences)
@@ -96,6 +111,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    testImplementation (libs.kotlin.logging.jvm)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.fragment.testing.manifest)
     debugImplementation(libs.androidx.ui.test.manifest)

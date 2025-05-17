@@ -1,9 +1,12 @@
 package com.example.mydiary.domain.model
 
+import com.example.mydiary.presentation.models.Emotion
+import java.time.Instant
+
 data class EmotionModel(
     val id: String,
-    val type: String,
+    val emotion: Emotion,
     val name: String,
-    val createDataType: String,
+    val createDataTime: Instant,
     val imageRes: String,
 )

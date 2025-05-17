@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.fragments
+package com.example.mydiary.presentation.features
 
 import android.os.Bundle
 import android.util.Log

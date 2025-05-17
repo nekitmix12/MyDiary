@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rage">Ярость</string>
+    <string name="Voltage">Напряжение</string>
+    <string name="Envy">Зависть</string>
+    <string name="Anxiety">Беспокойство</string>
+
+    <string name="Excitement">Возбуждение</string>
+    <string name="Confidence">Уверенность</string>
+    <string name="Delight">Восторг</string>
+    <string name="Happiness">Счастье</string>
+
+    <string name="Burnout">Выгорание</string>
+    <string name="Fatigue">Усталость</string>
+    <string name="Depression">Депрессия</string>
+    <string name="Apathy">Апатия</string>
+
+    <string name="Calmness">Спокойствие</string>
+    <string name="Satisfaction">Удовлетворенность</string>
+    <string name="Gratitude">Благодарность</string>
+    <string name="Security">Защищенность</string>
+</resources>

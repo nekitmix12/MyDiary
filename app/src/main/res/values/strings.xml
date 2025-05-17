@@ -31,4 +31,11 @@
     <string name="ok">ок</string>
     <string name="cansel">Отмена</string>
     <string name="add_log">Добавить запись</string>
+    <string name="there_is_not_account">Нет аккаунтов, попробуйте зарегистрироваться</string>
+    <string name="there_is_not_wifi">Нет интернет соединения</string>
+    <string name="something_bad">Что-то пошло не так</string>
+    <string name="hello">Здаравствуйте!</string>
+    <string name="streak">серия</string>
+    <string name="in_day">в день</string>
 </resources>
+

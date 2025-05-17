@@ -4,7 +4,7 @@ import com.example.mydiary.EmotionItem
 import com.example.mydiary.ExitItem
 import com.example.mydiary.QuestionsBlockItem
 import com.example.mydiary.R
-import com.example.mydiary.presentation.fragments.NotesFragment
+import com.example.mydiary.presentation.features.NotesFragment
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KButton

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="days">
+        <item quantity="one"> день</item>
+        <item quantity="few"> дня</item>
+        <item quantity="many"> дней</item>
+        <item quantity="other"> дней</item>
+    </plurals>
+    <plurals name="record">
+        <item quantity="one"> запись</item>
+        <item quantity="few"> записи</item>
+        <item quantity="many"> записей</item>
+        <item quantity="other"> записей</item>
+    </plurals>
+</resources>

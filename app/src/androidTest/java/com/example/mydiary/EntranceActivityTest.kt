@@ -5,7 +5,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.mydiary.screens.EntranceScreen
 import com.example.mydiary.screens.MainActivityScreen
-import com.example.mydiary.presentation.EntranceActivity
+import com.example.mydiary.presentation.features.entrance.EntranceActivity
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test

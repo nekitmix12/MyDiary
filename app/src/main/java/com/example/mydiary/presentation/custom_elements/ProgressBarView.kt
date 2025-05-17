@@ -51,17 +51,17 @@ class ProgressBarView @JvmOverloads constructor(
     private var thickness =
         if (ringThickness.second) ringThickness.first else center * ringThickness.first
 
-    var stroke: List<Pair<Pair<Int, Int>, Float>> = mutableListOf(/*Pair(
+    var stroke: List<Pair<Pair<Int, Int>, Float>> = mutableListOf(Pair(
                 Pair(
                     ContextCompat.getColor(context, R.color.logbook_gradient_yellow_1),
                     ContextCompat.getColor(context, R.color.logbook_gradient_yellow_2)
                 ), 0.5f
-            ),*//*Pair(
+            ),Pair(
                 Pair(
                     ContextCompat.getColor(context, R.color.logbook_gradient_blue_1),
                     ContextCompat.getColor(context, R.color.logbook_gradient_blue_2)
                 ), 0.5f
-            ),*//*Pair(
+            ),Pair(
                 Pair(
                     ContextCompat.getColor(context, R.color.logbook_gradient_green_1),
                     ContextCompat.getColor(context, R.color.logbook_gradient_green_2)
@@ -72,7 +72,7 @@ class ProgressBarView @JvmOverloads constructor(
                     ContextCompat.getColor(context, R.color.logbook_gradient_red_1),
                     ContextCompat.getColor(context, R.color.logbook_gradient_red_2)
                 ), 0.25f
-            ),*/
+            ),
     )
 
     private val strokePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
