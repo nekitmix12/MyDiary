@@ -2,14 +2,17 @@ package com.example.mydiary.presentation.features.entrance
 
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.View
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
+import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
 import androidx.lifecycle.lifecycleScope
 import com.example.mydiary.databinding.EntranceBinding
@@ -25,17 +28,16 @@ class EntranceActivity : AppCompatActivity() {
     private lateinit var binding: EntranceBinding
     private var goingToSettings = false
 
-    /* private val addAccountLauncher = registerForActivityResult(
-         ActivityResultContracts.StartActivityForResult()
-     ) { result: ActivityResult ->
-         if (result.resultCode == Activity.RESULT_OK) {
-             Log.d(TAG,"ok: ${result.data}")
+    private val addAccountLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            Log.d(TAG, "ok: ${result.data}")
 
-         } else {
+        } else {
 
-         }
-     }
- */
+        }
+    }
     private val settingsLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             viewModel.getBiometric(this)
@@ -52,10 +54,6 @@ class EntranceActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModel: EntranceViewModel
 
-    private lateinit var executor: Executor
-    private lateinit var biometricPrompt: BiometricPrompt
-    private lateinit var promptInfo: BiometricPrompt.PromptInfo
-
     @SuppressLint("NewApi", "SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,8 +63,7 @@ class EntranceActivity : AppCompatActivity() {
         (application as App).appComponent.entranceActivityComponent().create().inject(this)
         val dialog = NoWifiFragmentDialog()
 
-        /*if (!viewModel.checkForInternet(this))
-            dialog.show(supportFragmentManager, "dialog")*/
+
         viewModel.start()
         lifecycleScope.launch {
             launch {
@@ -80,8 +77,8 @@ class EntranceActivity : AppCompatActivity() {
                             startActivity(intent)
                             finish()
                         }
-                    Log.d(TAG, it.toString() + " null")
-
+                    else
+                        binding.button.isClickable = true
                 }
             }
             launch {
@@ -106,47 +103,31 @@ class EntranceActivity : AppCompatActivity() {
             }
         }
 
-        /*
-                val credentialManager = CredentialManager.create(this@EntranceActivity)
-                val isConnect = entranceViewModel.checkForInternet(this)*/
-
         binding.button.setOnClickListener {
             if (!viewModel.checkForInternet(this))
                 dialog.show(supportFragmentManager, "dialog")
             else {
+                val credentialManager = CredentialManager.create(this@EntranceActivity)
+                viewModel.getLoginUser(
+                    this@EntranceActivity, credentialRequest, signUpRequest, credentialManager
+                )
 
             }
-
-            /* if (isConnect)
-                entranceViewModel.getLoginUser(
-                    this@EntranceActivity,
-                    credentialRequest,
-                    signUpRequest,
-                    credentialManager
-                )
-            else {
-                Toast.makeText(this, this.getString(R.string.there_is_not_wifi), Toast.LENGTH_SHORT)
-                    .show()
-                biometricPrompt.authenticate(promptInfo)*/
-
-            // }
         }
     }
 
     override fun onResume() {
         super.onResume()
         if (goingToSettings) {
-            // пользователь только что вернулся из настроек — сбросим флаг
             goingToSettings = false
             return
         }
-        // иначе — нормально пере‑запустить BiometricPrompt
         viewModel.getBiometric(this)
     }
 
 
     companion object {
-        const val TAG = "com.example.mydiary.presentation.EntranceActivity"
+        const val TAG = "EntranceActivity"
     }
 }
 
