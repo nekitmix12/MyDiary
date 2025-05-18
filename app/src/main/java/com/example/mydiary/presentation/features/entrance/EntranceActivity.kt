@@ -2,13 +2,11 @@ package com.example.mydiary.presentation.features.entrance
 
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.View
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
@@ -21,23 +19,12 @@ import com.example.mydiary.presentation.MainActivity
 import com.example.mydiary.presentation.di.SignInIpCredentialRequest
 import com.example.mydiary.presentation.di.SignUpIpCredentialRequest
 import kotlinx.coroutines.launch
-import java.util.concurrent.Executor
 import javax.inject.Inject
 
 class EntranceActivity : AppCompatActivity() {
     private lateinit var binding: EntranceBinding
     private var goingToSettings = false
 
-    private val addAccountLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result: ActivityResult ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            Log.d(TAG, "ok: ${result.data}")
-
-        } else {
-
-        }
-    }
     private val settingsLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             viewModel.getBiometric(this)
