@@ -20,11 +20,13 @@ import androidx.credentials.exceptions.GetCredentialException
 import androidx.credentials.exceptions.NoCredentialException
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.eventFlow
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.example.mydiary.R
 import com.example.mydiary.domain.model.Result
 import com.example.mydiary.domain.model.SettingsModel
+import com.example.mydiary.domain.usecase.ChangeSettingsUseCase
 import com.example.mydiary.domain.usecase.GetSettingsUseCase
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
@@ -36,8 +38,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetSettingsUseCase) :
-    ViewModel() {
+class EntranceViewModel @Inject constructor(
+    private val getSettingsUseCase: GetSettingsUseCase,
+    private val setSettingsUseCase: ChangeSettingsUseCase
+) : ViewModel() {
     @StringRes
     private var _errorRef = MutableSharedFlow<Int>()
     val errorRef = _errorRef as SharedFlow<Int>
@@ -48,8 +52,8 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
 
     private var settings = MutableStateFlow<SettingsModel?>(null)
 
-    private var _checkWithFingerprint = MutableStateFlow<Boolean?>(null)
-    val checkWithFingerprint: StateFlow<Boolean?> = _checkWithFingerprint
+    private var _checkWithFingerprint = MutableSharedFlow<Boolean?>()
+    val checkWithFingerprint: SharedFlow<Boolean?> = _checkWithFingerprint
 
     private var _canGo = MutableStateFlow<Boolean?>(null)
     val canGo: StateFlow<Boolean?> = _canGo
@@ -75,7 +79,8 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
         settings.collect {
             if (it != null && it.name.isNotBlank()) {
                 _checkWithFingerprint.emit(it.isUseFingerprint)
-            }
+            } else
+                _checkWithFingerprint.emit(null)
             Log.d(TAG, "it: $it")
         }
     }
@@ -102,51 +107,62 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
         } else {
             @Suppress("DEPRECATION") val networkInfo =
                 connectivityManager.activeNetworkInfo ?: return false
-            @Suppress("DEPRECATION")
-            return networkInfo.isConnected
+            @Suppress("DEPRECATION") return networkInfo.isConnected
         }
 
     }
 
     fun getBiometric(context: Context) {
-        Log.d(TAG,"getBiometric")
-        val executor = ContextCompat.getMainExecutor(context)
-        val biometricPrompt = BiometricPrompt(context as FragmentActivity, executor,
-            object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationError(
-                    errorCode: Int,
-                    errString: CharSequence
-                ) {
-                    super.onAuthenticationError(errorCode, errString)
-                    context.lifecycleScope.launch {
-                        delay(100)
-                        _biometricsError.emit(errorCode)
-                    }
+        Log.d(TAG, (context as EntranceActivity).lifecycle.currentState.name)
+
+        if (settings.value == null || settings.value!!.name == "") viewModelScope.launch {
+            _checkWithFingerprint.emit(null)
+        } else {
+            viewModelScope.launch {
+                (context).lifecycle.eventFlow.collect {
+                    Log.d(TAG, "if have settings: " + it.name)
 
                 }
+            }
 
-                override fun onAuthenticationSucceeded(
-                    result: BiometricPrompt.AuthenticationResult
-                ) {
-                    super.onAuthenticationSucceeded(result)
-                    context.lifecycleScope.launch {
-                        _canGo.emit(true)
+            val executor = ContextCompat.getMainExecutor(context)
+            val biometricPrompt = BiometricPrompt(context as FragmentActivity,
+                executor,
+                object : BiometricPrompt.AuthenticationCallback() {
+                    override fun onAuthenticationError(
+                        errorCode: Int, errString: CharSequence
+                    ) {
+                        super.onAuthenticationError(errorCode, errString)
+                        context.lifecycleScope.launch {
+                            delay(100)
+                            _biometricsError.emit(errorCode)
+                        }
+
                     }
-                }
 
-                override fun onAuthenticationFailed() {
-                    super.onAuthenticationFailed()
-                    context.lifecycleScope.launch {
-                        _biometricsError.emit(-1)
+                    override fun onAuthenticationSucceeded(
+                        result: BiometricPrompt.AuthenticationResult
+                    ) {
+                        super.onAuthenticationSucceeded(result)
+                        context.lifecycleScope.launch {
+                            Log.d(TAG, "correct biometric")
+                            _canGo.emit(true)
+                        }
                     }
-                }
-            })
 
-        val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle(context.getString(R.string.biometric_login))
-            .setNegativeButtonText(context.getString(R.string.go_to_settings))
-            .build()
-        biometricPrompt.authenticate(promptInfo)
+                    override fun onAuthenticationFailed() {
+                        super.onAuthenticationFailed()
+                        context.lifecycleScope.launch {
+                            _biometricsError.emit(-1)
+                        }
+                    }
+                })
+
+            val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle(context.getString(R.string.biometric_login))
+                .setNegativeButtonText(context.getString(R.string.go_to_settings)).build()
+            biometricPrompt.authenticate(promptInfo)
+        }
     }
 
     fun getLoginUser(
@@ -159,8 +175,7 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
             try {
                 try {
                     val pendingResponse = credentialManager.getCredential(
-                        context,
-                        credentialRequest
+                        context, credentialRequest
                     )
                     handleSignIn(pendingResponse)
                 } catch (e: NoCredentialException) {
@@ -169,8 +184,7 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
                     _errorRef.emit(R.string.there_is_not_account)
                     try {
                         val signUpResponse = credentialManager.getCredential(
-                            context,
-                            signUpRequest
+                            context, signUpRequest
                         )
                         handleSignIn(signUpResponse)
                     } catch (e: Exception) {
@@ -196,7 +210,7 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
         }
     }
 
-    private fun handleSignIn(result: GetCredentialResponse): String? {
+    private fun handleSignIn(result: GetCredentialResponse) {
         val credential = result.credential
         Log.d(TAG, "Got credential of type ${credential::class.java.name}")
         when (credential) {
@@ -209,13 +223,37 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
                 if (credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
                     try {
 
-                        val googleIdTokenCredential = GoogleIdTokenCredential
-                            .createFrom(credential.data)
+                        val googleIdTokenCredential =
+                            GoogleIdTokenCredential.createFrom(credential.data)
 
 
                         Log.e(TAG, googleIdTokenCredential.toString())
                         Log.e(TAG, credential.data.toString())
-                        return "${googleIdTokenCredential.displayName} ${googleIdTokenCredential.familyName ?: ""}"
+                        viewModelScope.launch {
+                            setSettingsUseCase.execute(
+                                ChangeSettingsUseCase.Request(
+                                    settings.value?.copy(
+                                        name = googleIdTokenCredential.displayName ?: ""
+                                    ) ?: SettingsModel(
+                                        imageUrl = "",
+                                        isSendRemindOn = false,
+                                        isUseFingerprint = false,
+                                        name = googleIdTokenCredential.displayName ?: ""
+                                    )
+                                )
+                            ).collect {
+                                when (it) {
+                                    is Result.Error -> {}
+                                    is Result.Success -> {
+                                        Log.d(TAG, "get account")
+                                        _canGo.emit(true)
+                                    }
+
+                                    is Result.Loading -> {}
+                                }
+                            }
+                        }
+
                     } catch (e: GoogleIdTokenParsingException) {
                         Log.e(TAG, "Received an invalid google id token response", e)
                     }
@@ -227,21 +265,19 @@ class EntranceViewModel @Inject constructor(private val getSettingsUseCase: GetS
                 Log.e(TAG, "Unexpected type of credential")
             }
         }
-        return null
     }
 
     private suspend fun getSettings() {
-        getSettingsUseCase.execute(GetSettingsUseCase.Request())
-            .collect {
-                when (it) {
-                    is Result.Success -> {
-                        settings.emit(it.data.setting)
-                    }
-
-                    is Result.Error -> {}
-                    is Result.Loading -> {}
+        getSettingsUseCase.execute(GetSettingsUseCase.Request()).collect {
+            when (it) {
+                is Result.Success -> {
+                    settings.emit(it.data.setting)
                 }
+
+                is Result.Error -> {}
+                is Result.Loading -> {}
             }
+        }
     }
 
 
