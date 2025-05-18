@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
 import com.example.mydiary.BuildConfig
-import com.example.mydiary.presentation.di.SignInIpCredentialRequest
-import com.example.mydiary.presentation.di.SignInIpOption
-import com.example.mydiary.presentation.di.SignUpIpCredentialRequest
-import com.example.mydiary.presentation.di.SignUpIpOption
+import com.example.mydiary.presentation.features.common.di.SignInIpCredentialRequest
+import com.example.mydiary.presentation.features.common.di.SignInIpOption
+import com.example.mydiary.presentation.features.common.di.SignUpIpCredentialRequest
+import com.example.mydiary.presentation.features.common.di.SignUpIpOption
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import dagger.Module
 import dagger.Provides

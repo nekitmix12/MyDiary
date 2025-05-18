@@ -1,7 +1,7 @@
 package com.example.mydiary.screens
 
 import com.example.mydiary.R
-import com.example.mydiary.presentation.MainActivity
+import com.example.mydiary.presentation.features.common.MainActivity
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.common.views.KView
 

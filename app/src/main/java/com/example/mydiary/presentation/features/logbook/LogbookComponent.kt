@@ -1,6 +1,5 @@
-package com.example.mydiary.presentation.di.fragment_components
+package com.example.mydiary.presentation.features.logbook
 
-import com.example.mydiary.presentation.features.logbook.LogbookFragment
 import dagger.Subcomponent
 
 @Subcomponent

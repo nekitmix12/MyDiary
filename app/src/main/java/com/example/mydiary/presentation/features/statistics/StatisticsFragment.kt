@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.features
+package com.example.mydiary.presentation.features.statistics
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable

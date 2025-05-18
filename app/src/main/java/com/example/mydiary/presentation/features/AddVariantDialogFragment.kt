@@ -11,8 +11,7 @@ import com.example.mydiary.databinding.DialogFragmentBinding
 
 class AddVariantDialogFragment : DialogFragment() {
 
-    private var _binding: DialogFragmentBinding? = null
-    private val binding get() = _binding!!
+    private var binding: DialogFragmentBinding? = null
     override fun onStart() {
         super.onStart()
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -20,21 +19,21 @@ class AddVariantDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom)
-        _binding = DialogFragmentBinding.inflate(layoutInflater)
-
-        builder.setView(binding.root)
-            .setPositiveButton(requireContext().getText(R.string.ok)) { _, _ ->
-                val inputText = binding.dialogEditText.text.toString()
-                (parentFragment as? OnInputListener)?.onInputReceived(inputText)
-            }
-            .setNegativeButton(requireContext().getText(R.string.cansel)) { _, _ -> }
-
+        binding = DialogFragmentBinding.inflate(layoutInflater)
+        if (binding != null) {
+            builder.setView(binding!!.root)
+                .setPositiveButton(requireContext().getText(R.string.ok)) { _, _ ->
+                    val inputText = binding!!.dialogEditText.text.toString()
+                    (parentFragment as? OnInputListener)?.onInputReceived(inputText)
+                }
+                .setNegativeButton(requireContext().getText(R.string.cansel)) { _, _ -> }
+        }
         return builder.create()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 
     interface OnInputListener {

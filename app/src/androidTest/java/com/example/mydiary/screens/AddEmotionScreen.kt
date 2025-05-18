@@ -1,7 +1,7 @@
 package com.example.mydiary.screens
 
 import com.example.mydiary.R
-import com.example.mydiary.presentation.features.AddEmotionFragment
+import com.example.mydiary.presentation.features.add_emotion.AddEmotionFragment
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.common.views.KView
 import io.github.kakaocup.kakao.text.KButton

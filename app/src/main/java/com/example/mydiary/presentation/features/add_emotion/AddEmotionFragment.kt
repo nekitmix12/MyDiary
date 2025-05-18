@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.features
+package com.example.mydiary.presentation.features.add_emotion
 
 import android.os.Bundle
 import android.util.Log

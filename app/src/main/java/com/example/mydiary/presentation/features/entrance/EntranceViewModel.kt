@@ -205,11 +205,8 @@ class EntranceViewModel @Inject constructor(
             is CustomCredential -> {
                 if (credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
                     try {
-
                         val googleIdTokenCredential =
                             GoogleIdTokenCredential.createFrom(credential.data)
-
-
                         Log.e(TAG, googleIdTokenCredential.toString())
                         Log.e(TAG, credential.data.toString())
                         viewModelScope.launch {
@@ -241,9 +238,7 @@ class EntranceViewModel @Inject constructor(
                         Log.e(TAG, "Received an invalid google id token response", e)
                     }
                 }
-
             }
-
             else -> {
                 Log.e(TAG, "Unexpected type of credential")
             }

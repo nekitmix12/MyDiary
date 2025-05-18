@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mydiary.R
 import com.example.mydiary.databinding.LogbookFragmentBinding
 import com.example.mydiary.domain.model.Result
-import com.example.mydiary.presentation.MainActivity
+import com.example.mydiary.presentation.features.common.MainActivity
 import com.example.mydiary.presentation.adapters.AdapterWithDelegates
 import com.example.mydiary.presentation.adapters.Item
 import com.example.mydiary.presentation.adapters.decorators.PaddingItemDecoration
@@ -127,7 +127,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
         super.onCreate(savedInstanceState)
         (requireActivity() as MainActivity)
             .mainActivityComponent
-            .logBookComponent()
+            .logbookComponent()
             .create()
             .inject(this)
     }

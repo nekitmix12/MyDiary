@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.features
+package com.example.mydiary.presentation.features.notes
 
 import android.os.Bundle
 import android.util.Log
@@ -16,13 +16,13 @@ import com.example.mydiary.presentation.adapters.decorators.PaddingItemDecoratio
 import com.example.mydiary.presentation.adapters.delegates.EmotionDelegate
 import com.example.mydiary.presentation.adapters.delegates.ExitDelegate
 import com.example.mydiary.presentation.adapters.delegates.QuestionBlockDelegate
+import com.example.mydiary.presentation.features.AddVariantDialogFragment
 import com.example.mydiary.presentation.features.settings.SettingViewModel
 import com.example.mydiary.presentation.models.AnswerModel
 import com.example.mydiary.presentation.models.EmotionCardModel
 import com.example.mydiary.presentation.models.ExitModel
 import com.example.mydiary.presentation.models.QuestionBlockModel
 import java.util.UUID
-import javax.inject.Inject
 
 class NotesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragment.OnInputListener {
     private lateinit var binding: NotesFragmentBinding

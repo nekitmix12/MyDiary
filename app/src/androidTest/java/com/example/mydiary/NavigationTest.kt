@@ -5,7 +5,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
-import com.example.mydiary.presentation.MainActivity
+import com.example.mydiary.presentation.features.common.MainActivity
 import com.example.mydiary.screens.AddEmotionScreen
 import com.example.mydiary.screens.LogbookScreen
 import com.example.mydiary.screens.MainActivityScreen

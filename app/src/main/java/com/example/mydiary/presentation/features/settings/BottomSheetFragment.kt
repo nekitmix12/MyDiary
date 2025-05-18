@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.features
+package com.example.mydiary.presentation.features.settings
 
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog

@@ -15,9 +15,9 @@ import androidx.credentials.GetCredentialRequest
 import androidx.lifecycle.lifecycleScope
 import com.example.mydiary.databinding.EntranceBinding
 import com.example.mydiary.di.App
-import com.example.mydiary.presentation.MainActivity
-import com.example.mydiary.presentation.di.SignInIpCredentialRequest
-import com.example.mydiary.presentation.di.SignUpIpCredentialRequest
+import com.example.mydiary.presentation.features.common.MainActivity
+import com.example.mydiary.presentation.features.common.di.SignInIpCredentialRequest
+import com.example.mydiary.presentation.features.common.di.SignUpIpCredentialRequest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

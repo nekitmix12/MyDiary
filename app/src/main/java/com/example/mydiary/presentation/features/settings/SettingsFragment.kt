@@ -15,7 +15,6 @@ import com.example.mydiary.presentation.adapters.delegates.LabelDelegate
 import com.example.mydiary.presentation.adapters.delegates.ProfileDelegate
 import com.example.mydiary.presentation.adapters.delegates.RemindDelegate
 import com.example.mydiary.presentation.adapters.delegates.SettingParamDelegate
-import com.example.mydiary.presentation.features.BottomSheetFragment
 import com.example.mydiary.presentation.models.ButtonModel
 import com.example.mydiary.presentation.models.LabelModel
 import com.example.mydiary.presentation.models.ProfileModel
@@ -51,6 +50,9 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         super.onViewCreated(view, savedInstanceState)
         binding = SettingsFragmentBinding.bind(view)
         bottomSheetFragment = BottomSheetFragment()
+
+
+
         if (binding != null)
             with(binding!!.settingsRecycler) {
                 layoutManager = LinearLayoutManager(requireContext())
