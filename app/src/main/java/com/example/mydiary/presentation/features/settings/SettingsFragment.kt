@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mydiary.R
 import com.example.mydiary.databinding.SettingsFragmentBinding
@@ -20,6 +21,8 @@ import com.example.mydiary.presentation.models.LabelModel
 import com.example.mydiary.presentation.models.ProfileModel
 import com.example.mydiary.presentation.models.RemindModel
 import com.example.mydiary.presentation.models.SettingParamModel
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.launch
 import java.util.UUID
 import javax.inject.Inject
 
@@ -51,8 +54,64 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         binding = SettingsFragmentBinding.bind(view)
         bottomSheetFragment = BottomSheetFragment()
 
+        setRecycleLogic()
+        viewModel.getSettings()
+        viewModel.getAllReminds()
+
+        lifecycleScope.launch {
+            viewModel.settings.combine(viewModel.reminds) { settings, reminds ->
+                if (settings != null)
+                    adapters.submitList(
+                        listOf(
+                            LabelModel(
+                                requireContext().getString(R.string.settings)
+                            ),
+                            ProfileModel(
+                                AppCompatResources.getDrawable(
+                                    requireContext(),
+                                    R.drawable.mountain
+                                )
+                                    ?: throw IllegalArgumentException("profile image failed"),
+                                settings.name
+                            ),
+                            SettingParamModel(
+                                AppCompatResources.getDrawable(
+                                    requireContext(), R.drawable.setting_remind
+                                ) ?: throw IllegalArgumentException("profile image failed"),
+                                "Присылать напоминания",
+                                settings.isSendRemindOn
+                            ),
+                            RemindModel(
+                                UUID.randomUUID().toString(), "20:00"
+                            ),
+                            ButtonModel(requireContext().getString(R.string.add_remind)),
+                            SettingParamModel(
+                                AppCompatResources.getDrawable(
+                                    requireContext(), R.drawable.settings_fingerprint
+                                ) ?: throw IllegalArgumentException("profile image failed"),
+                                "Вход по отпечатку пальца",
+                                false
+                            )
+                        )
+                    )
+            }
+        }
 
 
+        childFragmentManager.setFragmentResultListener(
+            "requestKey",
+            viewLifecycleOwner
+        ) { key, bundle ->
+            val firstString = bundle.getString("hour")
+            val secondString = bundle.getString("minutes")
+            Log.d("childFragmentManager", "firstString: $firstString, secondString: $secondString")
+        }
+
+
+    }
+
+
+    private fun setRecycleLogic() {
         if (binding != null)
             with(binding!!.settingsRecycler) {
                 layoutManager = LinearLayoutManager(requireContext())
@@ -84,43 +143,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
                 )
             }
 
-        adapters.submitList(
-            listOf(
-                LabelModel(
-                    requireContext().getString(R.string.settings)
-                ), ProfileModel(
-                    AppCompatResources.getDrawable(requireContext(), R.drawable.mountain)
-                        ?: throw IllegalArgumentException("profile image failed"), "Иван Иванов"
-                ), SettingParamModel(
-                    AppCompatResources.getDrawable(
-                        requireContext(), R.drawable.setting_remind
-                    ) ?: throw IllegalArgumentException("profile image failed"),
-                    "Присылать напоминания",
-                    true
-                ), RemindModel(
-                    UUID.randomUUID().toString(), "20:00"
-                ), ButtonModel(requireContext().getString(R.string.add_remind)), SettingParamModel(
-                    AppCompatResources.getDrawable(
-                        requireContext(), R.drawable.settings_fingerprint
-                    ) ?: throw IllegalArgumentException("profile image failed"),
-                    "Вход по отпечатку пальца",
-                    false
-                )
-            )
-        )
-
-        childFragmentManager.setFragmentResultListener(
-            "requestKey",
-            viewLifecycleOwner
-        ) { key, bundle ->
-            val firstString = bundle.getString("hour")
-            val secondString = bundle.getString("minutes")
-            Log.d("childFragmentManager", "firstString: $firstString, secondString: $secondString")
-        }
-
-
     }
-
 
     private fun onSwitchClick() {
     }
