@@ -8,7 +8,6 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.provider.Settings
 import android.util.Log
-import androidx.annotation.StringRes
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.credentials.CredentialManager
@@ -16,7 +15,6 @@ import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetCredentialResponse
 import androidx.credentials.PublicKeyCredential
-import androidx.credentials.exceptions.GetCredentialException
 import androidx.credentials.exceptions.NoCredentialException
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
@@ -42,14 +40,6 @@ class EntranceViewModel @Inject constructor(
     private val getSettingsUseCase: GetSettingsUseCase,
     private val setSettingsUseCase: ChangeSettingsUseCase
 ) : ViewModel() {
-    @StringRes
-    private var _errorRef = MutableSharedFlow<Int>()
-    val errorRef = _errorRef as SharedFlow<Int>
-
-    @StringRes
-    private var _entranceResult = MutableStateFlow<Int?>(null)
-    val entranceResult: StateFlow<Int?> = _entranceResult
-
     private var settings = MutableStateFlow<SettingsModel?>(null)
 
     private var _checkWithFingerprint = MutableSharedFlow<Boolean?>()
@@ -180,8 +170,6 @@ class EntranceViewModel @Inject constructor(
                     handleSignIn(pendingResponse)
                 } catch (e: NoCredentialException) {
                     Log.e(TAG, "No saved credentials", e)
-
-                    _errorRef.emit(R.string.there_is_not_account)
                     try {
                         val signUpResponse = credentialManager.getCredential(
                             context, signUpRequest
@@ -194,18 +182,13 @@ class EntranceViewModel @Inject constructor(
                         }
                         context.startActivity(intent)
                     }
-                } catch (e: GetCredentialException) {
-                    Log.e(TAG, "CredentialManager failed", e)
-                    _errorRef.emit(R.string.something_bad)
 
                 } catch (e: Exception) {
                     Log.e(TAG, "Unexpected error", e)
-                    _errorRef.emit(R.string.something_bad)
                 }
 
 
-            } catch (e: NoCredentialException) {
-                _errorRef.emit(R.string.something_bad)
+            } catch (_: NoCredentialException) {
             }
         }
     }
