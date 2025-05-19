@@ -78,7 +78,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         (requireActivity() as MainActivity).mainActivityComponent.settingsComponent().create()
             .inject(this)
 
-        setRecycleLogic()
+        setRecycleSettings()
         viewModel.getSettings()
         viewModel.getAllReminds()
 
@@ -115,10 +115,11 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     }
 
 
-    private fun setRecycleLogic() {
+    private fun setRecycleSettings() {
         if (binding != null) with(binding!!.settingsRecycler) {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapters
+            itemAnimator = null
             addItemDecoration(
                 PaddingItemDecoration(
                     24, 0, 24, 24, R.layout.logbook_label

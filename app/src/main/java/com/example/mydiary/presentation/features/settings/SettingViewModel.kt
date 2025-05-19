@@ -70,7 +70,7 @@ class SettingViewModel @Inject constructor(
             changeSettingsUseCase.execute(ChangeSettingsUseCase.Request(settingsModel))
                 .collect {
                     when (it) {
-                        is Result.Success ->{}
+                        is Result.Success -> {}
                         is Result.Error -> {
                             Log.e(TAG, it.exception)
                         }
@@ -87,7 +87,10 @@ class SettingViewModel @Inject constructor(
                 .collect { remind ->
                     when (remind) {
                         is Result.Success -> getAllReminds()
-                        is Result.Error -> { Log.e(TAG, remind.exception)}
+                        is Result.Error -> {
+                            Log.e(TAG, remind.exception)
+                        }
+
                         is Result.Loading -> {}
                     }
                 }
@@ -95,21 +98,25 @@ class SettingViewModel @Inject constructor(
     }
 
     fun createRemind(date: String) {
-        viewModelScope.launch {
-            addRemindUseCase.execute(
-                AddRemindUseCase.Request(
-                    RemindModel(
-                        UUID.randomUUID().toString(), date
+        if (date != ":")
+            viewModelScope.launch {
+                addRemindUseCase.execute(
+                    AddRemindUseCase.Request(
+                        RemindModel(
+                            UUID.randomUUID().toString(), date
+                        )
                     )
-                )
-            ).collect{
-                when (it) {
-                    is Result.Success -> getAllReminds()
-                    is Result.Error -> { Log.e(TAG, it.exception)}
-                    is Result.Loading -> {}
+                ).collect {
+                    when (it) {
+                        is Result.Success -> getAllReminds()
+                        is Result.Error -> {
+                            Log.e(TAG, it.exception)
+                        }
+
+                        is Result.Loading -> {}
+                    }
                 }
             }
-        }
     }
 
     companion object {

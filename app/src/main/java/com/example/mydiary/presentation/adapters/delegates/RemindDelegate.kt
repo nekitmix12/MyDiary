@@ -35,7 +35,7 @@ class RemindDelegate(
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(oldItem: RemindModel, newItem: RemindModel) =
-            oldItem == newItem
+            oldItem.data == newItem.data
 
     }
 
