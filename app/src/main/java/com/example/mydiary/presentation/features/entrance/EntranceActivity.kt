@@ -21,6 +21,7 @@ import com.example.mydiary.presentation.features.common.di.SignUpIpCredentialReq
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 class EntranceActivity : AppCompatActivity() {
     private lateinit var binding: EntranceBinding
     private var goingToSettings = false
