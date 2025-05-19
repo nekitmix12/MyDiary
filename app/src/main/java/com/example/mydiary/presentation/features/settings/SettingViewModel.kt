@@ -5,19 +5,24 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mydiary.domain.model.Result
 import com.example.mydiary.domain.model.SettingsModel
+import com.example.mydiary.domain.usecase.AddRemindUseCase
 import com.example.mydiary.domain.usecase.ChangeSettingsUseCase
+import com.example.mydiary.domain.usecase.DeleteRemindUseCase
 import com.example.mydiary.domain.usecase.GetAllRemindsUseCase
 import com.example.mydiary.domain.usecase.GetSettingsUseCase
 import com.example.mydiary.presentation.models.RemindModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.util.UUID
 import javax.inject.Inject
 
 class SettingViewModel @Inject constructor(
     private val getSettingsUseCase: GetSettingsUseCase,
     private val changeSettingsUseCase: ChangeSettingsUseCase,
-    private val getAllRemindsUseCase: GetAllRemindsUseCase
+    private val getAllRemindsUseCase: GetAllRemindsUseCase,
+    private val deleteRemindUseCase: DeleteRemindUseCase,
+    private val addRemindUseCase: AddRemindUseCase
 ) : ViewModel() {
     private var _settings = MutableStateFlow<SettingsModel?>(null)
     val settings: StateFlow<SettingsModel?> = _settings
@@ -65,7 +70,7 @@ class SettingViewModel @Inject constructor(
             changeSettingsUseCase.execute(ChangeSettingsUseCase.Request(settingsModel))
                 .collect {
                     when (it) {
-                        is Result.Success -> _settings.emit(settingsModel)
+                        is Result.Success ->{}
                         is Result.Error -> {
                             Log.e(TAG, it.exception)
                         }
@@ -73,6 +78,37 @@ class SettingViewModel @Inject constructor(
                         is Result.Loading -> {}
                     }
                 }
+        }
+    }
+
+    fun deleteRemind(remindModel: RemindModel) {
+        viewModelScope.launch {
+            deleteRemindUseCase.execute(DeleteRemindUseCase.Request(remindModel))
+                .collect { remind ->
+                    when (remind) {
+                        is Result.Success -> getAllReminds()
+                        is Result.Error -> { Log.e(TAG, remind.exception)}
+                        is Result.Loading -> {}
+                    }
+                }
+        }
+    }
+
+    fun createRemind(date: String) {
+        viewModelScope.launch {
+            addRemindUseCase.execute(
+                AddRemindUseCase.Request(
+                    RemindModel(
+                        UUID.randomUUID().toString(), date
+                    )
+                )
+            ).collect{
+                when (it) {
+                    is Result.Success -> getAllReminds()
+                    is Result.Error -> { Log.e(TAG, it.exception)}
+                    is Result.Loading -> {}
+                }
+            }
         }
     }
 

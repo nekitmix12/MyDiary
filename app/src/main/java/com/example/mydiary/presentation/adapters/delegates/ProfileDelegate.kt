@@ -29,11 +29,11 @@ class ProfileDelegate(private val onProfileClick: () -> Unit) :
 
     private val diffUtil = object : DiffUtil.ItemCallback<ProfileModel>() {
         override fun areItemsTheSame(oldItem: ProfileModel, newItem: ProfileModel) =
-            true
+            oldItem == newItem
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(oldItem: ProfileModel, newItem: ProfileModel) =
-            true
+            oldItem == newItem
     }
 
 }

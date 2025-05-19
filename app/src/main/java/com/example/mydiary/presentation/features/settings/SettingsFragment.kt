@@ -29,6 +29,7 @@ import com.example.mydiary.presentation.models.ButtonModel
 import com.example.mydiary.presentation.models.LabelModel
 import com.example.mydiary.presentation.models.ProfileModel
 import com.example.mydiary.presentation.models.RemindModel
+import com.example.mydiary.presentation.models.SettingParam
 import com.example.mydiary.presentation.models.SettingParamModel
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
@@ -84,16 +85,13 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         lifecycleScope.launch {
             launch {
                 combine(
-                    viewModel.settings,
-                    viewModel.reminds
-                ) { settings, remind -> settings to remind }
-                    .collect {
-                        Log.d(TAG, it.first.toString() + "  -  " + it.second.toString())
-                        if (it.first != null && it.second != null) createScreen(
-                            it.first!!,
-                            it.second!!
-                        )
-                    }
+                    viewModel.settings, viewModel.reminds
+                ) { settings, remind -> settings to remind }.collect {
+                    Log.d(TAG, it.first.toString() + "  -  " + it.second.toString())
+                    if (it.first != null && it.second != null) createScreen(
+                        it.first!!, it.second!!
+                    )
+                }
             }
             launch {
                 viewModel.settings.collect {
@@ -109,7 +107,8 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         ) { key, bundle ->
             val firstString = bundle.getString("hour")
             val secondString = bundle.getString("minutes")
-            Log.d("childFragmentManager", "firstString: $firstString, secondString: $secondString")
+            Log.i(TAG, "firstString: $firstString, secondString: $secondString")
+            viewModel.createRemind("$firstString:$secondString")
         }
 
 
@@ -149,11 +148,20 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
     }
 
-    private fun onSwitchClick() {
+    private fun onSwitchClick(settingParamModel: SettingParamModel) {
+        when (settingParamModel.settingParam) {
+            is SettingParam.IsUseFingerprint -> {
+                viewModel.changeSettings(viewModel.settings.value!!.copy(isUseFingerprint = !settingParamModel.state))
+            }
+
+            is SettingParam.IsSendingRemind -> {
+                viewModel.changeSettings(viewModel.settings.value!!.copy(isSendRemindOn = !settingParamModel.state))
+            }
+        }
     }
 
     private fun onDelete(remindModel: RemindModel) {
-
+        viewModel.deleteRemind(remindModel)
     }
 
 
@@ -162,7 +170,6 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     }
 
     private fun onAddClick() {
-        Log.d("childFragmentManager", "add")
         bottomSheetFragment.show(childFragmentManager, "tag")
     }
 
@@ -212,8 +219,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
                     ) ?: AppCompatResources.getDrawable(
                         requireContext(),
                         if (settings.sex == 0) R.drawable.profile_girl else R.drawable.profileboy
-                    )
-                    ?: throw IllegalArgumentException("profile image failed")
+                    ) ?: throw IllegalArgumentException("profile image failed")
                 } else {
                     AppCompatResources.getDrawable(
                         requireContext(),
@@ -230,10 +236,11 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
                     requireContext(), R.drawable.setting_remind
                 ) ?: throw IllegalArgumentException("remind image failed"),
                 getString(R.string.send_reminds),
-                settings.isSendRemindOn
+                settings.isSendRemindOn,
+                SettingParam.IsSendingRemind
             )
         )
-        temp.plus(remindModels)
+        remindModels.forEach { temp.add(it) }
         temp.add(ButtonModel(getString(R.string.add_remind)))
         temp.add(
             SettingParamModel(
@@ -241,13 +248,15 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
                     requireContext(), R.drawable.settings_fingerprint
                 ) ?: throw IllegalArgumentException("fingerprint image failed"),
                 getString(R.string.sign_in_with_fingerprint),
-                false
+                settings.isUseFingerprint,
+                SettingParam.IsUseFingerprint
             )
         )
         adapters.submitList(
             temp
         )
         Log.d(TAG, temp.toString())
+        Log.d(TAG, "screen update")
     }
 
     companion object {

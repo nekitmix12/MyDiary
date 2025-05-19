@@ -12,7 +12,7 @@ import com.example.mydiary.presentation.adapters.Item
 import com.example.mydiary.presentation.adapters.holders.SettingParamHolder
 import com.example.mydiary.presentation.models.SettingParamModel
 
-class SettingParamDelegate(private val onSwitchClick: () -> Unit) :
+class SettingParamDelegate(private val onSwitchClick: (SettingParamModel) -> Unit) :
     Delegate<SettingsParamBinding, SettingParamModel> {
 
     override fun isRelativeItem(item: Item): Boolean = item is SettingParamModel
@@ -29,11 +29,12 @@ class SettingParamDelegate(private val onSwitchClick: () -> Unit) :
 
     private val diffUtil = object : DiffUtil.ItemCallback<SettingParamModel>() {
         override fun areItemsTheSame(oldItem: SettingParamModel, newItem: SettingParamModel) =
-            true
+            oldItem == newItem
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(oldItem: SettingParamModel, newItem: SettingParamModel) =
-            true
+            oldItem == newItem
+
     }
 
 }
