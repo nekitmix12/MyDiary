@@ -1,5 +1,6 @@
 package com.example.mydiary.presentation.features.settings
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mydiary.domain.model.Result
@@ -27,7 +28,11 @@ class SettingViewModel @Inject constructor(
         viewModelScope.launch {
             getSettingsUseCase.execute(GetSettingsUseCase.Request()).collect {
                 when (it) {
-                    is Result.Success -> _settings.emit(it.data.setting)
+                    is Result.Success -> {
+                        _settings.emit(it.data.setting)
+                        Log.d(TAG, it.data.setting.toString())
+                    }
+
                     is Result.Error -> {}
                     is Result.Loading -> {}
                 }
@@ -39,7 +44,12 @@ class SettingViewModel @Inject constructor(
         viewModelScope.launch {
             getAllRemindsUseCase.execute(GetAllRemindsUseCase.Request()).collect {
                 when (it) {
-                    is Result.Success -> _reminds.emit(it.data.reminds)
+                    is Result.Success -> {
+                        _reminds.emit(it.data.reminds)
+                        Log.d(TAG, it.data.reminds.toString())
+
+                    }
+
                     is Result.Error -> {}
                     is Result.Loading -> {}
                 }
@@ -48,15 +58,25 @@ class SettingViewModel @Inject constructor(
     }
 
     fun changeSettings(settingsModel: SettingsModel) {
+        Log.d(
+            TAG, "change settings $settingsModel"
+        )
         viewModelScope.launch {
             changeSettingsUseCase.execute(ChangeSettingsUseCase.Request(settingsModel))
                 .collect {
                     when (it) {
                         is Result.Success -> _settings.emit(settingsModel)
-                        is Result.Error -> {}
+                        is Result.Error -> {
+                            Log.e(TAG, it.exception)
+                        }
+
                         is Result.Loading -> {}
                     }
                 }
         }
+    }
+
+    companion object {
+        private const val TAG = "SettingViewModel"
     }
 }

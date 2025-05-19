@@ -8,5 +8,5 @@ message Settings{
     bool isSendRemindOn = 2;
     bool isUseFingerprint = 3;
     string name = 4;
-
+    int32 sex = 5;
 }

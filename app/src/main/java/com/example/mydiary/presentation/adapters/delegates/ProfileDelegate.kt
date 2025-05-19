@@ -12,7 +12,8 @@ import com.example.mydiary.presentation.adapters.Item
 import com.example.mydiary.presentation.adapters.holders.ProfileHolder
 import com.example.mydiary.presentation.models.ProfileModel
 
-class ProfileDelegate : Delegate<SettingsProfileBinding, ProfileModel> {
+class ProfileDelegate(private val onProfileClick: () -> Unit) :
+    Delegate<SettingsProfileBinding, ProfileModel> {
 
     override fun isRelativeItem(item: Item): Boolean = item is ProfileModel
 
@@ -22,7 +23,7 @@ class ProfileDelegate : Delegate<SettingsProfileBinding, ProfileModel> {
         layoutInflater: LayoutInflater,
         parent: ViewGroup,
     ): BaseViewHolder<SettingsProfileBinding, ProfileModel> =
-        ProfileHolder(SettingsProfileBinding.inflate(layoutInflater, parent, false))
+        ProfileHolder(SettingsProfileBinding.inflate(layoutInflater, parent, false), onProfileClick)
 
     override fun getDiffUtil(): DiffUtil.ItemCallback<ProfileModel> = diffUtil
 

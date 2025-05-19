@@ -23,7 +23,7 @@ fun AnswerWithStateModel.toAnswerWithActiveDbo() =
 fun AnswerWithActiveDbo.toAnswerWithStateModel() =
     AnswerWithStateModel(answer.toAnswerModel(), isActive, questionId)
 
-fun Settings.toSettingsModel() = SettingsModel(url, isSendRemindOn, isUseFingerprint, name)
+fun Settings.toSettingsModel() = SettingsModel(url, isSendRemindOn, isUseFingerprint, name, sex)
 
 fun SettingsModel.toSettingsLocalModel() =
     SettingLocalModel(imageUrl, isSendRemindOn, isUseFingerprint, name)
