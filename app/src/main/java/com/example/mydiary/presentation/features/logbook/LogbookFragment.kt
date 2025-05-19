@@ -46,7 +46,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
         binding = LogbookFragmentBinding.bind(view)
         navController = findNavController()
         Log.d(TAG, "onViewCreated")
-        viewModel.loadScreen(requireContext())
+        viewModel.loadScreen()
         with(binding.logbookRecycleView) {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapters

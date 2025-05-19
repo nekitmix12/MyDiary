@@ -11,8 +11,8 @@ enum class Emotion(
     @StringRes val description:Int,
     val type: EmotionType,
 ) {
-    Rage(R.string.rage, R.drawable.test_soft_flower,R.string.rageDepression, EmotionType.ExitedBadly),
-    Voltage(R.string.Voltage, R.drawable.test_soft_flower,R.string.VoltageDepression, EmotionType.ExitedBadly),
+    Rage(R.string.rage, R.drawable.test_soft_flower,R.string.rageDescription, EmotionType.ExitedBadly),
+    Voltage(R.string.Voltage, R.drawable.test_soft_flower,R.string.VoltageDescription, EmotionType.ExitedBadly),
     Envy(R.string.Envy, R.drawable.test_soft_flower,R.string.EnvyDescription, EmotionType.ExitedBadly),
     Anxiety(R.string.Anxiety, R.drawable.test_soft_flower,R.string.AnxietyDescription, EmotionType.ExitedBadly),
 

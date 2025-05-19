@@ -23,11 +23,12 @@ import com.example.mydiary.presentation.models.EmotionCardModel
 import com.example.mydiary.presentation.models.ExitModel
 import com.example.mydiary.presentation.models.QuestionBlockModel
 import java.util.UUID
+import javax.inject.Inject
 
 class NotesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragment.OnInputListener {
     private lateinit var binding: NotesFragmentBinding
 
-    /*@Inject*/
+    @Inject
     lateinit var viewModel: SettingViewModel
     private lateinit var navController: NavController
 

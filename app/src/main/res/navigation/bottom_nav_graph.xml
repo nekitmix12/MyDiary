@@ -43,6 +43,10 @@
         android:label="AddEmotionFragment" >
         <action
             android:id="@+id/action_addEmotionFragment_to_nodesFragment"
-            app:destination="@id/nodesFragment" />
+            app:destination="@id/nodesFragment" >
+            <argument
+                android:name="nodeId"
+                app:argType="string"/>
+        </action>
     </fragment>
 </navigation>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="rage">Ярость</string>
-    <string name="rageDepression">За орду!</string>
+    <string name="rageDescription">За орду!</string>
     <string name="Voltage">Напряжение</string>
-    <string name="VoltageDepression">Когда задолбали просто все</string>
+    <string name="VoltageDescription">Господа, вы что тупые?!</string>
     <string name="Envy">Зависть</string>
     <string name="EnvyDescription">Ну не могла она сама на машину заработать</string>
     <string name="Anxiety">Беспокойство</string>
@@ -19,7 +19,7 @@
     <string name="HappinessDescription">Наконец то лето!</string>
 
     <string name="Burnout">Выгорание</string>
-    <string name="BurnoutDescription">-Христос воскресе /n -завтра протестирую</string>
+    <string name="BurnoutDescription">-Христос воскресе \n -завтра протестирую</string>
 
     <string name="Fatigue">Усталость</string>
     <string name="FatigueDescription">Надеюсь пятая кружка кофе меня взбодрит</string>
