@@ -1,7 +1,7 @@
 package com.example.mydiary.screens
 
 import com.example.mydiary.R
-import com.example.mydiary.presentation.features.BottomSheetFragment
+import com.example.mydiary.presentation.features.settings.BottomSheetFragment
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView

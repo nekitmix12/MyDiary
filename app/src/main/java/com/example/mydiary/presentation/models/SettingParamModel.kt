@@ -4,7 +4,5 @@ import android.graphics.drawable.Drawable
 import com.example.mydiary.presentation.adapters.Item
 
 data class SettingParamModel(
-    val icon:Drawable,
-    val test:String,
-    val state:Boolean
-):Item
+    val icon: Drawable, val test: String, val state: Boolean, val settingParam: SettingParam
+) : Item

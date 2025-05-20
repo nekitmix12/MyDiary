@@ -5,7 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.mydiary.presentation.features.logbook.LogbookFragment
-import com.example.mydiary.presentation.features.NotesFragment
+import com.example.mydiary.presentation.features.notes.NotesFragment
 import com.example.mydiary.screens.LogbookScreen
 import com.example.mydiary.screens.NotesScreen
 import org.junit.Test

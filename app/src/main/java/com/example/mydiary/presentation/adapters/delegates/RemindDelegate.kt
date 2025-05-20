@@ -29,10 +29,14 @@ class RemindDelegate(
     override fun getDiffUtil(): DiffUtil.ItemCallback<RemindModel> = diffUtil
 
     private val diffUtil = object : DiffUtil.ItemCallback<RemindModel>() {
-        override fun areItemsTheSame(oldItem: RemindModel, newItem: RemindModel) = true
+        override fun areItemsTheSame(oldItem: RemindModel, newItem: RemindModel) =
+            oldItem == newItem
+
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: RemindModel, newItem: RemindModel) = true
+        override fun areContentsTheSame(oldItem: RemindModel, newItem: RemindModel) =
+            oldItem.data == newItem.data
+
     }
 
 }

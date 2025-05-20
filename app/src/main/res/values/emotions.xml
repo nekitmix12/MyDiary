@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="rage">Ярость</string>
+    <string name="rageDescription">За орду!</string>
     <string name="Voltage">Напряжение</string>
+    <string name="VoltageDescription">Господа, вы что тупые?!</string>
     <string name="Envy">Зависть</string>
+    <string name="EnvyDescription">Ну не могла она сама на машину заработать</string>
     <string name="Anxiety">Беспокойство</string>
+    <string name="AnxietyDescription">А это не мой муж ей помог?</string>
 
     <string name="Excitement">Возбуждение</string>
+    <string name="ExcitementDescription">Оу есс ,наконец то назначили собес!</string>
     <string name="Confidence">Уверенность</string>
+    <string name="ConfidenceDescription">Я воспитан на языке Oracle</string>
     <string name="Delight">Восторг</string>
+    <string name="DelightDescription">О господи ,это лучшая лаба из всех</string>
     <string name="Happiness">Счастье</string>
+    <string name="HappinessDescription">Наконец то лето!</string>
 
     <string name="Burnout">Выгорание</string>
+    <string name="BurnoutDescription">-Христос воскресе \n -завтра протестирую</string>
+
     <string name="Fatigue">Усталость</string>
+    <string name="FatigueDescription">Надеюсь пятая кружка кофе меня взбодрит</string>
     <string name="Depression">Депрессия</string>
+    <string name="DepressionDescription">Да ну все к черту ,пойду в дальнобейщики</string>
     <string name="Apathy">Апатия</string>
+    <string name="ApathyDescription">Ну и зачем я зашел на hh</string>
 
     <string name="Calmness">Спокойствие</string>
+    <string name="CalmnessDescription">Кто то бахнул валерьянки?))</string>
     <string name="Satisfaction">Удовлетворенность</string>
+    <string name="SatisfactionDescription">Наконец-то все запустилось)</string>
     <string name="Gratitude">Благодарность</string>
+    <string name="GratitudeDescription">Боже, спасибо тебе! Оно живое</string>
     <string name="Security">Защищенность</string>
+    <string name="SecurityDescription">Так ,ну если этот функционал вырезать,то по идее ломаться не будет</string>
 </resources>

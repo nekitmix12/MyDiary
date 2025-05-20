@@ -33,7 +33,7 @@ class LogbookViewModel @Inject constructor(
         MutableStateFlow<Pair<List<Pair<Pair<Int, Int>, Float>>, Boolean>?>(null)
 
 
-    fun loadScreen(context: Context) {
+    fun loadScreen() {
         viewModelScope.launch {
             launch {
                 launchEmotions()

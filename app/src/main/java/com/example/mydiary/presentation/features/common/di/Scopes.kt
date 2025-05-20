@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.di
+package com.example.mydiary.presentation.features.common.di
 
 import javax.inject.Scope
 

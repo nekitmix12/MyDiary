@@ -27,11 +27,11 @@
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.example.mydiary.presentation.features.StatisticsFragment"
+        android:name="com.example.mydiary.presentation.features.statistics.StatisticsFragment"
         android:label="StatisticsFragment" />
     <fragment
         android:id="@+id/nodesFragment"
-        android:name="com.example.mydiary.presentation.features.NotesFragment"
+        android:name="com.example.mydiary.presentation.features.notes.NotesFragment"
         android:label="NodesFragment" >
         <action
             android:id="@+id/action_nodesFragment_to_logbookFragment"
@@ -39,10 +39,14 @@
     </fragment>
     <fragment
         android:id="@+id/addEmotionFragment"
-        android:name="com.example.mydiary.presentation.features.AddEmotionFragment"
+        android:name="com.example.mydiary.presentation.features.add_emotion.AddEmotionFragment"
         android:label="AddEmotionFragment" >
         <action
             android:id="@+id/action_addEmotionFragment_to_nodesFragment"
-            app:destination="@id/nodesFragment" />
+            app:destination="@id/nodesFragment" >
+            <argument
+                android:name="nodeId"
+                app:argType="string"/>
+        </action>
     </fragment>
 </navigation>

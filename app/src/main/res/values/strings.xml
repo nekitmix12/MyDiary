@@ -42,6 +42,9 @@
     <string name="understand">Понятно</string>
     <string name="biometric_login">Вход по биометрии</string>
     <string name="go_to_settings">Перейти в настройки</string>
+    <string name="send_reminds">Присылать напоминания</string>
+    <string name="sign_in_with_fingerprint">Вход по отпечатку пальца</string>
+
 
 </resources>
 

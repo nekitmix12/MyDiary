@@ -6,12 +6,12 @@ import com.example.mydiary.presentation.models.SettingParamModel
 
 class SettingParamHolder(
     binding: SettingsParamBinding,
-    private val onSwitchClick: () -> Unit,
+    private val onSwitchClick: (SettingParamModel) -> Unit,
 ) : BaseViewHolder<SettingsParamBinding, SettingParamModel>(binding) {
     override fun onBinding(item: SettingParamModel) = with(binding) {
         paramIconZ.setImageDrawable(item.icon)
         paramText.text = item.test
         paramSwitch.isChecked = item.state
-        paramSwitch.setOnClickListener { onSwitchClick }
+        paramSwitch.setOnClickListener { onSwitchClick(item) }
     }
 }

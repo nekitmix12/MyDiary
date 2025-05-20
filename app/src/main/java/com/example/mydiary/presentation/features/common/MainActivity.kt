@@ -1,7 +1,6 @@
-package com.example.mydiary.presentation
+package com.example.mydiary.presentation.features.common
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -10,7 +9,7 @@ import com.example.mydiary.R
 
 import com.example.mydiary.databinding.MainScreenBinding
 import com.example.mydiary.di.App
-import com.example.mydiary.presentation.di.subcomponents.MainActivityComponent
+import com.example.mydiary.presentation.features.common.di.MainActivityComponent
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: MainScreenBinding
