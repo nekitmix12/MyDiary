@@ -4,6 +4,7 @@ import com.example.mydiary.data.dbo.AnswerWithActiveDbo
 import com.example.mydiary.data.entity.AnswerEmotionCrossRef
 import com.example.mydiary.data.entity.AnswerEntity
 import com.example.mydiary.data.entity.EmotionEntity
+import com.example.mydiary.data.entity.QuestionEntity
 import com.example.mydiary.data.entity.RemindEntity
 
 interface EmotionAndRemindDataSource {
@@ -20,6 +21,9 @@ interface EmotionAndRemindDataSource {
         emotion: EmotionEntity,
         answerEmotionCrossRef: List<AnswerEmotionCrossRef>,
     )
+
+    suspend fun getAllQuestions(): List<QuestionEntity>
+
     suspend fun addAnswer(answerEntity: AnswerEntity)
 
     suspend fun addRemind(remindEntity: RemindEntity)

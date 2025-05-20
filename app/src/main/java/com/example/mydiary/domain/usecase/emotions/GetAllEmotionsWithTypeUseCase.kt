@@ -1,4 +1,4 @@
-package com.example.mydiary.domain.usecase
+package com.example.mydiary.domain.usecase.emotions
 
 import android.content.Context
 import androidx.appcompat.content.res.AppCompatResources
@@ -6,6 +6,7 @@ import com.example.mydiary.R
 import com.example.mydiary.di.DefaultPool
 import com.example.mydiary.domain.model.FeelType
 import com.example.mydiary.domain.model.PositiveType
+import com.example.mydiary.domain.usecase.UseCase
 import com.example.mydiary.presentation.models.Emotion
 import com.example.mydiary.presentation.models.EmotionElementModel
 import kotlinx.coroutines.flow.Flow

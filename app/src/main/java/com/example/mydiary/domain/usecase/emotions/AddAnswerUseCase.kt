@@ -1,8 +1,9 @@
-package com.example.mydiary.domain.usecase
+package com.example.mydiary.domain.usecase.emotions
 
 import com.example.mydiary.di.IOPool
 import com.example.mydiary.domain.model.AnswerModel
 import com.example.mydiary.domain.repository.Repository
+import com.example.mydiary.domain.usecase.UseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map

@@ -1,14 +1,13 @@
 package com.example.mydiary.presentation.features.logbook
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mydiary.domain.model.EmotionModel
 import com.example.mydiary.domain.model.Result
-import com.example.mydiary.domain.usecase.GetAllEmotionsUseCase
-import com.example.mydiary.domain.usecase.GetCircleParamUseCase
-import com.example.mydiary.domain.usecase.GetLogbookStatisticsUseCase
+import com.example.mydiary.domain.usecase.emotions.GetAllEmotionsUseCase
+import com.example.mydiary.domain.usecase.statistics.GetCircleParamUseCase
+import com.example.mydiary.domain.usecase.statistics.GetLogbookStatisticsUseCase
 import com.example.mydiary.presentation.models.CircleButton
 import com.example.mydiary.presentation.models.LogbookScreenModel
 import kotlinx.coroutines.flow.MutableStateFlow

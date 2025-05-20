@@ -12,6 +12,7 @@ import com.example.mydiary.data.dbo.EmotionWithDetailsDbo
 import com.example.mydiary.data.entity.AnswerEmotionCrossRef
 import com.example.mydiary.data.entity.AnswerEntity
 import com.example.mydiary.data.entity.EmotionEntity
+import com.example.mydiary.data.entity.QuestionEntity
 
 @Dao
 interface EmotionDao {
@@ -33,6 +34,9 @@ interface EmotionDao {
     """
     )
     suspend fun getAnswersWithActive(emotionId: String): List<AnswerWithActiveDbo>
+
+    @Query("""SELECT * FROM QuestionEntity""")
+    suspend fun getAllQuestions():List<QuestionEntity>
 
     @Query(
         """SELECT * 

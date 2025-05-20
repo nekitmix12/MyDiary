@@ -24,8 +24,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.mydiary.R
 import com.example.mydiary.domain.model.Result
 import com.example.mydiary.domain.model.SettingsModel
-import com.example.mydiary.domain.usecase.ChangeSettingsUseCase
-import com.example.mydiary.domain.usecase.GetSettingsUseCase
+import com.example.mydiary.domain.usecase.settings.ChangeSettingsUseCase
+import com.example.mydiary.domain.usecase.settings.GetSettingsUseCase
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import kotlinx.coroutines.delay

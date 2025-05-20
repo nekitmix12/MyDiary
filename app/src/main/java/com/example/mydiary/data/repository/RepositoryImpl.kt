@@ -9,7 +9,9 @@ import com.example.mydiary.domain.model.AnswerEmotionCrossRefModel
 import com.example.mydiary.domain.model.AnswerModel
 import com.example.mydiary.domain.model.AnswerWithStateModel
 import com.example.mydiary.domain.model.EmotionModel
+import com.example.mydiary.domain.model.QuestionModel
 import com.example.mydiary.domain.model.SettingsModel
+import com.example.mydiary.domain.model.tiQuestionModel
 import com.example.mydiary.domain.model.toAnswerEmotionCrossRef
 import com.example.mydiary.domain.model.toAnswerEntity
 import com.example.mydiary.domain.model.toAnswerWithStateModel
@@ -45,7 +47,7 @@ class RepositoryImpl @Inject constructor(
     override suspend fun deleteEmotion(emotion: EmotionModel) =
         emotionDataSource.deleteEmotion(emotion.toEmotionEntity())
 
-    override suspend fun eddEmotion(
+    override suspend fun addEmotion(
         emotion: EmotionModel,
         answerEmotionCrossRef: List<AnswerEmotionCrossRefModel>,
     ) = emotionDataSource.addEmotion(
@@ -58,10 +60,9 @@ class RepositoryImpl @Inject constructor(
     override suspend fun deleteRemind(remindModel: RemindModel) =
         emotionDataSource.deleteRemind(remindModel.toRemindEntity())
 
-
-
     override suspend fun editRemind(remindModel: RemindModel) =
         emotionDataSource.editRemind(remindModel.toRemindEntity())
+
 
     override suspend fun addAnswer(answerModel: AnswerModel) =
         emotionDataSource.addAnswer(answerModel.toAnswerEntity())
@@ -77,5 +78,8 @@ class RepositoryImpl @Inject constructor(
 
     override suspend fun changeSettings(settings: SettingsModel) =
         settingsDataSource.changeSettings(settings.toSettingsLocalModel())
+
+    override suspend fun getAllQuestions(): List<QuestionModel> =
+        emotionDataSource.getAllQuestions().map { it.tiQuestionModel() }
 
 }
