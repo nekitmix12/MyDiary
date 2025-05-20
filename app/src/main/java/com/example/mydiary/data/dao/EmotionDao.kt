@@ -20,34 +20,47 @@ interface EmotionDao {
     @Query(
         """
         SELECT 
-             AnswerEntity.id          AS ans_id,
-             AnswerEntity.text        AS ans_text,
-             AnswerEntity.questionId  AS ans_questionId,
-             AnswerEmotionCrossRef.isActive AS isActive,
-             QuestionEntity.id        AS questionId
-        FROM AnswerEntity
-        JOIN AnswerEmotionCrossRef 
-            ON AnswerEntity.id = AnswerEmotionCrossRef.answerId
-        JOIN QuestionEntity 
-            ON AnswerEntity.questionId = QuestionEntity.id
-        WHERE AnswerEmotionCrossRef.emotionId = :emotionId
+             answer.id          AS ans_id,
+             answer.text        AS ans_text,
+             answer.question_id  AS ans_questionId,
+             answer_emotion.is_active AS isActive,
+             question.id        AS questionId
+        FROM answer
+        JOIN answer_emotion 
+            ON answer.id = answer_emotion.answer_id
+        JOIN question 
+            ON answer.question_id = question.id
+        WHERE answer_emotion.emotion_id = :emotionId
     """
     )
     suspend fun getAnswersWithActive(emotionId: String): List<AnswerWithActiveDbo>
 
-    @Query("""SELECT * FROM QuestionEntity""")
-    suspend fun getAllQuestions():List<QuestionEntity>
+    @Query("""SELECT * FROM question""")
+    suspend fun getAllQuestions(): List<QuestionEntity>
+
+    @Query(
+        """
+            Select answer.id, answer.text, answer.question_id
+            From answer 
+            Join question 
+                On question_id = question.id
+    """
+    )
+    suspend fun getAnswers()
 
     @Query(
         """SELECT * 
-        FROM EmotionEntity
-        WHERE EmotionEntity.id = :emotionId
+        FROM emotion
+        WHERE emotion.id = :emotionId
         LIMIT 1
         """
     )
     suspend fun getEmotionById(emotionId: String): EmotionEntity
 
-    @Query("""SELECT * FROM EMOTIONENTITY""")
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(question: QuestionEntity)
+
+    @Query("""SELECT * FROM emotion""")
     suspend fun getAllEmotions(): List<EmotionEntity>
 
     @Delete

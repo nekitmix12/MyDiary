@@ -7,7 +7,7 @@
     <string name="Envy">Зависть</string>
     <string name="EnvyDescription">Ну не могла она сама на машину заработать</string>
     <string name="Anxiety">Беспокойство</string>
-    <string name="AnxietyDescription">А это не мой муж ей помог?</string>
+    <string name="AnxietyDescription">А это не мой муж на пассажирском?</string>
 
     <string name="Excitement">Возбуждение</string>
     <string name="ExcitementDescription">Оу есс ,наконец то назначили собес!</string>
@@ -19,7 +19,7 @@
     <string name="HappinessDescription">Наконец то лето!</string>
 
     <string name="Burnout">Выгорание</string>
-    <string name="BurnoutDescription">-Христос воскресе \n -завтра протестирую</string>
+    <string name="BurnoutDescription">-Христос воскрес \n - Ага, завтра протестирую</string>
 
     <string name="Fatigue">Усталость</string>
     <string name="FatigueDescription">Надеюсь пятая кружка кофе меня взбодрит</string>

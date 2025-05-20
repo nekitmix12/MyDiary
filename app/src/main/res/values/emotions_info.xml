@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="what_were_you_doing">Чем вы занимались?</string>
+
+    <string name="food_intake">Прием пищи</string>
+    <string name="friends_meeting">Встреча с друзьями</string>
+    <string name="hobby">Хобби</string>
+    <string name="trip">Поездка</string>
+
+
+    <string name="who_were_you_with">С кем вы были?</string>
+
+    <string name="alon">Один</string>
+    <string name="friends">Друзья</string>
+    <string name="family">Семья</string>
+    <string name="pet">Коллеги</string>
+
+
+    <string name="where_have_you_been">Где вы были?</string>
+
+    <string name="home">Дом</string>
+    <string name="work">Работа</string>
+    <string name="outdoor">Улице</string>
+    <string name="park">Парк</string>
+</resources>
