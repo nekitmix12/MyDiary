@@ -6,5 +6,5 @@ import androidx.room.PrimaryKey
 @Entity
 data class QuestionEntity(
     @PrimaryKey val id: String,
-    val ref: String,
+    val ref: Int,
 )

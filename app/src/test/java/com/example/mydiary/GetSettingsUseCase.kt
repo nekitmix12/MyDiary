@@ -3,17 +3,15 @@ package com.example.mydiary
 import com.example.mydiary.domain.model.Result
 import com.example.mydiary.domain.model.SettingsModel
 import com.example.mydiary.domain.repository.Repository
-import com.example.mydiary.domain.usecase.GetSettingsUseCase
+import com.example.mydiary.domain.usecase.settings.GetSettingsUseCase
 import com.example.mydiary.domain.usecase.UseCase
 import com.example.mydiary.stubs.TestRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import mu.KotlinLogging
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import javax.inject.Inject
 
 @RunWith(JUnit4::class)
 class GetSettingsUseCase  {
@@ -32,7 +30,7 @@ class GetSettingsUseCase  {
             getSettingsUseCase.execute(GetSettingsUseCase.Request())
                 .collect {
                     if (it is Result.Success) {
-                        getSettingsResult = it.data.emotions
+                        getSettingsResult = it.data.setting
                     }
                     if(it is Result.Error)
                         error = it.exception

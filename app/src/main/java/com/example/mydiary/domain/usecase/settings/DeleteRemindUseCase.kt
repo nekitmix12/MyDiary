@@ -1,23 +1,24 @@
-package com.example.mydiary.domain.usecase
+package com.example.mydiary.domain.usecase.settings
 
 import com.example.mydiary.di.IOPool
 import com.example.mydiary.domain.repository.Repository
+import com.example.mydiary.domain.usecase.UseCase
 import com.example.mydiary.presentation.models.RemindModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class GetAllRemindsUseCase @Inject constructor(
+class DeleteRemindUseCase @Inject constructor(
     private val repository: Repository,
     @IOPool configuration: Configuration,
-) : UseCase<GetAllRemindsUseCase.Request, GetAllRemindsUseCase.Response>(configuration) {
+) : UseCase<DeleteRemindUseCase.Request, DeleteRemindUseCase.Response>(configuration) {
 
-    data class Response(val reminds: List<RemindModel>) : UseCase.Response
-    class Request : UseCase.Request
+    class Response : UseCase.Response
+    data class Request(val remindModel: RemindModel) : UseCase.Request
 
     override fun process(request: Request): Flow<Response> = flow {
-        emit(repository.getAllRemind())
-    }.map { Response(it) }
+        emit(repository.deleteRemind(request.remindModel))
+    }.map { Response() }
 
 }

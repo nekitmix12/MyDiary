@@ -1,9 +1,10 @@
-package com.example.mydiary.domain.usecase
+package com.example.mydiary.domain.usecase.emotions
 
 import com.example.mydiary.di.IOPool
 import com.example.mydiary.domain.model.AnswerEmotionCrossRefModel
 import com.example.mydiary.domain.model.EmotionModel
 import com.example.mydiary.domain.repository.Repository
+import com.example.mydiary.domain.usecase.UseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -22,6 +23,6 @@ class AddEmotionUseCase @Inject constructor(
     ) : UseCase.Request
 
     override fun process(request: Request): Flow<Response> = flow {
-        emit(repository.eddEmotion(request.emotion, request.answerEmotionCrossRef))
+        emit(repository.addEmotion(request.emotion, request.answerEmotionCrossRef))
     }.map { Response() }
 }

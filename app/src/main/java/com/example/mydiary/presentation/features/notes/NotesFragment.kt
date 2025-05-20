@@ -44,21 +44,8 @@ class NotesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragmen
         super.onViewCreated(view, savedInstanceState)
         binding = NotesFragmentBinding.bind(view)
         navController = findNavController()
+        setRecycleSettings()
 
-        with(binding.nodesRecycler) {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = adapters
-            addItemDecoration(
-                PaddingItemDecoration(
-                    14, 0, 24, 24, R.layout.notes_exit
-                )
-            )
-            addItemDecoration(
-                PaddingItemDecoration(
-                    24, 0, 24, 24, R.layout.logbook_emotion_card, R.layout.notes_questions_block
-                )
-            )
-        }
 
         adapters.submitList(
             listOf(
@@ -135,6 +122,23 @@ class NotesFragment : Fragment(R.layout.notes_fragment), AddVariantDialogFragmen
 
     override fun onInputReceived(input: String) {
         Toast.makeText(requireContext(), "Введено: $input", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setRecycleSettings(){
+        with(binding.nodesRecycler) {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = adapters
+            addItemDecoration(
+                PaddingItemDecoration(
+                    14, 0, 24, 24, R.layout.notes_exit
+                )
+            )
+            addItemDecoration(
+                PaddingItemDecoration(
+                    24, 0, 24, 24, R.layout.logbook_emotion_card, R.layout.notes_questions_block
+                )
+            )
+        }
     }
 
 }

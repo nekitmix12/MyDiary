@@ -3,7 +3,7 @@ package com.example.mydiary.presentation.features.add_emotion
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mydiary.domain.model.Result
-import com.example.mydiary.domain.usecase.GetAllEmotionsWithTypeUseCase
+import com.example.mydiary.domain.usecase.emotions.GetAllEmotionsWithTypeUseCase
 import com.example.mydiary.presentation.models.EmotionElementModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

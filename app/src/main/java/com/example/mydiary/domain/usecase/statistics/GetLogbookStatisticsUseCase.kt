@@ -1,8 +1,9 @@
-package com.example.mydiary.domain.usecase
+package com.example.mydiary.domain.usecase.statistics
 
 import com.example.mydiary.di.DefaultPool
 import com.example.mydiary.domain.model.EmotionModel
 import com.example.mydiary.domain.model.LogbookStatisticModel
+import com.example.mydiary.domain.usecase.UseCase
 import com.example.mydiary.domain.utils.StatisticCalculator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

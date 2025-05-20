@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mydiary.domain.model.Result
 import com.example.mydiary.domain.model.SettingsModel
-import com.example.mydiary.domain.usecase.AddRemindUseCase
-import com.example.mydiary.domain.usecase.ChangeSettingsUseCase
-import com.example.mydiary.domain.usecase.DeleteRemindUseCase
-import com.example.mydiary.domain.usecase.GetAllRemindsUseCase
-import com.example.mydiary.domain.usecase.GetSettingsUseCase
+import com.example.mydiary.domain.usecase.settings.AddRemindUseCase
+import com.example.mydiary.domain.usecase.settings.ChangeSettingsUseCase
+import com.example.mydiary.domain.usecase.settings.DeleteRemindUseCase
+import com.example.mydiary.domain.usecase.settings.GetAllRemindsUseCase
+import com.example.mydiary.domain.usecase.settings.GetSettingsUseCase
 import com.example.mydiary.presentation.models.RemindModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
