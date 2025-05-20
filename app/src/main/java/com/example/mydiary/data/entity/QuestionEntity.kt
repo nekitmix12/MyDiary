@@ -1,10 +1,12 @@
 package com.example.mydiary.data.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity("question", indices = [Index(value = ["text"], unique = true)])
 data class QuestionEntity(
     @PrimaryKey val id: String,
-    val ref: Int,
+    @ColumnInfo("text") val ref: Int,
 )
