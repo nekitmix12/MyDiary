@@ -14,6 +14,7 @@ import com.example.mydiary.domain.model.SettingsModel
 import com.example.mydiary.domain.model.tiQuestionModel
 import com.example.mydiary.domain.model.toAnswerEmotionCrossRef
 import com.example.mydiary.domain.model.toAnswerEntity
+import com.example.mydiary.domain.model.toAnswerModel
 import com.example.mydiary.domain.model.toAnswerWithStateModel
 import com.example.mydiary.domain.model.toEmotionEntity
 import com.example.mydiary.domain.model.toEmotionModel
@@ -66,6 +67,9 @@ class RepositoryImpl @Inject constructor(
 
     override suspend fun addAnswer(answerModel: AnswerModel) =
         emotionDataSource.addAnswer(answerModel.toAnswerEntity())
+
+    override suspend fun getAnswers(): List<AnswerModel> =
+        emotionDataSource.getAnswers().map { it.toAnswerModel() }
 
     override fun getSettings(): Flow<SettingsModel> =
         settingsDataSource.getSettings().map { it.toSettingsModel() }

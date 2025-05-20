@@ -22,6 +22,8 @@ interface EmotionAndRemindDataSource {
         answerEmotionCrossRef: List<AnswerEmotionCrossRef>,
     )
 
+    suspend fun getAnswers():List<AnswerEntity>
+
     suspend fun getAllQuestions(): List<QuestionEntity>
 
     suspend fun addAnswer(answerEntity: AnswerEntity)

@@ -33,6 +33,8 @@ interface Repository {
 
     suspend fun addAnswer(answerModel: AnswerModel)
 
+    suspend fun getAnswers(): List<AnswerModel>
+
     fun getSettings(): Flow<SettingsModel>
 
     suspend fun deleteImagePath()

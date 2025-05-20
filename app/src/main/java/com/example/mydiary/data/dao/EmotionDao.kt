@@ -43,10 +43,10 @@ interface EmotionDao {
             Select answer.id, answer.text, answer.question_id
             From answer 
             Join question 
-                On question_id = question.id
+                On answer.question_id = question.id
     """
     )
-    suspend fun getAnswers()
+    suspend fun getAnswers():List<AnswerEntity>
 
     @Query(
         """SELECT * 
@@ -57,8 +57,8 @@ interface EmotionDao {
     )
     suspend fun getEmotionById(emotionId: String): EmotionEntity
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(question: QuestionEntity)
+/*    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(question: QuestionEntity)*/
 
     @Query("""SELECT * FROM emotion""")
     suspend fun getAllEmotions(): List<EmotionEntity>
