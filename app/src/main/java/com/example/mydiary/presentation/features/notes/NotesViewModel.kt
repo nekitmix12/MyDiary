@@ -153,6 +153,7 @@ class NotesViewModel @Inject constructor(
                 first to second
             }.collect {
                 if (it.first != null && it.second != null && it.first!!.isNotEmpty()) {
+                    
                     val newBlocks = mutableListOf<QuestionBlockModel>()
                     Log.d(TAG, it.toString())
                     println(it.first)
@@ -235,6 +236,17 @@ class NotesViewModel @Inject constructor(
                     answerModel
                 )
             ).collect {
+                when (it) {
+                    is Result.Success -> {
+                        Log.i(TAG, "success add")
+                    }
+
+                    is Result.Error -> {
+                        Log.e(TAG, it.exception)
+                    }
+
+                    is Result.Loading -> {}
+                }
                 answersWithState.emit(
                     answersWithState.value!! + AnswerWithStateModel(
                         answerModel,
