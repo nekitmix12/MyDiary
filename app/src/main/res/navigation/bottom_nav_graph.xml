@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/logbookFragment"
         android:name="com.example.mydiary.presentation.features.logbook.LogbookFragment"
-        android:label="LogbookFragment" >
+        android:label="LogbookFragment">
         <action
             android:id="@+id/action_logbookFragment_to_addEmotionFragment"
             app:destination="@id/addEmotionFragment" />
@@ -16,7 +16,7 @@
             app:destination="@id/nodesFragment">
             <argument
                 android:name="nodeId"
-                app:argType="string"/>
+                app:argType="string" />
         </action>
 
 
@@ -32,7 +32,16 @@
     <fragment
         android:id="@+id/nodesFragment"
         android:name="com.example.mydiary.presentation.features.notes.NotesFragment"
-        android:label="NodesFragment" >
+        android:label="NodesFragment">
+        <argument
+            android:name="nodeId"
+            android:defaultValue=""
+            app:argType="string" />
+
+        <argument
+            android:name="emotion"
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_nodesFragment_to_logbookFragment"
             app:destination="@id/logbookFragment" />
@@ -40,13 +49,13 @@
     <fragment
         android:id="@+id/addEmotionFragment"
         android:name="com.example.mydiary.presentation.features.add_emotion.AddEmotionFragment"
-        android:label="AddEmotionFragment" >
+        android:label="AddEmotionFragment">
         <action
             android:id="@+id/action_addEmotionFragment_to_nodesFragment"
-            app:destination="@id/nodesFragment" >
+            app:destination="@id/nodesFragment">
             <argument
-                android:name="nodeId"
-                app:argType="string"/>
+                android:name="emotion"
+                app:argType="string" />
         </action>
     </fragment>
 </navigation>

@@ -86,4 +86,11 @@ class RepositoryImpl @Inject constructor(
     override suspend fun getAllQuestions(): List<QuestionModel> =
         emotionDataSource.getAllQuestions().map { it.tiQuestionModel() }
 
+    override suspend fun editAnswer(answerModel: AnswerModel) =
+        emotionDataSource.editAnswer(answerModel.toAnswerEntity())
+
+    override suspend fun addEmotionAnswerState(answerEmotionCrossRef: List<AnswerEmotionCrossRefModel>) =
+        emotionDataSource.addEmotionAnswerState(answerEmotionCrossRef.map { it.toAnswerEmotionCrossRef() })
+
+
 }

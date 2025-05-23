@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 @Entity("question", indices = [Index(value = ["text"], unique = true)])
 data class QuestionEntity(
     @PrimaryKey val id: String,
-    @ColumnInfo("text") val ref: Int,
+    @ColumnInfo("text") val text: String,
 )

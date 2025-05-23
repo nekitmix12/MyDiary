@@ -1,5 +1,6 @@
 package com.example.mydiary.presentation.features.logbook
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mydiary.R
 import com.example.mydiary.databinding.LogbookFragmentBinding
 import com.example.mydiary.domain.model.Result
-import com.example.mydiary.presentation.features.common.MainActivity
 import com.example.mydiary.presentation.adapters.AdapterWithDelegates
 import com.example.mydiary.presentation.adapters.Item
 import com.example.mydiary.presentation.adapters.decorators.PaddingItemDecoration
@@ -19,9 +19,11 @@ import com.example.mydiary.presentation.adapters.delegates.EmotionDelegate
 import com.example.mydiary.presentation.adapters.delegates.LabelDelegate
 import com.example.mydiary.presentation.adapters.delegates.LogbookCircleButtonDelegate
 import com.example.mydiary.presentation.adapters.delegates.LogbookTopBarDelegate
+import com.example.mydiary.presentation.features.common.MainActivity
 import com.example.mydiary.presentation.models.EmotionCardModel
 import com.example.mydiary.presentation.models.LabelModel
 import com.example.mydiary.presentation.models.LogbookTopBarModel
+import com.example.mydiary.presentation.models.toEmotionCardModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -41,6 +43,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
         )
     )
 
+    @SuppressLint("NewApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = LogbookFragmentBinding.bind(view)
@@ -72,7 +75,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
             )
         }
         lifecycleScope.launch {
-            viewModel.screenModel.collect {
+            viewModel.screenModel.collect { it ->
                 when (it) {
                     is Result.Loading -> {
                         Log.d(TAG, "Loading")
@@ -107,7 +110,11 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
                         tempList.add(
                             it.data.loadingEmotions
                         )
-                        tempList.plus(it.data.emotions)
+                        tempList.addAll(it.data.emotions.map { el ->
+                            el.toEmotionCardModel(
+                                requireContext()
+                            )
+                        })
                         adapters.submitList(tempList)
                     }
 
@@ -139,7 +146,7 @@ class LogbookFragment : Fragment(R.layout.logbook_fragment) {
     private fun onEmotionCardClick(emotionCardModel: EmotionCardModel) {
         Log.d("emotionCardModel", "emotionCardModel: $emotionCardModel")
         val action =
-            LogbookFragmentDirections.actionLogbookFragmentToNodesFragment(emotionCardModel.id)
+            LogbookFragmentDirections.actionLogbookFragmentToNodesFragment(nodeId = emotionCardModel.id)
         navController.navigate(action)
     }
 

@@ -8,7 +8,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
@@ -76,6 +75,7 @@ class AddLogsView(context: Context, attrs: AttributeSet? = null) : View(context,
 
     fun setEmotions(emotions: List<List<EmotionElementModel>>) = with(this._emotions) {
         value = emotions
+        invalidate()
     }
 
     private var isChange = false

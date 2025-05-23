@@ -1,5 +1,7 @@
 package com.example.mydiary.domain.repository
 
+import com.example.mydiary.data.entity.AnswerEmotionCrossRef
+import com.example.mydiary.data.entity.AnswerEntity
 import com.example.mydiary.domain.model.AnswerEmotionCrossRefModel
 import com.example.mydiary.domain.model.AnswerModel
 import com.example.mydiary.domain.model.AnswerWithStateModel
@@ -42,4 +44,10 @@ interface Repository {
     suspend fun changeSettings(settings: SettingsModel)
 
     suspend fun getAllQuestions(): List<QuestionModel>
+
+    suspend fun editAnswer(answerModel: AnswerModel)
+
+    suspend fun addEmotionAnswerState(answerEmotionCrossRef: List<AnswerEmotionCrossRefModel>)
+
+
 }

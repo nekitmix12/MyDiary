@@ -10,7 +10,7 @@ import com.example.mydiary.data.entity.RemindEntity
 @Dao
 interface RemindDao {
 
-    @Query("""Select * FROM RemindEntity""")
+    @Query("""Select * FROM REMIND""")
     suspend fun getReminds(): List<RemindEntity>
 
     @Delete

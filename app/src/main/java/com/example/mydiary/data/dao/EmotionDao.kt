@@ -22,9 +22,9 @@ interface EmotionDao {
         SELECT 
              answer.id          AS ans_id,
              answer.text        AS ans_text,
-             answer.question_id  AS ans_questionId,
+             answer.question_id  AS ans_question_id,
              answer_emotion.is_active AS isActive,
-             question.id        AS questionId
+             question.id        AS question_id
         FROM answer
         JOIN answer_emotion 
             ON answer.id = answer_emotion.answer_id
@@ -46,7 +46,7 @@ interface EmotionDao {
                 On answer.question_id = question.id
     """
     )
-    suspend fun getAnswers():List<AnswerEntity>
+    suspend fun getAnswers(): List<AnswerEntity>
 
     @Query(
         """SELECT * 
@@ -57,8 +57,8 @@ interface EmotionDao {
     )
     suspend fun getEmotionById(emotionId: String): EmotionEntity
 
-/*    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(question: QuestionEntity)*/
+    /*    @Insert(onConflict = OnConflictStrategy.IGNORE)
+        suspend fun insert(question: QuestionEntity)*/
 
     @Query("""SELECT * FROM emotion""")
     suspend fun getAllEmotions(): List<EmotionEntity>
@@ -94,4 +94,12 @@ interface EmotionDao {
         insertEmotion(emotion)
         insertEmotionAnswer(answerEmotionCrossRef)
     }
+
+    @Update
+    suspend fun editAnswer(answerEntity: AnswerEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addEmotionAnswerState(answerEmotionCrossRef: List<AnswerEmotionCrossRef>)
+
+
 }

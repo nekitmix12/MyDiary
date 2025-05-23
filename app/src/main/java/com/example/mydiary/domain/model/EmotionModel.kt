@@ -8,5 +8,5 @@ data class EmotionModel(
     val emotion: Emotion,
     val name: String,
     val createDataTime: Instant,
-    val imageRes: String,
+    val imageRes: Int,
 )

@@ -57,8 +57,7 @@ class AddEmotionFragment : Fragment(R.layout.add_emotion_fragment) {
             }
             launch {
                 viewModel.emotions.collect {
-                    if (it != null)
-                        binding.addLogsField.setEmotions(it)
+                    if (it != null) binding.addLogsField.setEmotions(it)
 
                 }
             }
@@ -71,9 +70,18 @@ class AddEmotionFragment : Fragment(R.layout.add_emotion_fragment) {
 
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity() as MainActivity).mainActivityComponent.addEmotionsComponent().create()
+            .inject(this)
+    }
+
     private fun onContinue(emotionElementModel: EmotionElementModel) {
         Log.d(TAG, "emotionElementModel: $emotionElementModel")
-        AddEmotionFragmentDirections.actionAddEmotionFragmentToNodesFragment(emotionElementModel.emotionEnum.toString())
+        val action =
+            AddEmotionFragmentDirections
+                .actionAddEmotionFragmentToNodesFragment(emotion = emotionElementModel.emotionEnum.toString())
+        findNavController().navigate(action)
     }
 
     private fun onExit() {
