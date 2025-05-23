@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.example.mydiary.R
 import com.example.mydiary.databinding.NotesQuestionsBlockBinding
+import com.example.mydiary.domain.model.AnswerModel
 import com.example.mydiary.presentation.adapters.BaseViewHolder
 import com.example.mydiary.presentation.adapters.Delegate
 import com.example.mydiary.presentation.adapters.Item
 import com.example.mydiary.presentation.adapters.holders.QuestionsBlockHolder
-import com.example.mydiary.presentation.models.AnswerModel
 import com.example.mydiary.presentation.models.QuestionBlockModel
 
 class QuestionBlockDelegate(

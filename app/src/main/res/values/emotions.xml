@@ -19,8 +19,7 @@
     <string name="HappinessDescription">Наконец то лето!</string>
 
     <string name="Burnout">Выгорание</string>
-    <string name="BurnoutDescription">-Христос воскрес \n - Ага, завтра протестирую</string>
-
+    <string name="BurnoutDescription">- Христос воскрес \n - Ага, завтра протестирую</string>
     <string name="Fatigue">Усталость</string>
     <string name="FatigueDescription">Надеюсь пятая кружка кофе меня взбодрит</string>
     <string name="Depression">Депрессия</string>

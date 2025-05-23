@@ -22,7 +22,7 @@ interface EmotionAndRemindDataSource {
         answerEmotionCrossRef: List<AnswerEmotionCrossRef>,
     )
 
-    suspend fun getAnswers():List<AnswerEntity>
+    suspend fun getAnswers(): List<AnswerEntity>
 
     suspend fun getAllQuestions(): List<QuestionEntity>
 
@@ -35,6 +35,10 @@ interface EmotionAndRemindDataSource {
     suspend fun editRemind(remindEntity: RemindEntity)
 
     suspend fun getAllRemind(): List<RemindEntity>
+
+    suspend fun editAnswer(answerEntity: AnswerEntity)
+
+    suspend fun addEmotionAnswerState(answerEmotionCrossRef: List<AnswerEmotionCrossRef>)
 
 
 }

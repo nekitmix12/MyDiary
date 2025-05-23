@@ -1,10 +1,11 @@
 package com.example.mydiary.presentation.adapters.holders
 
+import android.view.LayoutInflater
 import android.widget.TextView
 import com.example.mydiary.R
 import com.example.mydiary.databinding.NotesQuestionsBlockBinding
+import com.example.mydiary.domain.model.AnswerModel
 import com.example.mydiary.presentation.adapters.BaseViewHolder
-import com.example.mydiary.presentation.models.AnswerModel
 import com.example.mydiary.presentation.models.QuestionBlockModel
 
 class QuestionsBlockHolder(
@@ -15,18 +16,30 @@ class QuestionsBlockHolder(
     BaseViewHolder<NotesQuestionsBlockBinding, QuestionBlockModel>(binding) {
     override fun onBinding(item: QuestionBlockModel) = with(binding) {
         labelAnswer.text = item.label
-
-        for (i in 0 until flexbox.childCount - 1) {
-            val child = flexbox.getChildAt(i)
-            child.setOnClickListener { onAnswerClick(item.answers[i]) }
-            val text = child.findViewById<TextView>(R.id.include_text)
-            if (text != null) {
-                text.isSelected = item.answers[i].selected
-                text.text = item.answers[i].text
-            }
-        }
-
         val addButton = flexbox.getChildAt(flexbox.childCount - 1)
+        flexbox.removeAllViews()
+
+        val inflater = LayoutInflater.from(root.context)
+        item.answers.forEach { answer ->
+            val answerView = inflater.inflate(R.layout.notes_answer_option, flexbox, false)
+
+            val textView = answerView.findViewById<TextView>(R.id.include_text)
+            textView.text = answer.text
+            textView.isSelected = answer.selected
+
+            answerView.setOnClickListener {
+                onAnswerClick(
+                    AnswerModel(
+                        id = answer.id,
+                        text = answer.text,
+                        questionId = item.questionId
+                    )
+                )
+            }
+
+            flexbox.addView(answerView)
+        }
+        flexbox.addView(addButton)
         addButton.setOnClickListener { onAddAnswerButtonClick(item) }
     }
 }

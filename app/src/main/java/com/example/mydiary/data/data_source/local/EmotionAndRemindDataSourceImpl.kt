@@ -5,6 +5,7 @@ import com.example.mydiary.data.dao.RemindDao
 import com.example.mydiary.data.entity.AnswerEmotionCrossRef
 import com.example.mydiary.data.entity.AnswerEntity
 import com.example.mydiary.data.entity.EmotionEntity
+import com.example.mydiary.data.entity.QuestionEntity
 import com.example.mydiary.data.entity.RemindEntity
 import javax.inject.Inject
 
@@ -29,6 +30,13 @@ class EmotionAndRemindDataSourceImpl @Inject constructor(
         answerEmotionCrossRef: List<AnswerEmotionCrossRef>,
     ) = emotionDao.addEmotion(emotion, answerEmotionCrossRef)
 
+    override suspend fun getAnswers(): List<AnswerEntity> =
+        emotionDao.getAnswers()
+
+
+    override suspend fun getAllQuestions(): List<QuestionEntity> =
+        emotionDao.getAllQuestions()
+
     override suspend fun addRemind(remindEntity: RemindEntity) =
         remindDao.addRemind(remindEntity)
 
@@ -40,4 +48,11 @@ class EmotionAndRemindDataSourceImpl @Inject constructor(
 
     override suspend fun getAllRemind() =
         remindDao.getReminds()
+
+    override suspend fun editAnswer(answerEntity: AnswerEntity) =
+        emotionDao.editAnswer(answerEntity)
+
+    override suspend fun addEmotionAnswerState(answerEmotionCrossRef: List<AnswerEmotionCrossRef>) =
+        emotionDao.addEmotionAnswerState(answerEmotionCrossRef)
+
 }

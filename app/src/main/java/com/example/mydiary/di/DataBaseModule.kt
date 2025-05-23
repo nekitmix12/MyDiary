@@ -1,6 +1,8 @@
 package com.example.mydiary.di
 
+import android.content.ContentValues
 import android.content.Context
+import androidx.room.OnConflictStrategy
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -44,17 +46,22 @@ class DataBaseModule {
             .addCallback(object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    roomAssetsQuestions.forEach { questions ->
-                        db.execSQL("INSERT INTO question VALUES(${questions.first}, ${questions.second})")
+                    roomAssetsQuestions.forEach { (uuid, resId) ->
+                        val cv = ContentValues().apply {
+                            put("id", uuid)
+                            put("text", context.getString(resId))
+                        }
+                        db.insert("question", OnConflictStrategy.IGNORE, cv)
                     }
-                    roomAssetsAnswers.forEach {
-                        db.execSQL(
-                            "INSERT INTO answer VALUES(${UUID.randomUUID()},${
-                                context.getString(
-                                    it.second
-                                )
-                            } ,${it.first})"
-                        )
+
+                    roomAssetsAnswers.forEach { (questionPair, resId) ->
+                        val answerId = UUID.randomUUID().toString()
+                        val cv = ContentValues().apply {
+                            put("id", answerId)
+                            put("text", context.getString(resId))
+                            put("question_id", questionPair.first)
+                        }
+                        db.insert("answer", OnConflictStrategy.IGNORE, cv)
                     }
                 }
             }).build()

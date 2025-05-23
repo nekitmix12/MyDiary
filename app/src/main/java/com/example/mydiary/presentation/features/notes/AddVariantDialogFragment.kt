@@ -1,4 +1,4 @@
-package com.example.mydiary.presentation.features
+package com.example.mydiary.presentation.features.notes
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -20,11 +20,12 @@ class AddVariantDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom)
         binding = DialogFragmentBinding.inflate(layoutInflater)
+        val questionId = requireArguments().getString("questionId")!!
         if (binding != null) {
             builder.setView(binding!!.root)
                 .setPositiveButton(requireContext().getText(R.string.ok)) { _, _ ->
                     val inputText = binding!!.dialogEditText.text.toString()
-                    (parentFragment as? OnInputListener)?.onInputReceived(inputText)
+                    (parentFragment as? OnInputListener)?.onInputReceived(inputText, questionId)
                 }
                 .setNegativeButton(requireContext().getText(R.string.cansel)) { _, _ -> }
         }
@@ -37,6 +38,6 @@ class AddVariantDialogFragment : DialogFragment() {
     }
 
     interface OnInputListener {
-        fun onInputReceived(input: String)
+        fun onInputReceived(input: String, questionId: String)
     }
 }

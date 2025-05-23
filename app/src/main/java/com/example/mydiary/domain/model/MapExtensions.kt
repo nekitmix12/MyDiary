@@ -11,6 +11,7 @@ import com.example.mydiary.data.entity.QuestionEntity
 import com.example.mydiary.data.entity.RemindEntity
 import com.example.mydiary.data.local_model.SettingLocalModel
 import com.example.mydiary.presentation.models.Emotion
+import com.example.mydiary.presentation.models.EmotionCardModel
 import com.example.mydiary.presentation.models.RemindModel
 import java.time.Instant
 
@@ -48,4 +49,5 @@ fun RemindEntity.toRemindModel() = RemindModel(id, time)
 
 fun RemindModel.toRemindEntity() = RemindEntity(uuid, data)
 
-fun QuestionEntity.tiQuestionModel() = QuestionModel(id, ref)
+fun QuestionEntity.tiQuestionModel() = QuestionModel(id, text)
+
